@@ -1,7 +1,7 @@
 let user = {
   profesion: "",
   name: "",
-  lvl: 0,
+  lvl: 1,
   skills: [
     { name: "attack", amount: 0 },
     { name: "defense", amount: 0 },
@@ -25,6 +25,7 @@ let user = {
   },
   money: 0,
   stats: {
+    fights: 0,
     wins: 0,
     loses: 0,
   },

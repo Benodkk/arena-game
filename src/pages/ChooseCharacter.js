@@ -6,7 +6,7 @@ import {
   chooseBrute,
   chooseAssassin,
   chooseWarrior,
-} from "../redux/giveSkills";
+} from "../redux/user/giveSkills";
 
 function ChooseCharacter() {
   const store = useSelector((state) => state);

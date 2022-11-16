@@ -1,4 +1,4 @@
-import user from "../database/user";
+import user from "../../database/user";
 
 const initialState = user.skills;
 
@@ -8,9 +8,10 @@ function giveAttack() {
   };
 }
 
-function giveDefense() {
+function giveDefense(amount = 1) {
   return {
     type: "GIVE_DEFENSE",
+    payload: amount,
   };
 }
 
@@ -54,7 +55,7 @@ export function giveSkillsReducer(state = initialState, action) {
       state[0].amount += 1;
       return state;
     case "GIVE_DEFENSE":
-      state[1].amount += 1;
+      state[1].amount += action.payload;
       return state;
     case "GIVE_VITALITY":
       state[2].amount += 1;

@@ -1,4 +1,4 @@
-import user from "../database/user";
+import user from "../../database/user";
 
 const initialState = user.opinions;
 

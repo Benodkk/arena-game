@@ -155,6 +155,15 @@ let items = {
   ],
   shields: [
     {
+      id: 18.5,
+      name: "First shield",
+      type: "shield",
+      defense: 1,
+      lvl: 1,
+      // img ,
+      cost: 0,
+    },
+    {
       id: 19,
       name: "Wooden shield",
       type: "shield",

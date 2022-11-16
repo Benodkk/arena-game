@@ -1,10 +1,16 @@
-import { giveSkillsReducer, giveProfesionReducer } from "./giveSkills";
-import levelReducer from "./level";
-import { itemsReducer } from "./items";
-import { nameReducer } from "./userName";
-import { opinionsReduer } from "./opinions";
-import { moneyReducer } from "./money";
-import { statsReducer } from "./stats";
+import { giveSkillsReducer, giveProfesionReducer } from "./user/giveSkills";
+import levelReducer from "./user/level";
+import { itemsReducer } from "./user/items";
+import { nameReducer } from "./user/userName";
+import { opinionsReduer } from "./user/opinions";
+import { moneyReducer } from "./user/money";
+import { statsReducer } from "./user/stats";
+import { oNameReducer } from "./oponent/oName";
+import { oLevelReducer } from "./oponent/oLvl";
+import { oSkillsReducer } from "./oponent/oSkills";
+import { oParameterReducer } from "./oponent/oParameters";
+import { oItemsReducer } from "./oponent/oItems";
+import { parameterReducer } from "./user/parameters";
 
 const redux = require("redux");
 const { combineReducers, createStore } = redux;
@@ -18,6 +24,12 @@ const rootReducer = combineReducers({
   opinions: opinionsReduer,
   money: moneyReducer,
   stats: statsReducer,
+  parameters: parameterReducer,
+  oponentName: oNameReducer,
+  oponentLevel: oLevelReducer,
+  oponentSkils: oSkillsReducer,
+  oponentParameters: oParameterReducer,
+  oponentItems: oItemsReducer,
 });
 
 const store = createStore(rootReducer);

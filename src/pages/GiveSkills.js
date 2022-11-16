@@ -1,17 +1,23 @@
 import React, { useEffect, useState } from "react";
-import { giveAttack, giveDefense, giveVitality } from "../redux/giveSkills";
+import {
+  giveAttack,
+  giveDefense,
+  giveVitality,
+} from "../redux/user/giveSkills";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import useStartFight from "../hooks/useStartFight";
 
 function GiveSkills() {
   const store = useSelector((state) => state);
   const dispatch = useDispatch();
+  const start = useStartFight();
 
   const [nr, setNr] = useState(0);
   const [nextStep, setNextStep] = useState("");
 
   useEffect(() => {
-    if (store.level == 0) {
+    if (store.level == 1) {
       setNextStep("/firstFight");
       setNr(6);
     } else {
@@ -48,8 +54,8 @@ function GiveSkills() {
           );
         })}
       </div>
-      <Link to={nextStep}>
-        <button>Next step!</button>
+      <Link to="/fight">
+        <button onClick={start}>Next step!</button>
       </Link>
     </div>
   );

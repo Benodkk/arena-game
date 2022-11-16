@@ -1,4 +1,4 @@
-import user from "../database/user";
+import user from "../../database/user";
 
 const initialState = user.stats;
 
@@ -21,11 +21,13 @@ export function statsReducer(state = initialState, action) {
       return {
         ...state,
         wins: state.wins + 1,
+        fights: state.fights + 1,
       };
     case "LOSS":
       return {
         ...state,
         loses: state.loses + 1,
+        fights: state.fights + 1,
       };
     default:
       return state;

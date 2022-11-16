@@ -1,7 +1,8 @@
-import items from "../database/items";
-import user from "../database/user";
+import items from "../../database/items";
+import user from "../../database/user";
 
 user.items.armed.firstHand = items.weapon[0];
+user.items.armed.secondHand = items.shields[0];
 const initialState = user.items;
 
 function firstHand(thing) {

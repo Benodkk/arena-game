@@ -2,14 +2,14 @@ let oponents = [
   {
     id: 1,
     name: "Joe",
-    lvl: 0,
+    lvl: 1,
     skills: { attack: 3, defense: 3, vitality: 3 },
     parameters: {
       health: 100,
       energy: 100,
     },
     items: {
-      aremed: {
+      armed: {
         firstHand: [2],
         secondHand: {
           type: "second weapon",
@@ -28,7 +28,7 @@ let oponents = [
       energy: 100,
     },
     items: {
-      aremed: {
+      armed: {
         firstHand: [5],
         secondHand: {
           type: "second weapon",
@@ -47,7 +47,7 @@ let oponents = [
       energy: 100,
     },
     items: {
-      aremed: {
+      armed: {
         firstHand: [4, 6],
         secondHand: {
           type: "shield",
@@ -66,7 +66,7 @@ let oponents = [
       energy: 100,
     },
     items: {
-      aremed: {
+      armed: {
         firstHand: [4, 5],
         secondHand: {
           type: "shield",
@@ -85,7 +85,7 @@ let oponents = [
       energy: 100,
     },
     items: {
-      aremed: {
+      armed: {
         firstHand: [5, 9],
         secondHand: {
           type: "second weapon",
@@ -104,7 +104,7 @@ let oponents = [
       energy: 100,
     },
     items: {
-      aremed: {
+      armed: {
         firstHand: [6, 10],
         secondHand: {
           type: "second weapon",
@@ -123,7 +123,7 @@ let oponents = [
       energy: 100,
     },
     items: {
-      aremed: {
+      armed: {
         firstHand: [7, 9],
         secondHand: {
           type: "shield",
