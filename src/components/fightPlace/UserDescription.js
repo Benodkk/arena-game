@@ -17,9 +17,13 @@ function UserDescription() {
         </div>
         <div className="attackButton">
           <button onClick={() => move("strong")}>Strong Attack!</button>
-          <button onClick={() => move("normal")}>Normalj Attack!</button>
+          <button onClick={() => move("normal")}>Normal Attack!</button>
           <button onClick={() => move("light")}>Light Attack!</button>
-          <button>
+          <button
+            onClick={() =>
+              move(profesion.find((x) => x.name == store.profesion).superpower)
+            }
+          >
             {profesion.find((x) => x.name == store.profesion).superpower}
           </button>
         </div>

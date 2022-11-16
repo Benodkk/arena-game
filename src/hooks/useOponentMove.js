@@ -86,7 +86,8 @@ function useOponentMove() {
 
     // what move oponent do?
 
-    if (store.parameters.energy < 10) {
+    if (store.oponentParameters.energy < 10) {
+      console.log("def");
       // Oponent have no energy, have to rest or deff
       let deffOrRest = Math.random();
       console.log(deffOrRest);

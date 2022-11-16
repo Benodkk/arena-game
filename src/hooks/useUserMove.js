@@ -2,12 +2,15 @@ import { useDispatch, useSelector } from "react-redux";
 import { changeEnergy, setEnergy } from "../redux/user/parameters";
 import { giveDefense } from "../redux/user/giveSkills";
 import { oChangeHealth } from "../redux/oponent/oParameters";
+import { useState } from "react";
 
 function useUserMove() {
   const store = useSelector((state) => state);
   const dispatch = useDispatch();
 
-  //   USER ATTACKS
+  const [superpower, setSuperpower] = useState("");
+
+  //   USER's ATTACKS
 
   function userAttack(type) {
     //   power of first hand weapon
@@ -46,10 +49,16 @@ function useUserMove() {
 
     // attack damage
 
-    let attack =
-      store.skills[0].amount * 2 +
-      power * 2.5 -
-      store.oponentSkils.defense * 1.5;
+    let attack;
+
+    if (superpower == "Fatal strike") {
+      attack = store.skills[0].amount * 2 + power * 2.5;
+    } else {
+      attack =
+        store.skills[0].amount * 2 +
+        power * 2.5 -
+        store.oponentSkils.defense * 1.5;
+    }
 
     if (store.items.armed.secondHand.type == "shield") {
       if (store.oponentItems.armed.secondHand.type == "shield") {
@@ -75,7 +84,6 @@ function useUserMove() {
     let nr = Math.random();
 
     // what move user do?
-
     if (type == "light" && store.parameters.energy >= 10) {
       dispatch(changeEnergy(-10));
     } else if (type == "normal" && store.parameters.energy >= 15) {
@@ -95,8 +103,28 @@ function useUserMove() {
       } else {
         dispatch(changeEnergy(15));
       }
+    } else if (type == "Giant smash") {
+      setSuperpower("Giant smash");
+    } else if (type == "Counterattack") {
+      setSuperpower("Counterattack");
+      dispatch(giveDefense(0.5));
+      if (store.parameters.energy >= 85) {
+        dispatch(setEnergy());
+      } else {
+        dispatch(changeEnergy(15));
+      }
+    } else if (type == "Fatal strike") {
+      setSuperpower("Fatal strike");
     } else {
       console.log("no energy");
+    }
+
+    // When superpower was used
+
+    if (superpower == "Giant smash") {
+      attack += 2 * store.skills[2].amount;
+    } else if (superpower == "Counterattack") {
+      attack += attack;
     }
 
     if (type == "light" && store.parameters.energy > 10) {
@@ -105,18 +133,21 @@ function useUserMove() {
       } else {
         console.log("miss");
       }
+      setSuperpower("");
     } else if (type == "normal" && store.parameters.energy > 15) {
       if (nr < 0.7) {
         dispatch(oChangeHealth(-Math.round(attack * 2)));
       } else {
         console.log("miss");
       }
+      setSuperpower("");
     } else if (type == "strong" && store.parameters.energy > 25) {
       if (nr < 0.37) {
         dispatch(oChangeHealth(-Math.round(attack * 5)));
       } else {
         console.log("miss");
       }
+      setSuperpower("");
     }
   }
 

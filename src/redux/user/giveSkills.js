@@ -21,6 +21,13 @@ function giveVitality() {
   };
 }
 
+function resetDefense(amount) {
+  return {
+    type: "RESET_DEFENSE",
+    payload: amount,
+  };
+}
+
 function chooseBrute() {
   return {
     type: "CHOOSE_BRUTE",
@@ -43,6 +50,7 @@ export {
   giveAttack,
   giveDefense,
   giveVitality,
+  resetDefense,
   chooseBrute,
   chooseWarrior,
   chooseAssassin,
@@ -80,6 +88,11 @@ export function giveSkillsReducer(state = initialState, action) {
         { name: "defense", amount: 2 },
         { name: "vitality", amount: 2 },
       ];
+
+    // RESET DEFENSE AFTER FIGHT
+    case "RESET_DEFENSE":
+      state[1].amount = action.payload;
+      return state;
     default:
       return state;
   }
