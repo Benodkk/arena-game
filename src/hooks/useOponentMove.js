@@ -2,14 +2,21 @@ import { useDispatch, useSelector } from "react-redux";
 import { oChangeEnergy } from "../redux/oponent/oParameters";
 import { oGiveDefense } from "../redux/oponent/oSkills";
 import { changeHealth } from "../redux/user/parameters";
+import { useState } from "react";
 
 function useOponentMove() {
   const store = useSelector((state) => state);
   const dispatch = useDispatch();
 
+  const [superpowerUsed, setSuperpowerUsed] = useState(0);
+
   //   OPONENT's ATTACK
 
   function oponentsAttack() {
+    //  superpower decides if computer use superpower
+
+    let superpower = Math.random();
+
     //   power of first hand weapon
 
     let oponentsPower = 0;
@@ -46,10 +53,23 @@ function useOponentMove() {
 
     //   attack damage
 
-    let oponentAttack =
-      store.oponentSkils.attack * 2 +
-      oponentsPower * 2.5 -
-      store.skills[1].amount * 1.5;
+    let oponentAttack;
+
+    if (
+      // use Fatal strike
+      superpower < 0.5 &&
+      store.oponentSuperpower == "Fatal strike" &&
+      superpowerUsed == 0
+    ) {
+      console.log("fatal");
+      oponentAttack = store.oponentSkils.attack * 2 + oponentsPower * 2.5;
+      setSuperpowerUsed(2);
+    } else {
+      oponentAttack =
+        store.oponentSkils.attack * 2 +
+        oponentsPower * 2.5 -
+        store.skills[1].amount * 1.5;
+    }
 
     if (store.items.armed.secondHand.type == "shield") {
       if (store.oponentItems.armed.secondHand.type == "shield") {
@@ -64,7 +84,7 @@ function useOponentMove() {
       }
     }
 
-    // when attack damage is below 1
+    // when attack damage is below 1, set attack on 1 so damage will not be on minus
 
     if (oponentAttack < 1) {
       oponentAttack = 1;
@@ -78,42 +98,71 @@ function useOponentMove() {
 
     // cant make some attacks when energy is below of certain level
 
-    if (store.parameters.energy < 15) {
+    if (store.oponentParameters.energy < 15) {
       whichAttack = whichAttack / 2;
-    } else if (store.parameters.energy < 25) {
+    } else if (store.oponentParameters.energy < 25) {
       whichAttack = whichAttack / 1.25;
     }
 
     // what move oponent do?
 
-    if (store.oponentParameters.energy < 10) {
-      console.log("def");
-      // Oponent have no energy, have to rest or deff
-      let deffOrRest = Math.random();
-      console.log(deffOrRest);
-      if (deffOrRest < 0.5) {
-        dispatch(oChangeEnergy(25));
-      } else {
-        dispatch(oChangeEnergy(15));
-        dispatch(oGiveDefense(0.5));
-      }
+    // super power is a available
+
+    if (superpowerUsed == 1) {
+      console.log("counter 2 ");
+      // counterattack use in previous tour
+      oponentAttack += oponentAttack;
+      setSuperpowerUsed(2);
+    }
+    if (
+      // use Giant smash
+      superpowerUsed == 0 &&
+      superpower < 0.5 &&
+      store.oponentSuperpower == "Giant smash"
+    ) {
+      console.log("GM");
+      oponentAttack += 2 * store.oponentSkils.vitality;
+      setSuperpowerUsed(2);
+    }
+    if (
+      // use Counterattack
+      superpowerUsed == 0 &&
+      superpower < 0.5 &&
+      store.oponentParameters.energy < 85 &&
+      store.oponentSuperpower == "Counterattack"
+    ) {
+      console.log("counter 1 ");
+      dispatch(oChangeEnergy(15));
+      setSuperpowerUsed(1);
     } else {
-      // oponent have energy so he attack
-      if (whichAttack < 0.5) {
-        dispatch(oChangeEnergy(-10));
-      } else if (whichAttack >= 0.5 && whichAttack < 0.8) {
-        dispatch(oChangeEnergy(-15));
-      } else if (whichAttack >= 0.8) {
-        dispatch(oChangeEnergy(-25));
-      }
-      if (whichAttack < 0.5 && nr < 0.9) {
-        dispatch(changeHealth(-Math.round(oponentAttack)));
-      } else if (whichAttack >= 0.5 && whichAttack < 0.8 && nr < 0.7) {
-        dispatch(changeHealth(-Math.round(oponentAttack * 2)));
-      } else if (whichAttack >= 0.8 && nr < 0.37) {
-        dispatch(changeHealth(-Math.round(oponentAttack * 5)));
+      if (store.oponentParameters.energy < 10) {
+        console.log("def");
+        // Oponent have no energy, have to rest or deff
+        let deffOrRest = Math.random();
+        if (deffOrRest < 0.5) {
+          dispatch(oChangeEnergy(25));
+        } else {
+          dispatch(oChangeEnergy(15));
+          dispatch(oGiveDefense(0.5));
+        }
       } else {
-        console.log("miss");
+        // oponent have energy so he attack
+        if (whichAttack < 0.5) {
+          dispatch(oChangeEnergy(-10));
+        } else if (whichAttack >= 0.5 && whichAttack < 0.8) {
+          dispatch(oChangeEnergy(-15));
+        } else if (whichAttack >= 0.8) {
+          dispatch(oChangeEnergy(-25));
+        }
+        if (whichAttack < 0.5 && nr < 0.9) {
+          dispatch(changeHealth(-Math.round(oponentAttack)));
+        } else if (whichAttack >= 0.5 && whichAttack < 0.8 && nr < 0.7) {
+          dispatch(changeHealth(-Math.round(oponentAttack * 2)));
+        } else if (whichAttack >= 0.8 && nr < 0.37) {
+          dispatch(changeHealth(-Math.round(oponentAttack * 5)));
+        } else {
+          console.log("miss");
+        }
       }
     }
   }

@@ -8,6 +8,7 @@ let oponents = [
       health: 100,
       energy: 100,
     },
+    superpower: "Fatal strike",
     items: {
       armed: {
         firstHand: [2],
@@ -27,6 +28,7 @@ let oponents = [
       health: 100,
       energy: 100,
     },
+    superpower: "Giant smash",
     items: {
       armed: {
         firstHand: [5],
@@ -46,6 +48,7 @@ let oponents = [
       health: 100,
       energy: 100,
     },
+    superpower: "Counterattack",
     items: {
       armed: {
         firstHand: [4, 6],
@@ -65,6 +68,7 @@ let oponents = [
       health: 100,
       energy: 100,
     },
+    superpower: "Giant smash",
     items: {
       armed: {
         firstHand: [4, 5],
@@ -84,6 +88,7 @@ let oponents = [
       health: 100,
       energy: 100,
     },
+    superpower: "Fatal strike",
     items: {
       armed: {
         firstHand: [5, 9],
@@ -97,12 +102,13 @@ let oponents = [
   {
     id: 6,
     name: "Jamie Lanister",
-    lvl: 0,
+    lvl: 2,
     skills: { attack: 10, defense: 4, vitality: 5 },
     parameters: {
       health: 100,
       energy: 100,
     },
+    superpower: "Fatal strike",
     items: {
       armed: {
         firstHand: [6, 10],
@@ -116,12 +122,13 @@ let oponents = [
   {
     id: 7,
     name: "Master of puppets",
-    lvl: 0,
+    lvl: 2,
     skills: { attack: 6, defense: 6, vitality: 10 },
     parameters: {
       health: 100,
       energy: 100,
     },
+    superpower: "Counterattack",
     items: {
       armed: {
         firstHand: [7, 9],

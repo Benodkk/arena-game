@@ -3,6 +3,7 @@ let items = {
     {
       id: 0,
       name: "First knife",
+      type: "First weapon",
       attack: [3],
       lvl: 1,
       // img: ,
@@ -11,6 +12,7 @@ let items = {
     {
       id: 1,
       name: "Pickaxe",
+      type: "First weapon",
       attack: [4, 7],
       lvl: 1,
       // img: ,
@@ -19,6 +21,7 @@ let items = {
     {
       id: 2,
       name: "Basic sword",
+      type: "First weapon",
       attack: [5, 8],
       lvl: 1,
       // img: ,
@@ -27,6 +30,7 @@ let items = {
     {
       id: 3,
       name: "Short sword",
+      type: "First weapon",
       attack: [4, 9],
       lvl: 1,
       // img: ,
@@ -35,6 +39,7 @@ let items = {
     {
       id: 4,
       name: "Hand axe",
+      type: "First weapon",
       attack: [7, 10],
       lvl: 2,
       // img: ,
@@ -43,6 +48,7 @@ let items = {
     {
       id: 5,
       name: "Hammer",
+      type: "First weapon",
       attack: [5, 12],
       lvl: 2,
       // img: ,
@@ -51,6 +57,7 @@ let items = {
     {
       id: 6,
       name: "Mace",
+      type: "First weapon",
       attack: [9, 11],
       lvl: 3,
       // img: ,
@@ -59,6 +66,7 @@ let items = {
     {
       id: 7,
       name: "Furry club",
+      type: "First weapon",
       attack: [12, 13],
       lvl: 4,
       // img: ,
@@ -67,6 +75,7 @@ let items = {
     {
       id: 8,
       name: "Broadsword",
+      type: "First weapon",
       attack: [10, 13],
       lvl: 4,
       // img: ,
@@ -75,6 +84,7 @@ let items = {
     {
       id: 9,
       name: "Silver mace",
+      type: "First weapon",
       attack: [13, 17],
       lvl: 5,
       // img: ,
@@ -83,6 +93,7 @@ let items = {
     {
       id: 10,
       name: "Morning star",
+      type: "First weapon",
       attack: [14, 15],
       lvl: 5,
       // img: ,
@@ -91,6 +102,7 @@ let items = {
     {
       id: 11,
       name: "Barbarian axe",
+      type: "First weapon",
       attack: [16, 17],
       lvl: 6,
       // img: ,
@@ -99,6 +111,7 @@ let items = {
     {
       id: 12,
       name: "Sabre",
+      type: "First weapon",
       attack: [17, 19],
       lvl: 7,
       // img: ,
@@ -107,6 +120,7 @@ let items = {
     {
       id: 13,
       name: "Epee",
+      type: "First weapon",
       attack: [16, 21],
       lvl: 7,
       // img: ,
@@ -115,6 +129,7 @@ let items = {
     {
       id: 14,
       name: "Big sword",
+      type: "First weapon",
       attack: [19, 20],
       lvl: 8,
       // img: ,
@@ -123,6 +138,7 @@ let items = {
     {
       id: 15,
       name: "Scimitar",
+      type: "First weapon",
       attack: [13, 28],
       lvl: 9,
       // img: ,
@@ -131,6 +147,7 @@ let items = {
     {
       id: 16,
       name: "Warrior sabre",
+      type: "First weapon",
       attack: [20],
       lvl: 9,
       // img: ,
@@ -139,6 +156,7 @@ let items = {
     {
       id: 17,
       name: "Warlord Sword",
+      type: "First weapon",
       attack: [24],
       lvl: 10,
       // img: ,
@@ -147,6 +165,7 @@ let items = {
     {
       id: 18,
       name: "Halberd",
+      type: "First weapon",
       attack: [22, 26],
       lvl: 10,
       // img: ,

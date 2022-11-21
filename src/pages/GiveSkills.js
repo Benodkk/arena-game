@@ -18,11 +18,12 @@ function GiveSkills() {
 
   useEffect(() => {
     if (store.level == 1) {
-      setNextStep("/firstFight");
+      setNextStep("/fight");
       setNr(6);
+      start();
     } else {
       setNr(3);
-      setNextStep("/give-skillss");
+      setNextStep("/menu");
     }
   }, [store.level]);
 
@@ -54,8 +55,8 @@ function GiveSkills() {
           );
         })}
       </div>
-      <Link to="/fight">
-        <button onClick={start}>Next step!</button>
+      <Link to={nextStep}>
+        <button>Next step!</button>
       </Link>
     </div>
   );

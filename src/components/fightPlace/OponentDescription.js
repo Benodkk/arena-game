@@ -1,18 +1,23 @@
 import oponents from "../../database/oponents";
 import { useSelector } from "react-redux";
 import useOponentMove from "../../hooks/useOponentMove";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 function OponentDescription() {
   const store = useSelector((state) => state);
   const oponentAttack = useOponentMove();
 
+  const [firstMove, setFirstMove] = useState(false);
+
   // Oponent make a move when user change his energy or defense
 
   useEffect(() => {
-    setTimeout(() => {
-      oponentAttack();
-    }, 2000);
+    setFirstMove(true);
+    if (firstMove && store.oponentParameters.health > 0) {
+      setTimeout(() => {
+        oponentAttack();
+      }, 2000);
+    }
   }, [store.skills[1].amount, store.parameters.energy]);
 
   return (

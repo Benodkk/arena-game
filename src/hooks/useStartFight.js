@@ -8,12 +8,13 @@ import { oSetItems } from "../redux/oponent/oItems";
 import { oSetSkills } from "../redux/oponent/oSkills";
 import { oChangeHealth, oSetParameters } from "../redux/oponent/oParameters";
 import { changeHealth, setParameters } from "../redux/user/parameters";
+import { oSuperpower } from "../redux/oponent/oSuperpower";
 
 function useStartFight() {
   const store = useSelector((state) => state);
   const dispatch = useDispatch();
 
-  const oponent = oponents[2];
+  const oponent = oponents[store.stats.fights];
 
   function start() {
     // Set oponent
@@ -24,6 +25,7 @@ function useStartFight() {
     dispatch(oSetSkills(oponent.skills));
     dispatch(oSetParameters(oponent.parameters));
     dispatch(oChangeHealth(oponent.skills.vitality));
+    dispatch(oSuperpower(oponent.superpower));
 
     //   Set User
 
