@@ -1,0 +1,239 @@
+@import url("https://fonts.googleapis.com/css2?family=Kanit:wght@700&display=swap");
+
+html,
+body {
+  margin: 0;
+  font-family: "Kanit", sans-serif;
+  font-size: 20px;
+}
+
+/* BTN STYLES */
+
+button {
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 5px;
+  border-width: 0;
+  font-family: "Kanit", sans-serif;
+  box-shadow: rgba(45, 35, 66, 0.4) 0 2px 4px,
+    rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #d6d6e7 0 -3px 0 inset;
+  box-sizing: border-box;
+  color: #000000;
+  padding: 4px 16px;
+  transition: box-shadow 0.15s, transform 0.15s;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+button:focus {
+  box-shadow: #d6d6e7 0 0 0 1.5px inset, rgba(45, 35, 66, 0.4) 0 2px 4px,
+    rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #d6d6e7 0 -3px 0 inset;
+}
+
+button:hover {
+  box-shadow: rgba(45, 35, 66, 0.4) 0 4px 8px,
+    rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #d6d6e7 0 -3px 0 inset;
+  transform: translateY(-2px);
+}
+
+button:active {
+  box-shadow: #d6d6e7 0 3px 7px inset;
+  transform: translateY(2px);
+}
+
+/* XXXXXXXXXXXXXX
+ CHOOSE CHARACTER 
+ XXXXXXXXXXXXXX*/
+
+.chooseCharacterContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  background-image: url(./database/images/brick-background.jpg);
+  background-size: contain;
+  background-position: center;
+  height: 92vh;
+  padding: 4vh;
+}
+.chooseCharacterContainer .selectionName {
+  font-size: 40px;
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 5px 10px;
+  border-radius: 10px;
+}
+.profesions {
+  display: flex;
+  align-items: center;
+  position: relative;
+  bottom: 36%;
+}
+.oneProfesionContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  right: 160px;
+}
+.changeProfesionBtnRight,
+.changeProfesionBtnLeft {
+  border-radius: 10px;
+  width: 100px;
+  position: absolute;
+  top: 250px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.changeProfesionBtnLeft:hover,
+.changeProfesionBtnRight:hover {
+  transform: scale(0.85);
+}
+
+.changeProfesionBtnLeft:active,
+.changeProfesionBtnRight:active {
+  transform: translateY(10px) scale(0.85);
+}
+
+.changeProfesionBtnRight img,
+.changeProfesionBtnLeft img {
+  width: 100px;
+}
+.changeProfesionBtnLeft {
+  right: 20px;
+}
+.changeProfesionBtnRight {
+  left: 340px;
+}
+.oneProfesion {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  transition: 1s;
+  width: 320px;
+}
+.oneProfesion img {
+  height: 350px;
+}
+.profesionName {
+  font-size: 30px;
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 10px;
+  border-radius: 10px;
+}
+.profesionSkills {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 10px;
+  border-radius: 10px;
+}
+.oneSkill {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.oneSkill img {
+  height: 40px;
+}
+.finishChooseCharacter {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+.inputNameContainer {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 5px 10px;
+  border-radius: 10px;
+}
+.inputName {
+  /* background-color: rgba(255, 255, 255, 0.8);
+  padding: 10px;
+  border-radius: 10px; */
+}
+input[type="text"] {
+  /* width: 20%; */
+  padding: 4px 8px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  font-family: "Kanit", sans-serif;
+  font-size: 20px;
+}
+.emptyDiv {
+  height: 38px;
+}
+
+/* XXXXXXXXXXXXXX
+ CHOOSE CHARACTER 
+ XXXXXXXXXXXXXX*/
+
+.giveSkillsContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  background-image: url(./database/images/brick-background.jpg);
+  background-size: contain;
+  background-position: center;
+  height: 90vh;
+  padding: 5vh;
+}
+
+.giveSkillsContainer .selectionName {
+  font-size: 40px;
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 5px 10px;
+  border-radius: 10px;
+}
+.userNameContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+.userName {
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 10px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  font-size: 24px;
+}
+
+.currentSkills {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 10px;
+  border-radius: 10px;
+  font-size: 24px;
+}
+.currentSkills .oneSkill {
+  display: grid;
+  grid-template-columns: 40px 90px 40px 50px;
+  grid-template-rows: 60px;
+  align-items: center;
+  gap: 10px;
+}
+.oneSkill div,
+.oneSkill img {
+  place-self: center;
+}
+
+.giveSkillsContainer button {
+  font-size: 24px;
+}
+.giveSkillsContainer .emptyDiv {
+  height: 43px;
+}

@@ -9,6 +9,8 @@ import Training from "./pages/Training";
 import Arena from "./pages/Arena";
 import User from "./pages/User";
 
+import "./style.css";
+
 function RouteSwitch() {
   return (
     <BrowserRouter>

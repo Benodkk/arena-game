@@ -9,6 +9,7 @@ function useUserMove() {
   const dispatch = useDispatch();
 
   const [superpower, setSuperpower] = useState("");
+  const [superpowerUsed, setSuperpowerUsed] = useState(false);
 
   //   USER's ATTACKS
 
@@ -106,18 +107,27 @@ function useUserMove() {
         } else {
           dispatch(changeEnergy(15));
         }
-      } else if (type == "Giant smash") {
+      } else if (type == "Giant smash" && superpowerUsed == false) {
         setSuperpower("Giant smash");
-      } else if (type == "Counterattack") {
+        setSuperpowerUsed(true);
+      } else if (type == "Counterattack" && superpowerUsed == false) {
         setSuperpower("Counterattack");
         dispatch(giveDefense(0.5));
+        setSuperpowerUsed(true);
         if (store.parameters.energy >= 85) {
           dispatch(setEnergy());
         } else {
           dispatch(changeEnergy(15));
         }
-      } else if (type == "Fatal strike") {
+      } else if (type == "Fatal strike" && superpowerUsed == false) {
         setSuperpower("Fatal strike");
+        setSuperpowerUsed(true);
+      } else if (
+        type == "Fatal strike" ||
+        "Counterattack" ||
+        ("Giant smash" && superpowerUsed == true)
+      ) {
+        console.log("you can use superpower only once");
       } else {
         console.log("no energy");
       }

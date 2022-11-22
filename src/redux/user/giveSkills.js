@@ -1,5 +1,9 @@
 import user from "../../database/user";
 
+import attack from "../../database/images/attack.png";
+import shield from "../../database/images/shield.png";
+import health from "../../database/images/health.png";
+
 const initialState = user.skills;
 
 function giveAttack() {
@@ -72,21 +76,21 @@ export function giveSkillsReducer(state = initialState, action) {
     // GIVE PROFESION
     case "CHOOSE_BRUTE":
       return [
-        { name: "attack", amount: 2 },
-        { name: "defense", amount: 5 },
-        { name: "vitality", amount: 5 },
+        { name: "attack", amount: 2, img: attack },
+        { name: "defense", amount: 5, img: shield },
+        { name: "vitality", amount: 5, img: health },
       ];
     case "CHOOSE_WARRIOR":
       return [
-        { name: "attack", amount: 5 },
-        { name: "defense", amount: 4 },
-        { name: "vitality", amount: 3 },
+        { name: "attack", amount: 5, img: attack },
+        { name: "defense", amount: 4, img: shield },
+        { name: "vitality", amount: 3, img: health },
       ];
     case "CHOOSE_ASSASSIN":
       return [
-        { name: "attack", amount: 8 },
-        { name: "defense", amount: 2 },
-        { name: "vitality", amount: 2 },
+        { name: "attack", amount: 8, img: attack },
+        { name: "defense", amount: 2, img: shield },
+        { name: "vitality", amount: 2, img: health },
       ];
 
     // RESET DEFENSE AFTER FIGHT

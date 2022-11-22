@@ -1,33 +1,41 @@
+import brute from "./images/brute.png";
+import warrior from "./images/warrior.png";
+import assassin from "./images/assassin.png";
+
+import attack from "./images/attack.png";
+import shield from "./images/shield.png";
+import health from "./images/health.png";
+
 let profesion = [
   {
     name: "Brute",
     skills: [
-      { name: "attack", amount: 2 },
-      { name: "defense", amount: 5 },
-      { name: "vitality", amount: 5 },
+      { name: "attack", amount: 2, img: attack },
+      { name: "defense", amount: 5, img: shield },
+      { name: "vitality", amount: 5, img: health },
     ],
     superpower: "Giant smash",
-    // img:
+    img: brute,
   },
   {
     name: "Warrior",
     skills: [
-      { name: "attack", amount: 5 },
-      { name: "defense", amount: 4 },
-      { name: "vitality", amount: 3 },
+      { name: "attack", amount: 5, img: attack },
+      { name: "defense", amount: 4, img: shield },
+      { name: "vitality", amount: 3, img: health },
     ],
     superpower: "Counterattack",
-    // img:
+    img: warrior,
   },
   {
     name: "Assassin",
     skills: [
-      { name: "attack", amount: 8 },
-      { name: "defense", amount: 2 },
-      { name: "vitality", amount: 2 },
+      { name: "attack", amount: 8, img: attack },
+      { name: "defense", amount: 2, img: shield },
+      { name: "vitality", amount: 2, img: health },
     ],
     superpower: "Fatal strike",
-    // img:
+    img: assassin,
   },
 ];
 

@@ -7,6 +7,7 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import useStartFight from "../hooks/useStartFight";
+import profesion from "../database/profesion";
 
 function GiveSkills() {
   const store = useSelector((state) => state);
@@ -27,12 +28,21 @@ function GiveSkills() {
     }
   }, [store.level]);
 
+  const character = profesion.find((x) => x.name == store.profesion).img;
+
   return (
     <div className="giveSkillsContainer">
+      <div className="selectionName">GIVE SKILLS</div>
+      <div className="userNameContainer">
+        <div className="userName">{store.name}</div>
+        <img src={character} />
+      </div>
       <div className="currentSkills">
+        <div>Skills to give: {nr}</div>
         {store.skills.map((element) => {
           return (
             <div key={element.name} className="oneSkill">
+              <img src={element.img} />
               <div>{element.name}:</div>
               <div>{element.amount}</div>
               <button
@@ -55,9 +65,13 @@ function GiveSkills() {
           );
         })}
       </div>
-      <Link to={nextStep}>
-        <button>Next step!</button>
-      </Link>
+      {nr == 0 ? (
+        <Link to={nextStep}>
+          <button>Next step!</button>
+        </Link>
+      ) : (
+        <div className="emptyDiv"></div>
+      )}
     </div>
   );
 }
