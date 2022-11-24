@@ -1,11 +1,15 @@
+import attack from "./images/attack.png";
+import shield from "./images/shield.png";
+import health from "./images/health.png";
+
 let user = {
   profesion: "",
   name: "",
   lvl: 1,
   skills: [
-    { name: "attack", amount: 0 },
-    { name: "defense", amount: 0 },
-    { name: "vitality", amount: 0 },
+    { name: "attack", amount: 0, img: attack },
+    { name: "defense", amount: 0, img: shield },
+    { name: "vitality", amount: 0, img: health },
   ],
   parameters: {
     health: 100,

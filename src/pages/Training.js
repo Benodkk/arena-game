@@ -1,11 +1,15 @@
 import { useDispatch, useSelector } from "react-redux";
 import {
+  chooseBrute,
   giveAttack,
   giveDefense,
   giveVitality,
 } from "../redux/user/giveSkills";
 import { Link } from "react-router-dom";
 import { changeMoney } from "../redux/user/money";
+import profesion from "../database/profesion";
+import left from "../database/images/left.png";
+import coin from "../database/images/coin.png";
 
 function Training() {
   const dispatch = useDispatch();
@@ -25,16 +29,48 @@ function Training() {
       console.log("no money");
     }
   }
+
+  const character = profesion.find((x) => x.name == store.profesion).img;
+
   return (
-    <div>
-      <button onClick={() => giveSkill("Attack")}>Train Attack!</button>
-      <button onClick={() => giveSkill("Defense")}>Train Defense!</button>
-      <button onClick={() => giveSkill("Vitality")}>Train Vitality!</button>
-      <Link to="/menu">
-        <button>Menu</button>
-      </Link>
-      <div>My money: {store.money}</div>
-      <div>Each training cost: 100</div>
+    <div className="trainingContainer">
+      <div className="topContent">
+        <Link to="/menu">
+          <img src={left} />
+        </Link>
+        <div className="selectionName">TRAINING</div>
+        <div className="moneyContainer">
+          <div>Money:</div>
+          <div>{store.money}</div>
+          <img src={coin} />
+        </div>
+      </div>
+      <div className="userNameContainer">
+        <div className="userName">{store.name}</div>
+        <img src={character} />
+      </div>
+      <div className="currentSkills">
+        <div className="moneyContainer">
+          <div>Each training cost 100</div>
+          <img src={coin} />
+        </div>
+        {store.skills.map((element) => {
+          return (
+            <div key={element.name} className="oneSkill">
+              <img src={element.img} />
+              <div>{element.name}:</div>
+              <div>{element.amount}</div>
+              <button
+                onClick={() => {
+                  giveSkill(element.name);
+                }}
+              >
+                +1
+              </button>
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 }

@@ -1,44 +1,50 @@
-import items from "../../database/items";
+import items from "../database/items";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { toBackpack } from "../../redux/user/items";
-import { changeMoney } from "../../redux/user/money";
+import { firstHand, secondHand, toBackpack } from "../redux/user/items";
+import { changeMoney } from "../redux/user/money";
 import { Link } from "react-router-dom";
-import left from "../../database/images/left.png";
-import right from "../../database/images/right.png";
-import coin from "../../database/images/coin.png";
+import left from "../database/images/left.png";
+import right from "../database/images/right.png";
+import coin from "../database/images/coin.png";
 
-function ShopCart() {
+function MyItems() {
   const store = useSelector((state) => state);
   const dispatch = useDispatch();
-  const [display, setDisplay] = useState(items.weapon);
+
+  const [display, setDisplay] = useState(
+    store.items.backpack.filter((x) => x.type == "First weapon")
+  );
 
   function showWeapons() {
-    setDisplay(items.weapon);
+    setDisplay(store.items.backpack.filter((x) => x.type == "First weapon"));
     setMoveLeft(0);
     setSlidesWeapons(0);
   }
 
   function showShields() {
-    setDisplay(items.shields);
+    setDisplay(store.items.backpack.filter((x) => x.type == "shield"));
     setMoveLeft(0);
     setSlidesWeapons(0);
   }
 
   function showSecondWeapons() {
-    setDisplay(items.secondWeapon);
-    setMoveLeft(0);
-    setSlidesWeapons(0);
+    if (store.items.backpack.some((x) => x.type == "second weapon")) {
+      setDisplay(store.items.backpack.filter((x) => x.type == "second weapon"));
+      setMoveLeft(0);
+      setSlidesWeapons(0);
+    }
   }
 
-  function buyItem(e) {
+  function armItem(e) {
     let item =
       items.weapon.find((x) => x.id == e.target.id) ||
       items.shields.find((x) => x.id == e.target.id) ||
       items.secondWeapon.find((x) => x.id == e.target.id);
-    if (store.money >= item.cost) {
-      dispatch(changeMoney(-item.cost));
-      dispatch(toBackpack(item));
+    if (item.type == "First Hand") {
+      dispatch(firstHand(item));
+    } else {
+      dispatch(secondHand(item));
     }
   }
 
@@ -46,7 +52,7 @@ function ShopCart() {
 
   let elementStyle;
   let weaponImgStyle;
-  if (display == items.shields) {
+  if (display[0].type == "shield") {
     elementStyle = {
       width: "7.5vw",
     };
@@ -71,30 +77,35 @@ function ShopCart() {
   }
 
   function slideRight() {
-    if (slidesWeapons < 3 && display == items.weapon) {
+    console.log(display.length % 5);
+    if (
+      slidesWeapons < display.lenth / 5 &&
+      display == store.items.backpack.filter((x) => x.type == "First weapon")
+    ) {
       setMoveLeft(moveLeft - 50);
       setSlidesWeapons(slidesWeapons + 1);
-    } else if (slidesWeapons < 2 && display == items.shields) {
+    } else if (
+      slidesWeapons < display.lenth / 5 &&
+      display == store.items.backpack.filter((x) => x.type == "shield")
+    ) {
       setMoveLeft(moveLeft - 50);
       setSlidesWeapons(slidesWeapons + 1);
-    } else if (slidesWeapons < 2 && display == items.secondWeapon) {
+    } else if (
+      slidesWeapons < display.lenth / 4 &&
+      display == store.items.backpack.filter((x) => x.type == "second weapon")
+    ) {
       setMoveLeft(moveLeft - 50);
       setSlidesWeapons(slidesWeapons + 1);
     }
   }
 
   return (
-    <div className="shopContainer">
-      <div className="topContent">
-        <Link to="/menu">
+    <div className="myItemsContainer">
+      <div className="topContentMyItems">
+        <Link to="/user">
           <img src={left} />
         </Link>
-        <div className="selectionName">SHOP</div>
-        <div className="moneyContainer">
-          <div>Money:</div>
-          <div>{store.money}</div>
-          <img src={coin} />
-        </div>
+        <div className="selectionName">MY ITEMS</div>
       </div>
       <div className="btnContainer">
         <button onClick={showWeapons}>Weapons</button>
@@ -128,10 +139,9 @@ function ShopCart() {
                           : `Attack: ${element.attack[0]} - ${element.attack[1]}`
                         : `Defense: ${element.defense}`}
                     </div>
-                    <div className="itemCost">cost: {element.cost}</div>
                     <div className="itemLvl">level:{element.lvl}</div>
-                    <button id={element.id} onClick={buyItem}>
-                      BUY
+                    <button id={element.id} onClick={armItem}>
+                      ARM
                     </button>
                   </div>
                 </div>
@@ -145,4 +155,4 @@ function ShopCart() {
   );
 }
 
-export default ShopCart;
+export default MyItems;

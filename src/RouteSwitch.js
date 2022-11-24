@@ -10,6 +10,7 @@ import Arena from "./pages/Arena";
 import User from "./pages/User";
 
 import "./style.css";
+import MyItems from "./pages/MyItems";
 
 function RouteSwitch() {
   return (
@@ -24,6 +25,7 @@ function RouteSwitch() {
         <Route path="/training" element={<Training />} />
         <Route path="/arena" element={<Arena />} />
         <Route path="/user" element={<User />} />
+        <Route path="/user/my-items" element={<MyItems />} />
       </Routes>
     </BrowserRouter>
   );

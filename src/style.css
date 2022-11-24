@@ -4,7 +4,7 @@ html,
 body {
   margin: 0;
   font-family: "Kanit", sans-serif;
-  font-size: 20px;
+  font-size: 24px;
 }
 
 /* BTN STYLES */
@@ -54,6 +54,7 @@ button:active {
   background-position: center;
   height: 92vh;
   padding: 4vh;
+  font-size: 20px;
 }
 .chooseCharacterContainer .selectionName {
   font-size: 40px;
@@ -172,7 +173,7 @@ input[type="text"] {
 }
 
 /* XXXXXXXXXXXXXX
- CHOOSE CHARACTER 
+    GIVE SKILLS
  XXXXXXXXXXXXXX*/
 
 .giveSkillsContainer {
@@ -206,7 +207,6 @@ input[type="text"] {
   display: flex;
   flex-direction: column;
   text-align: center;
-  font-size: 24px;
 }
 
 .currentSkills {
@@ -217,7 +217,6 @@ input[type="text"] {
   background-color: rgba(255, 255, 255, 0.8);
   padding: 10px;
   border-radius: 10px;
-  font-size: 24px;
 }
 .currentSkills .oneSkill {
   display: grid;
@@ -236,4 +235,350 @@ input[type="text"] {
 }
 .giveSkillsContainer .emptyDiv {
   height: 43px;
+}
+
+/* XXXXXXXXXXXXXX
+      MENU
+ XXXXXXXXXXXXXX*/
+
+.menuContainer {
+  display: flex;
+  justify-content: center;
+  background-image: url(./database/images/brick-background.jpg);
+  background-size: contain;
+  background-position: center;
+  height: 90vh;
+  padding: 5vh;
+}
+.menuContainer img {
+  width: 16vw;
+}
+.menuContainer #menuLinkContainerUser {
+  position: relative;
+  bottom: 15px;
+}
+.menuLinks {
+  display: grid;
+  grid-template-columns: 45vh 45vh;
+  grid-template-rows: 45vh 45vh;
+  place-items: center;
+}
+.menuLinkContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+.linkLabel {
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 10px;
+  border-radius: 10px;
+}
+.menuLinkContainer a {
+  transition: 0.3s;
+}
+.menuLinkContainer a:hover {
+  transform: scale(0.9);
+}
+
+.menuLinkContainer a:active {
+  transform: translateY(30px) scale(0.9);
+}
+
+/* XXXXXXXXXXXXXX
+    TRAINING
+ XXXXXXXXXXXXXX*/
+
+.trainingContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-image: url(./database/images/brick-background.jpg);
+  background-size: contain;
+  background-position: center;
+  height: 92vh;
+  padding: 4vh;
+  gap: 10px;
+}
+.trainingContainer .selectionName {
+  font-size: 40px;
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 5px 10px;
+  border-radius: 10px;
+}
+.topContent {
+  display: flex;
+  align-items: center;
+  gap: 12vw;
+}
+.trainingContainer a img {
+  width: 8vw;
+}
+.menuLinkContainer a {
+  transition: 0.3s;
+}
+.menuLinkContainer a:hover {
+  transform: scale(0.9);
+}
+
+.menuLinkContainer a:active {
+  transform: translateY(30px) scale(0.9);
+}
+a {
+  transition: 0.3s;
+}
+.menuLinkContainer a {
+  transition: 0.3s;
+}
+.menuLinkContainer a:hover {
+  transform: scale(0.9);
+}
+
+.menuLinkContainer a:active {
+  transform: translateY(30px) scale(0.9);
+}
+a:hover {
+  transform: scale(0.9);
+}
+.menuLinkContainer a {
+  transition: 0.3s;
+}
+.menuLinkContainer a:hover {
+  transform: scale(0.9);
+}
+.menuLinkContainer a:active {
+  transform: translateY(30px) scale(0.9);
+}
+a:active {
+  transform: translateY(30px) scale(0.9);
+}
+
+.moneyContainer {
+  display: flex;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 5px 10px;
+  border-radius: 10px;
+  gap: 5px;
+}
+.moneyContainer img {
+  width: 40px;
+}
+
+.currentSkills .moneyContainer {
+  background-color: rgba(255, 255, 255, 0);
+}
+
+/* XXXXXXXXXXXXXX
+      USER
+ XXXXXXXXXXXXXX*/
+
+.userContainer {
+  display: grid;
+  grid-template-columns: 32vw 32vw;
+  grid-template-rows: 41vh 41vh;
+  place-content: center;
+  background-image: url(./database/images/brick-background.jpg);
+  background-size: contain;
+  background-position: center;
+  height: 92vh;
+  padding: 4vh;
+  gap: 10px;
+}
+
+.opinionsAndSkills,
+.itemsContainer {
+  place-self: center;
+}
+
+.userDescriptionContainer {
+  grid-column-start: 1;
+  grid-column-end: 3;
+  grid-row-start: 1;
+  grid-row-end: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.userDescriptionContainer a {
+  position: absolute;
+  align-self: flex-start;
+  top: 5vh;
+  left: 22vw;
+}
+.userDescriptionContainer a img {
+  width: 8vw;
+}
+.userInfo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  justify-self: center;
+  gap: 30px;
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 20px;
+  border-radius: 10px;
+}
+.userImage {
+  /* height: 300px; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+.userImage .userName {
+  background-color: rgba(255, 255, 255, 0);
+}
+
+.opinionsAndSkills {
+  display: flex;
+  gap: 20px;
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.userSkills img {
+  height: 30px;
+}
+.userSkills {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.itemsContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 20px;
+  border-radius: 10px;
+  gap: 15px;
+}
+
+/* XXXXXXXXXXXXXX
+    MY ITEMS
+ XXXXXXXXXXXXXX*/
+
+.myItemsContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-image: url(./database/images/brick-background.jpg);
+  background-size: contain;
+  background-position: center;
+  height: 92vh;
+  padding: 4vh;
+  gap: 60px;
+}
+.topContentMyItems {
+  display: flex;
+  align-items: center;
+}
+.topContentMyItems a {
+  position: absolute;
+  top: 5vh;
+  left: 22vw;
+}
+.topContentMyItems .selectionName {
+  font-size: 40px;
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 5px 10px;
+  border-radius: 10px;
+  position: relative;
+  top: 5vh;
+  margin-bottom: 5vh;
+}
+.topContentMyItems a img {
+  width: 8vw;
+}
+
+/* XXXXXXXXXXXXXX
+      SHOP
+ XXXXXXXXXXXXXX*/
+
+.shopContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-image: url(./database/images/brick-background.jpg);
+  background-size: contain;
+  background-position: center;
+  height: 92vh;
+  padding: 4vh;
+  gap: 20px;
+}
+.shopContainer .selectionName {
+  font-size: 40px;
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 5px 10px;
+  border-radius: 10px;
+}
+
+.shopContainer .topContent a img {
+  width: 8vw;
+}
+
+.shopContainer .topContent {
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  gap: 12vw;
+}
+.btnContainer {
+  display: flex;
+  gap: 15px;
+}
+
+.weaponImg {
+  max-height: 400px;
+  max-width: 5vw;
+}
+.sliderContainer {
+  display: flex;
+  align-items: center;
+}
+.overflowContainer {
+  width: 50vw;
+  overflow: hidden;
+}
+.offerContainer {
+  display: flex;
+  align-items: center;
+  gap: 5vw;
+  transition: 1s;
+}
+.slide {
+  width: 8vw;
+  position: relative;
+  bottom: 7vh;
+}
+.slide {
+  transition: 0.3s;
+}
+.slide:hover {
+  transform: scale(0.9);
+}
+
+.slide:active {
+  transform: translateY(30px) scale(0.9);
+}
+.elementCart {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 5vw;
+  gap: 20px;
+  position: relative;
+  left: 2.5vw;
+}
+.itemInfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 10px;
+  border-radius: 10px;
+  white-space: nowrap;
 }
