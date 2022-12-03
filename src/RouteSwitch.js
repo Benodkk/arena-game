@@ -17,7 +17,7 @@ function RouteSwitch() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<App />} />
-        {/* <Route path="/choose-character" element={<ChooseCharacter />} /> */}
+        <Route path="/choose-character" element={<ChooseCharacter />} />
         <Route path="/give-skills" element={<GiveSkills />} />
         <Route path="/menu" element={<Menu />} />
         <Route path="/fight" element={<FightPlace />} />

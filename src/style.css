@@ -402,7 +402,6 @@ a:active {
 }
 .userDescriptionContainer a {
   position: absolute;
-  align-self: flex-start;
   top: 5vh;
   left: 22vw;
 }
@@ -552,9 +551,8 @@ a:active {
   width: 8vw;
   position: relative;
   bottom: 7vh;
-}
-.slide {
   transition: 0.3s;
+  cursor: pointer;
 }
 .slide:hover {
   transform: scale(0.9);
@@ -581,4 +579,323 @@ a:active {
   padding: 10px;
   border-radius: 10px;
   white-space: nowrap;
+}
+/* XXXXXXXXXXXXXX
+      ARENA
+ XXXXXXXXXXXXXX*/
+
+.arenaContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-image: url(./database/images/brick-background.jpg);
+  background-size: contain;
+  background-position: center;
+  height: 92vh;
+  padding: 4vh;
+  gap: 20px;
+}
+.arenaContainer .selectionName {
+  font-size: 40px;
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 5px 10px;
+  border-radius: 10px;
+  position: absolute;
+  top: 9vh;
+}
+.arenaContainer .back {
+  position: absolute;
+  top: 5vh;
+  left: 22vw;
+}
+.arenaContainer .back img {
+  width: 8vw;
+}
+.fightContainer {
+  display: grid;
+  grid-template-columns: 20vw 20vw;
+  grid-template-rows: 20vh;
+  place-items: center;
+}
+
+.linkContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 400px;
+  justify-content: flex-end;
+}
+
+/* XXXXXXXXXXXXXX
+  fight place
+ XXXXXXXXXXXXXX*/
+
+.fightPlaceContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-image: url(./database/images/fight-background.jpg);
+  background-size: cover;
+  background-position: center;
+  height: 92vh;
+  padding: 4vh;
+  gap: 20px;
+}
+.duringFight {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 11vw;
+  width: 100%;
+}
+.userFightContainer,
+.oponentDescriptionContainer {
+  width: 34vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.oponentDescriptionContainer {
+  /* gap: 5vh; */
+}
+.actionsContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2vw;
+}
+.defenseButtons,
+.attackButtons {
+  width: 5vw;
+}
+.actionsContainer img {
+  width: 20vw;
+  align-self: flex-end;
+}
+.defenseButtons img,
+.attackButtons img {
+  width: 5vw;
+  cursor: pointer;
+}
+.actionButton {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.actionButton img:hover {
+  transform: scale(0.9);
+  transition: 0.3s;
+}
+.actionButton img:active {
+  transform: translateY(10px) scale(0.9);
+}
+.actionButton div {
+  transform: translateY(-5px);
+  text-align: center;
+  line-height: 1.1;
+}
+.menuLinkContainer a {
+  transition: 0.3s;
+}
+.userSkillsContainer {
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 10px;
+  border-radius: 10px;
+}
+.healthContainer {
+  display: flex;
+  gap: 10px;
+}
+.parametr {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.parametr img {
+  height: 30px;
+}
+.userDescription {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.userDescription .skills {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.oponentImg {
+  width: 20vw;
+}
+/* XXXXXXXXXXXXXX
+  animations
+ XXXXXXXXXXXXXX*/
+
+.animationsContainer {
+  position: absolute;
+  top: 0vh;
+  left: 0vw;
+}
+
+.defenseAnimation {
+  position: absolute;
+  visibility: hidden;
+  opacity: 0;
+  width: 15vw;
+  top: 32vh;
+  left: 20vw;
+}
+@keyframes defense {
+  from {
+    visibility: hidden;
+    opacity: 0;
+  }
+  1% {
+    visibility: visible;
+  }
+  50% {
+    visibility: visible;
+    opacity: 1;
+  }
+  99% {
+    visibility: visible;
+  }
+  to {
+    visibility: hidden;
+    opacity: 0;
+  }
+}
+.attackAnimation {
+  position: absolute;
+  visibility: hidden;
+  opacity: 0;
+  width: 8vw;
+  top: 20vh;
+  left: 53vw;
+  transform: rotate(-15deg);
+}
+@keyframes attack {
+  from {
+    opacity: 0;
+    visibility: hidden;
+    transform: rotate(-15deg);
+  }
+  1% {
+    visibility: visible;
+  }
+  20% {
+    opacity: 1;
+    /* transform: rotate(-15deg); */
+  }
+  60% {
+    opacity: 1;
+  }
+  99% {
+    visibility: visible;
+  }
+  to {
+    opacity: 0;
+    visibility: hidden;
+    transform: rotate(45deg) translate(10vw);
+  }
+}
+
+.dmgAnimation {
+  position: absolute;
+  visibility: hidden;
+  opacity: 0;
+  width: 8vw;
+  top: 30vh;
+  left: 67vw;
+  font-size: 8vh;
+  color: rgb(218, 12, 12);
+  text-shadow: #520000 2px 2px;
+  text-align: center;
+}
+
+@keyframes dmg {
+  from {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(0vh);
+  }
+  1% {
+    visibility: visible;
+  }
+  20% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(5vh);
+  }
+}
+.oponentBlockAnimation {
+  position: absolute;
+  visibility: hidden;
+  opacity: 0;
+  width: 8vw;
+  top: 32vh;
+  left: 68vw;
+}
+@keyframes block {
+  from {
+    opacity: 0;
+    visibility: hidden;
+  }
+  1% {
+    visibility: visible;
+  }
+  50% {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+.superpowerAnimation {
+  position: absolute;
+  visibility: hidden;
+  opacity: 0;
+  width: 15vw;
+  top: 37vh;
+  left: 20vw;
+  text-align: center;
+  font-size: 4vh;
+  color: rgb(28, 255, 28);
+  text-shadow: rgb(5, 75, 5) 2px 2px;
+}
+
+@keyframes superpower {
+  from {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(0vh);
+  }
+  1% {
+    visibility: visible;
+  }
+  20% {
+    opacity: 1;
+  }
+  70% {
+    opacity: 1;
+  }
+  99% {
+    visibility: visible;
+  }
+  to {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(7vh);
+  }
 }

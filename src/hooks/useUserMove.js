@@ -3,6 +3,7 @@ import { changeEnergy, setEnergy } from "../redux/user/parameters";
 import { giveDefense } from "../redux/user/giveSkills";
 import { oChangeHealth } from "../redux/oponent/oParameters";
 import { useState } from "react";
+import { makeMove } from "../redux/user/move";
 
 function useUserMove() {
   const store = useSelector((state) => state);
@@ -95,12 +96,14 @@ function useUserMove() {
       } else if (type == "strong" && store.parameters.energy >= 25) {
         dispatch(changeEnergy(-25));
       } else if (type == "rest") {
+        dispatch(makeMove(["rest"]));
         if (store.parameters.energy >= 75) {
           dispatch(setEnergy());
         } else {
           dispatch(changeEnergy(25));
         }
       } else if (type == "deff") {
+        dispatch(makeMove(["defense"]));
         dispatch(giveDefense(0.5));
         if (store.parameters.energy >= 85) {
           dispatch(setEnergy());
@@ -108,9 +111,11 @@ function useUserMove() {
           dispatch(changeEnergy(15));
         }
       } else if (type == "Giant smash" && superpowerUsed == false) {
+        dispatch(makeMove(["Giant smash"]));
         setSuperpower("Giant smash");
         setSuperpowerUsed(true);
       } else if (type == "Counterattack" && superpowerUsed == false) {
+        dispatch(makeMove(["Counterattack"]));
         setSuperpower("Counterattack");
         dispatch(giveDefense(0.5));
         setSuperpowerUsed(true);
@@ -120,6 +125,7 @@ function useUserMove() {
           dispatch(changeEnergy(15));
         }
       } else if (type == "Fatal strike" && superpowerUsed == false) {
+        dispatch(makeMove(["Fatal strike"]));
         setSuperpower("Fatal strike");
         setSuperpowerUsed(true);
       } else if (
@@ -137,28 +143,35 @@ function useUserMove() {
       if (superpower == "Giant smash") {
         attack += 2 * store.skills[2].amount;
       } else if (superpower == "Counterattack") {
+        console.log("dupaaa");
         attack += attack;
       }
 
       if (type == "light" && store.parameters.energy > 10) {
         if (nr < 0.9) {
           dispatch(oChangeHealth(-Math.round(attack)));
+          dispatch(makeMove(["attack", Math.round(attack)]));
         } else {
           console.log("miss");
+          dispatch(makeMove(["block"]));
         }
         setSuperpower("");
       } else if (type == "normal" && store.parameters.energy > 15) {
         if (nr < 0.7) {
           dispatch(oChangeHealth(-Math.round(attack * 2)));
+          dispatch(makeMove(["attack", Math.round(attack * 2)]));
         } else {
           console.log("miss");
+          dispatch(makeMove(["block"]));
         }
         setSuperpower("");
       } else if (type == "strong" && store.parameters.energy > 25) {
         if (nr < 0.37) {
           dispatch(oChangeHealth(-Math.round(attack * 5)));
+          dispatch(makeMove(["attack", Math.round(attack * 5)]));
         } else {
           console.log("miss");
+          dispatch(makeMove(["block"]));
         }
         setSuperpower("");
       }

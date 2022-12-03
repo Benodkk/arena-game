@@ -9,13 +9,13 @@ function User() {
   const store = useSelector((state) => state);
   const dispatch = useDispatch();
 
-  function arm(element) {
-    if (element.type == "First weapon") {
-      dispatch(firstHand(element));
-    } else {
-      dispatch(secondHand(element));
-    }
-  }
+  // function arm(element) {
+  //   if (element.type == "First weapon") {
+  //     dispatch(firstHand(element));
+  //   } else {
+  //     dispatch(secondHand(element));
+  //   }
+  // }
 
   const character = profesion.find((x) => x.name == store.profesion).img;
 

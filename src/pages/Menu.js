@@ -37,10 +37,10 @@ function Menu() {
         <div className="menuLinkContainer" id="menuLinkContainerUser">
           <Link
             to="/user"
-            onClick={() => {
-              dispatch(chooseAssassin());
-              dispatch(changeName("asdasd"));
-            }}
+            // onClick={() => {
+            //   dispatch(chooseAssassin());
+            //   dispatch(changeName("asdasd"));
+            // }}
           >
             <img src={user} />
           </Link>

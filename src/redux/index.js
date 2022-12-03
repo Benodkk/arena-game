@@ -14,6 +14,7 @@ import { oSkillsReducer } from "./oponent/oSkills";
 import { oParameterReducer } from "./oponent/oParameters";
 import { oItemsReducer } from "./oponent/oItems";
 import { oSuperpowerReducer } from "./oponent/oSuperpower";
+import { moveReducer } from "./user/move";
 
 const redux = require("redux");
 const { combineReducers, createStore } = redux;
@@ -29,6 +30,7 @@ const rootReducer = combineReducers({
   stats: statsReducer,
   exp: giveExpReducer,
   parameters: parameterReducer,
+  move: moveReducer,
   oponentName: oNameReducer,
   oponentLevel: oLevelReducer,
   oponentSkils: oSkillsReducer,

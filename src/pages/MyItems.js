@@ -41,7 +41,7 @@ function MyItems() {
       items.weapon.find((x) => x.id == e.target.id) ||
       items.shields.find((x) => x.id == e.target.id) ||
       items.secondWeapon.find((x) => x.id == e.target.id);
-    if (item.type == "First Hand") {
+    if (item.type == "First weapon") {
       dispatch(firstHand(item));
     } else {
       dispatch(secondHand(item));

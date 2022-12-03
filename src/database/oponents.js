@@ -1,8 +1,11 @@
+import warrior from "../database/images/warrior.png";
+
 let oponents = [
   {
     id: 1,
     name: "Joe",
     lvl: 1,
+    img: warrior,
     skills: { attack: 3, defense: 3, vitality: 3 },
     parameters: {
       health: 100,

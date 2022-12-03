@@ -9,6 +9,7 @@ import { oSetSkills } from "../redux/oponent/oSkills";
 import { oChangeHealth, oSetParameters } from "../redux/oponent/oParameters";
 import { changeHealth, setParameters } from "../redux/user/parameters";
 import { oSuperpower } from "../redux/oponent/oSuperpower";
+import { makeMove } from "../redux/user/move";
 
 function useStartFight() {
   const store = useSelector((state) => state);
@@ -31,6 +32,8 @@ function useStartFight() {
 
     dispatch(setParameters(user.parameters));
     dispatch(changeHealth(store.skills[2].amount));
+
+    dispatch(makeMove([]));
   }
 
   return start;

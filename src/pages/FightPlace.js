@@ -8,6 +8,7 @@ import { giveExp } from "../redux/user/exp";
 import useLeaveFight from "../hooks/useLeaveFight";
 import { Link } from "react-router-dom";
 import useStartFight from "../hooks/useStartFight";
+import Animations from "../components/fightPlace/Animations";
 
 function FightPlace() {
   const store = useSelector((state) => state);
@@ -31,23 +32,25 @@ function FightPlace() {
   const [fightStyle, setFightStyle] = useState("none");
 
   useEffect(() => {
+    if (store.parameters.health <= 0 || store.oponentParameters.health <= 0) {
+      console.log("dupa");
+      setFightStyle("block");
+      leave();
+    }
+  }, [store.parameters.health, store.oponentParameters.health]);
+
+  useEffect(() => {
     // if level up
-    if (store.parameters.exp == 0) {
+    if (store.exp == 0) {
       setNextStep("/give-skills");
     } else {
       setNextStep("/menu");
     }
-
-    if (store.parameters.health <= 0 || store.oponentParameters.health <= 0) {
-      console.log("dupa");
-      setFightStyle("block");
-    }
-  }, [store.parameters.health, store.oponentParameters.health]);
+  }, [store.exp]);
 
   function leaveFight() {
     dispatch(resetDefense(currentDef));
     setDefChanged(false);
-    leave();
   }
 
   return (
@@ -61,6 +64,7 @@ function FightPlace() {
           <button onClick={leaveFight}>Next</button>
         </Link>
       </div>
+      <Animations />
     </div>
   );
 }
