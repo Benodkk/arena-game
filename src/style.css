@@ -39,7 +39,15 @@ button:active {
   box-shadow: #d6d6e7 0 3px 7px inset;
   transform: translateY(2px);
 }
-
+.backToMenuBtn {
+  transition: 0.3s;
+}
+.backToMenuBtn:hover {
+  transform: scale(0.9);
+}
+.backToMenuBtn:active {
+  transform: translateY(10px) scale(0.85);
+}
 /* XXXXXXXXXXXXXX
  CHOOSE CHARACTER 
  XXXXXXXXXXXXXX*/
@@ -115,8 +123,8 @@ button:active {
   transition: 1s;
   width: 320px;
 }
-.oneProfesion img {
-  height: 350px;
+.characterLook {
+  height: 35vh;
 }
 .profesionName {
   font-size: 30px;
@@ -131,6 +139,28 @@ button:active {
   gap: 5px;
   background-color: rgba(255, 255, 255, 0.8);
   padding: 10px;
+  border-radius: 10px;
+}
+.profesionSuperpower {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 300px;
+  text-align: center;
+}
+.questionMark {
+  height: 20px;
+  cursor: pointer;
+  margin-left: 5px;
+}
+.superpowerInfo {
+  position: absolute;
+  visibility: hidden;
+  opacity: 0;
+  transform: translateX(330px);
+  text-align: center;
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 5px;
   border-radius: 10px;
 }
 .oneSkill {
@@ -155,11 +185,7 @@ button:active {
   padding: 5px 10px;
   border-radius: 10px;
 }
-.inputName {
-  /* background-color: rgba(255, 255, 255, 0.8);
-  padding: 10px;
-  border-radius: 10px; */
-}
+
 input[type="text"] {
   /* width: 20%; */
   padding: 4px 8px;
@@ -337,9 +363,7 @@ a {
 .menuLinkContainer a:active {
   transform: translateY(30px) scale(0.9);
 }
-a:hover {
-  transform: scale(0.9);
-}
+
 .menuLinkContainer a {
   transition: 0.3s;
 }
@@ -347,9 +371,6 @@ a:hover {
   transform: scale(0.9);
 }
 .menuLinkContainer a:active {
-  transform: translateY(30px) scale(0.9);
-}
-a:active {
   transform: translateY(30px) scale(0.9);
 }
 
@@ -604,12 +625,12 @@ a:active {
   position: absolute;
   top: 9vh;
 }
-.arenaContainer .back {
+.arenaContainer .backToMenuBtn {
   position: absolute;
   top: 5vh;
   left: 22vw;
 }
-.arenaContainer .back img {
+.arenaContainer .backToMenuBtn img {
   width: 8vw;
 }
 .fightContainer {
@@ -626,7 +647,15 @@ a:active {
   min-height: 400px;
   justify-content: flex-end;
 }
-
+.linkContainer a {
+  transition: 0.3s;
+}
+.linkContainer a:hover {
+  transform: scale(0.9);
+}
+.linkContainer a:focus {
+  transform: translateY(10px);
+}
 /* XXXXXXXXXXXXXX
   fight place
  XXXXXXXXXXXXXX*/
@@ -667,6 +696,9 @@ a:active {
   align-items: center;
   gap: 2vw;
 }
+.attackButtonsContainer {
+  display: flex;
+}
 .defenseButtons,
 .attackButtons {
   width: 5vw;
@@ -680,6 +712,7 @@ a:active {
   width: 5vw;
   cursor: pointer;
 }
+
 .actionButton {
   display: flex;
   flex-direction: column;
@@ -696,6 +729,19 @@ a:active {
   transform: translateY(-5px);
   text-align: center;
   line-height: 1.1;
+}
+.superpowerButton {
+  display: flex;
+  align-items: center;
+}
+.superpowerUsed {
+  position: absolute;
+  transform: translateX(6vw);
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 10px;
+  border-radius: 10px;
+  text-align: center;
+  width: 300px;
 }
 .menuLinkContainer a {
   transition: 0.3s;
@@ -729,6 +775,42 @@ a:active {
 }
 .oponentImg {
   width: 20vw;
+}
+/* XXXXXXXXXXXXXX
+  finish fight
+ XXXXXXXXXXXXXX*/
+
+.finishFightContainer {
+  visibility: hidden;
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: opacity 2s;
+}
+.blackOut {
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+}
+.fightFinished {
+  position: absolute;
+  z-index: 2;
+  text-align: center;
+  top: 20vh;
+  left: 35vw;
+}
+.endFightImg {
+  width: 30vw;
+}
+.fightFinished a button {
+  background-color: #fff;
+  margin-top: 2vh;
+  font-size: 30px;
 }
 /* XXXXXXXXXXXXXX
   animations
@@ -772,16 +854,16 @@ a:active {
   position: absolute;
   visibility: hidden;
   opacity: 0;
-  width: 8vw;
+  width: 6vw;
   top: 20vh;
   left: 53vw;
-  transform: rotate(-15deg);
+  transform: rotate(0deg);
 }
 @keyframes attack {
   from {
     opacity: 0;
     visibility: hidden;
-    transform: rotate(-15deg);
+    transform: rotate(0deg);
   }
   1% {
     visibility: visible;
@@ -799,7 +881,7 @@ a:active {
   to {
     opacity: 0;
     visibility: hidden;
-    transform: rotate(45deg) translate(10vw);
+    transform: rotate(50deg) translate(12vw);
   }
 }
 
@@ -808,7 +890,7 @@ a:active {
   visibility: hidden;
   opacity: 0;
   width: 8vw;
-  top: 30vh;
+  top: 32vh;
   left: 67vw;
   font-size: 8vh;
   color: rgb(218, 12, 12);
@@ -842,7 +924,7 @@ a:active {
   visibility: hidden;
   opacity: 0;
   width: 8vw;
-  top: 32vh;
+  top: 34vh;
   left: 68vw;
 }
 @keyframes block {
@@ -866,9 +948,9 @@ a:active {
   position: absolute;
   visibility: hidden;
   opacity: 0;
-  width: 15vw;
+  width: 17vw;
   top: 37vh;
-  left: 20vw;
+  left: 19vw;
   text-align: center;
   font-size: 4vh;
   color: rgb(28, 255, 28);
@@ -876,6 +958,179 @@ a:active {
 }
 
 @keyframes superpower {
+  from {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(0vh);
+  }
+  1% {
+    visibility: visible;
+  }
+  20% {
+    opacity: 1;
+  }
+  70% {
+    opacity: 1;
+  }
+  99% {
+    visibility: visible;
+  }
+  to {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(7vh);
+  }
+}
+.denyAnimation {
+  position: absolute;
+  visibility: hidden;
+  opacity: 0;
+  width: 17vw;
+  top: 37vh;
+  left: 19vw;
+  text-align: center;
+  font-size: 4vh;
+  color: rgb(255, 28, 28);
+  text-shadow: rgb(75, 0, 0) 2px 2px;
+}
+
+/* oponent move animations */
+
+.oDefenseAnimation {
+  position: absolute;
+  visibility: hidden;
+  opacity: 0;
+  width: 15vw;
+  top: 32vh;
+  left: 65vw;
+}
+@keyframes oDefense {
+  from {
+    visibility: hidden;
+    opacity: 0;
+  }
+  1% {
+    visibility: visible;
+  }
+  50% {
+    visibility: visible;
+    opacity: 1;
+  }
+  99% {
+    visibility: visible;
+  }
+  to {
+    visibility: hidden;
+    opacity: 0;
+  }
+}
+
+.oAttackAnimation {
+  position: absolute;
+  visibility: hidden;
+  opacity: 0;
+  width: 6vw;
+  top: 20vh;
+  left: 41vw;
+  transform: rotate(0deg);
+}
+@keyframes oAttack {
+  from {
+    opacity: 0;
+    visibility: hidden;
+    transform: rotate(0deg);
+  }
+  1% {
+    visibility: visible;
+  }
+  20% {
+    opacity: 1;
+    /* transform: rotate(-15deg); */
+  }
+  60% {
+    opacity: 1;
+  }
+  99% {
+    visibility: visible;
+  }
+  to {
+    opacity: 0;
+    visibility: hidden;
+    transform: rotate(-50deg) translate(-12vw);
+  }
+}
+.oDmgAnimation {
+  position: absolute;
+  visibility: hidden;
+  opacity: 0;
+  width: 8vw;
+  top: 32vh;
+  left: 23vw;
+  font-size: 8vh;
+  color: rgb(218, 12, 12);
+  text-shadow: #520000 2px 2px;
+  text-align: center;
+}
+
+@keyframes oDmg {
+  from {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(0vh);
+  }
+  1% {
+    visibility: visible;
+  }
+  20% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(5vh);
+  }
+}
+.oUserBlockAnimation {
+  position: absolute;
+  visibility: hidden;
+  opacity: 0;
+  width: 8vw;
+  top: 34vh;
+  left: 23.5vw;
+}
+@keyframes oBlock {
+  from {
+    opacity: 0;
+    visibility: hidden;
+  }
+  1% {
+    visibility: visible;
+  }
+  50% {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+.oSuperpowerAnimation {
+  position: absolute;
+  visibility: hidden;
+  opacity: 0;
+  width: 17vw;
+  top: 37vh;
+  left: 63vw;
+  text-align: center;
+  font-size: 4vh;
+  color: rgb(28, 255, 28);
+  text-shadow: rgb(5, 75, 5) 2px 2px;
+}
+
+@keyframes oSuperpower {
   from {
     opacity: 0;
     visibility: hidden;

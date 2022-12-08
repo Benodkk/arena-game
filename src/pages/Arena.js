@@ -8,7 +8,7 @@ function Arena() {
   const start = useStartFight();
   return (
     <div className="arenaContainer">
-      <Link className="back" to="/menu">
+      <Link className="backToMenuBtn" to="/menu">
         <img src={left} />
       </Link>
       <div className="selectionName">Arena</div>
@@ -19,7 +19,7 @@ function Arena() {
           </Link>
           <div className="linkLabel">ARENA FIGHT</div>
         </div>
-        <div className="linkContainer ">
+        <div className="linkContainer as">
           <Link to="/tournament">
             <img src={tournament} />
           </Link>

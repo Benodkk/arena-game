@@ -22,7 +22,7 @@ function User() {
   return (
     <div className="userContainer">
       <div className="userDescriptionContainer">
-        <Link to="/menu">
+        <Link to="/menu" className="backToMenuBtn">
           <img src={left} />
         </Link>
         <div className="userInfo">

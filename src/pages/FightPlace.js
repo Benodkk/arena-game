@@ -10,6 +10,11 @@ import { Link } from "react-router-dom";
 import useStartFight from "../hooks/useStartFight";
 import Animations from "../components/fightPlace/Animations";
 
+import FinishFight from "../components/fightPlace/FinishFight";
+
+import victory from "../database/images/victory.png";
+import defeat from "../database/images/defeat.png";
+
 function FightPlace() {
   const store = useSelector((state) => state);
   const dispatch = useDispatch();
@@ -29,13 +34,23 @@ function FightPlace() {
   // when win and defeat
 
   const [nextStep, setNextStep] = useState("");
-  const [fightStyle, setFightStyle] = useState("none");
+  const [fightStyle, setFightStyle] = useState({});
+  const [endFight, setEndFight] = useState("");
 
   useEffect(() => {
     if (store.parameters.health <= 0 || store.oponentParameters.health <= 0) {
       console.log("dupa");
-      setFightStyle("block");
+      setTimeout(() => {
+        setFightStyle({ visibility: "visible", opacity: 1 });
+      }, 1000);
       leave();
+    }
+
+    if (store.parameters.health <= 0) {
+      setEndFight(defeat);
+    }
+    if (store.oponentParameters.health <= 0) {
+      setEndFight(victory);
     }
   }, [store.parameters.health, store.oponentParameters.health]);
 
@@ -59,11 +74,12 @@ function FightPlace() {
         <UserDescription />
         <OponentDescription />
       </div>
-      <div className="fightFinished" style={{ display: fightStyle }}>
-        <Link to={nextStep}>
-          <button onClick={leaveFight}>Next</button>
-        </Link>
-      </div>
+      <FinishFight
+        nextStep={nextStep}
+        leaveFight={leaveFight}
+        fightStyle={fightStyle}
+        endFight={endFight}
+      />
       <Animations />
     </div>
   );

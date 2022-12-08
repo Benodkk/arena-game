@@ -98,9 +98,14 @@ function useUserMove() {
       } else if (type == "rest") {
         dispatch(makeMove(["rest"]));
         if (store.parameters.energy >= 75) {
-          dispatch(setEnergy());
+          if (store.parameters.energy == 100) {
+            dispatch(makeMove(["full energy"]));
+          } else {
+            dispatch(setEnergy());
+          }
         } else {
           dispatch(changeEnergy(25));
+          dispatch(makeMove(["rest"]));
         }
       } else if (type == "deff") {
         dispatch(makeMove(["defense"]));
@@ -128,14 +133,8 @@ function useUserMove() {
         dispatch(makeMove(["Fatal strike"]));
         setSuperpower("Fatal strike");
         setSuperpowerUsed(true);
-      } else if (
-        type == "Fatal strike" ||
-        "Counterattack" ||
-        ("Giant smash" && superpowerUsed == true)
-      ) {
-        console.log("you can use superpower only once");
       } else {
-        console.log("no energy");
+        dispatch(makeMove(["no energy"]));
       }
 
       // When superpower was used
@@ -170,7 +169,6 @@ function useUserMove() {
           dispatch(oChangeHealth(-Math.round(attack * 5)));
           dispatch(makeMove(["attack", Math.round(attack * 5)]));
         } else {
-          console.log("miss");
           dispatch(makeMove(["block"]));
         }
         setSuperpower("");

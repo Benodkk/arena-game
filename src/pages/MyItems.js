@@ -102,7 +102,7 @@ function MyItems() {
   return (
     <div className="myItemsContainer">
       <div className="topContentMyItems">
-        <Link to="/user">
+        <Link to="/user" className="backToMenuBtn">
           <img src={left} />
         </Link>
         <div className="selectionName">MY ITEMS</div>

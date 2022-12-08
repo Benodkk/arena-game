@@ -3,13 +3,13 @@ import { oChangeEnergy } from "../redux/oponent/oParameters";
 import { oGiveDefense } from "../redux/oponent/oSkills";
 import { changeHealth } from "../redux/user/parameters";
 import { useState } from "react";
+import { makeMove } from "../redux/user/move";
 
 function useOponentMove() {
   const store = useSelector((state) => state);
   const dispatch = useDispatch();
 
   const [superpowerUsed, setSuperpowerUsed] = useState(0);
-
   //   OPONENT's ATTACK
 
   function oponentsAttack() {
@@ -17,6 +17,7 @@ function useOponentMove() {
 
     let superpower = Math.random();
 
+    let superpowerNow;
     //   power of first hand weapon
 
     let oponentsPower = 0;
@@ -35,7 +36,6 @@ function useOponentMove() {
     }
 
     //   power of second hand weapon
-
     let oponentsSecondPower = 0;
 
     if (store.oponentItems.armed.secondHand.stat.length > 1) {
@@ -50,20 +50,21 @@ function useOponentMove() {
     } else {
       oponentsSecondPower = store.oponentItems.armed.secondHand.stat[0];
     }
-
     //   attack damage
-
     let oponentAttack;
-
+    console.log(superpower);
     if (
       // use Fatal strike
       superpower < 0.5 &&
       store.oponentSuperpower == "Fatal strike" &&
-      superpowerUsed == 0
+      superpowerUsed == 0 &&
+      store.oponentParameters.energy > 10
     ) {
       console.log("fatal");
       oponentAttack = store.oponentSkils.attack * 2 + oponentsPower * 2.5;
       setSuperpowerUsed(2);
+      superpowerNow = true;
+      dispatch(makeMove(["+ Fatal strike"]));
     } else {
       oponentAttack =
         store.oponentSkils.attack * 2 +
@@ -123,47 +124,69 @@ function useOponentMove() {
       console.log("GM");
       oponentAttack += 2 * store.oponentSkils.vitality;
       setSuperpowerUsed(2);
+      dispatch(makeMove(["+ Giant smash"]));
     }
-    if (
-      // use Counterattack
-      superpowerUsed == 0 &&
-      superpower < 0.5 &&
-      store.oponentParameters.energy < 85 &&
-      store.oponentSuperpower == "Counterattack"
-    ) {
-      console.log("counter 1 ");
-      dispatch(oChangeEnergy(15));
-      setSuperpowerUsed(1);
-    } else {
-      if (store.oponentParameters.energy < 10) {
-        console.log("def");
-        // Oponent have no energy, have to rest or deff
-        let deffOrRest = Math.random();
-        if (deffOrRest < 0.5) {
-          dispatch(oChangeEnergy(25));
-        } else {
-          dispatch(oChangeEnergy(15));
-          dispatch(oGiveDefense(0.5));
-        }
+
+    function move() {
+      if (
+        // use Counterattack
+        superpowerUsed == 0 &&
+        superpower < 0.5 &&
+        store.oponentParameters.energy < 85 &&
+        store.oponentSuperpower == "Counterattack"
+      ) {
+        console.log("counter 1 ");
+        dispatch(oChangeEnergy(15));
+        dispatch(oGiveDefense(0.5));
+        setSuperpowerUsed(1);
+        dispatch(makeMove(["+ Counterattack"]));
       } else {
-        // oponent have energy so he attack
-        if (whichAttack < 0.5) {
-          dispatch(oChangeEnergy(-10));
-        } else if (whichAttack >= 0.5 && whichAttack < 0.8) {
-          dispatch(oChangeEnergy(-15));
-        } else if (whichAttack >= 0.8) {
-          dispatch(oChangeEnergy(-25));
-        }
-        if (whichAttack < 0.5 && nr < 0.9) {
-          dispatch(changeHealth(-Math.round(oponentAttack)));
-        } else if (whichAttack >= 0.5 && whichAttack < 0.8 && nr < 0.7) {
-          dispatch(changeHealth(-Math.round(oponentAttack * 2)));
-        } else if (whichAttack >= 0.8 && nr < 0.37) {
-          dispatch(changeHealth(-Math.round(oponentAttack * 5)));
+        if (store.oponentParameters.energy < 10) {
+          console.log("def");
+          // Oponent have no energy, have to rest or deff
+          let deffOrRest = Math.random();
+          if (deffOrRest < 0.5) {
+            dispatch(oChangeEnergy(25));
+            dispatch(makeMove(["oRest"]));
+          } else {
+            dispatch(oChangeEnergy(15));
+            dispatch(oGiveDefense(0.5));
+            move();
+            dispatch(makeMove(["oDefense"]));
+          }
         } else {
-          console.log("miss");
+          // oponent have energy so he attack
+          if (whichAttack < 0.5) {
+            dispatch(oChangeEnergy(-10));
+          } else if (whichAttack >= 0.5 && whichAttack < 0.8) {
+            dispatch(oChangeEnergy(-15));
+          } else if (whichAttack >= 0.8) {
+            dispatch(oChangeEnergy(-25));
+          }
+          if (whichAttack < 0.5 && nr < 0.9) {
+            dispatch(changeHealth(-Math.round(oponentAttack)));
+            dispatch(makeMove(["oAttack", Math.round(oponentAttack)]));
+          } else if (whichAttack >= 0.5 && whichAttack < 0.8 && nr < 0.7) {
+            dispatch(changeHealth(-Math.round(oponentAttack * 2)));
+            dispatch(makeMove(["oAttack", Math.round(oponentAttack * 2)]));
+          } else if (whichAttack >= 0.8 && nr < 0.37) {
+            dispatch(changeHealth(-Math.round(oponentAttack * 5)));
+            dispatch(makeMove(["oAttack", Math.round(oponentAttack * 5)]));
+          } else {
+            console.log("miss");
+            dispatch(makeMove(["oBlock"]));
+          }
         }
       }
+    }
+
+    // this timeout gives time for superpower animation to run
+    if (superpowerNow == true) {
+      setTimeout(() => {
+        move();
+      }, 1000);
+    } else {
+      move();
     }
   }
 

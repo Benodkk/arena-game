@@ -35,7 +35,7 @@ function Training() {
   return (
     <div className="trainingContainer">
       <div className="topContent">
-        <Link to="/menu">
+        <Link to="/menu" className="backToMenuBtn">
           <img src={left} />
         </Link>
         <div className="selectionName">TRAINING</div>

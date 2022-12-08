@@ -10,6 +10,8 @@ import {
 import { changeName } from "../redux/user/userName";
 import left from "../database/images/left.png";
 import right from "../database/images/right.png";
+import question from "../database/images/icons/question-mark.png";
+import { isVisible } from "@testing-library/user-event/dist/utils";
 
 function ChooseCharacter() {
   const store = useSelector((state) => state);
@@ -70,6 +72,39 @@ function ChooseCharacter() {
     }
   }
 
+  // show superpower info on question mark hoover
+
+  const [infoStyle, setInfoStyle] = useState("");
+
+  function showInfo(e) {
+    setInfoStyle(e.target.id);
+  }
+
+  function hideInfo() {
+    setInfoStyle("");
+  }
+
+  function info(e) {
+    if (e == infoStyle) {
+      return {
+        opacity: 1,
+        visibility: "visible",
+      };
+    }
+  }
+
+  function superpowerInfo(e) {
+    if (e == "Brute") {
+      return "Giant smash: Your next attack is increased by double value of your vitality.";
+    }
+    if (e == "Assassin") {
+      return "Fatal strike: Your next attack omit enemy defense.";
+    }
+    if (e == "Warrior") {
+      return "Counterattack: Your next move give you energy and increase your defense. In next tour your attack damage is doubled.";
+    }
+  }
+
   return (
     <div className="chooseCharacterContainer">
       <div className="selectionName">CHOOSE CHARACTER</div>
@@ -92,7 +127,7 @@ function ChooseCharacter() {
                 <div className="profesionName" style={nameStyle(element.name)}>
                   {element.name}
                 </div>
-                <img src={element.img} />
+                <img className="characterLook" src={element.img} />
                 <div className="profesionSkills">
                   {element.skills.map((x) => {
                     return (
@@ -105,7 +140,20 @@ function ChooseCharacter() {
                     );
                   })}
                   <div className="profesionSuperpower">
-                    Superpower: {element.superpower}
+                    <div>Superpower: {element.superpower}</div>
+                    <img
+                      id={`${element.name} info`}
+                      className="questionMark"
+                      src={question}
+                      onMouseEnter={showInfo}
+                      onMouseLeave={hideInfo}
+                    />
+                    <div
+                      className="superpowerInfo"
+                      style={info(`${element.name} info`)}
+                    >
+                      {superpowerInfo(element.name)}
+                    </div>
                   </div>
                 </div>
 
