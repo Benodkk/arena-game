@@ -1,70 +1,31 @@
-# Getting Started with Create React App
+# Arena Game
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Project available on [https://benodkk.github.io/arena-game/](Arena-App).
 
-## Available Scripts
+## Project description
 
-In the project directory, you can run:
+Main concept of the game is that user choose a character and then fight in 1v1 fight. After every fight you can get money and experience. For money you can buy items in shop, experience is required to level up so you can get better items. After every level up user can assing three skills points. Available skills to develop are attack, defense and vitality.
 
-### `npm start`
+### Fight
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+<img src="https://github.com/Benodkk/arena-game/Images/fight-ss.png">
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Arena game is strategy turn based game. User always starts a fight, then oponent make a move. The goal is to kill enemy. User can make:
+Deffensive moves: Rest - gives 25 points of energy, Defense - gives 15 points of energy and 0.5 defense;
+Agressive moves: Strong, Medium, Light - stronger move make more demage but take more energy and is less likely to happen then ligher move;
+Superpower: every character has his own superpower which makes diffrent thing, user can use superpower only once per fight.
 
-### `npm test`
+### Menu
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+<img src="https://github.com/Benodkk/arena-game/Images/menu-ss.png">
 
-### `npm run build`
+After every fight user is directed to the menu. There he can decide what will be his next move. Options are:
+Shop - user can buy weapon, shield or second weapon;
+Training - user can train one of skills. Every training cost some money.
+User - user can check his statistics and change armed items.
+Arena - user can choose there if he will be fighting in another typical arena fight or maybe taking part in tournament (tournament is no available yet)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Personal goal of this project
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+This is first "big" project where I used redux, thats why I wanted to use as many variables as possible.
+Maybe react is not designed for making games, but this is browser game and as long as I want to develop my react skills this project seemed to be very good practice and it really was. Fight section would not look that good without animations and there I could practice making animations.
