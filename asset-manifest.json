@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/arena-game/static/css/main.32dd67b3.css",
-    "main.js": "/arena-game/static/js/main.76dfb63d.js",
+    "main.css": "/arena-game/static/css/main.23e056d5.css",
+    "main.js": "/arena-game/static/js/main.75de7a96.js",
     "static/media/defeat.png": "/arena-game/static/media/defeat.61d68628f8ff65b6df44.png",
     "static/media/victory.png": "/arena-game/static/media/victory.08527816c8e98d3075cf.png",
     "static/media/brick-background.jpg": "/arena-game/static/media/brick-background.6a4ce979d310b45a83dd.jpg",
@@ -77,11 +77,11 @@
     "static/media/weapon1.png": "/arena-game/static/media/weapon1.60a7f11a7d97394bdc76.png",
     "static/media/sWeapon6.png": "/arena-game/static/media/sWeapon6.2472f2e421d66d7557ff.png",
     "index.html": "/arena-game/index.html",
-    "main.32dd67b3.css.map": "/arena-game/static/css/main.32dd67b3.css.map",
-    "main.76dfb63d.js.map": "/arena-game/static/js/main.76dfb63d.js.map"
+    "main.23e056d5.css.map": "/arena-game/static/css/main.23e056d5.css.map",
+    "main.75de7a96.js.map": "/arena-game/static/js/main.75de7a96.js.map"
   },
   "entrypoints": [
-    "static/css/main.32dd67b3.css",
-    "static/js/main.76dfb63d.js"
+    "static/css/main.23e056d5.css",
+    "static/js/main.75de7a96.js"
   ]
 }
