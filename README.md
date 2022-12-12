@@ -8,7 +8,7 @@ Main concept of the game is that user choose a character and then fight in 1v1 f
 
 ### Fight
 
-<img src="https://github.com/Benodkk/arena-game/Images/fight-ss.png">
+<img src="https://github.com/Benodkk/arena-game/blob/main/Images/fight-ss.png">
 
 Arena game is strategy turn based game. User always starts a fight, then oponent make a move. The goal is to kill enemy. User can make:
 Deffensive moves: Rest - gives 25 points of energy, Defense - gives 15 points of energy and 0.5 defense;
@@ -17,7 +17,7 @@ Superpower: every character has his own superpower which makes diffrent thing, u
 
 ### Menu
 
-<img src="https://github.com/Benodkk/arena-game/Images/menu-ss.png">
+<img src="https://github.com/Benodkk/arena-game/blob/main/Images/menu-ss.png">
 
 After every fight user is directed to the menu. There he can decide what will be his next move. Options are:
 Shop - user can buy weapon, shield or second weapon;
