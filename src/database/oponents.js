@@ -1,11 +1,18 @@
 import warrior from "../database/images/warrior.png";
+import oponent1 from "../database/images/oponent1.png";
+import oponent2 from "../database/images/oponent2.png";
+import oponent3 from "../database/images/oponent3.png";
+import oponent4 from "../database/images/oponent4.png";
+import oponent5 from "../database/images/oponent5.png";
+import assassin from "../database/images/assassin.png";
+import brute from "../database/images/brute.png";
 
 let oponents = [
   {
     id: 1,
     name: "Joe",
     lvl: 1,
-    img: warrior,
+    img: oponent5,
     skills: { attack: 3, defense: 3, vitality: 3 },
     parameters: {
       health: 100,
@@ -26,6 +33,7 @@ let oponents = [
     id: 2,
     name: "Big John",
     lvl: 1,
+    img: oponent2,
     skills: { attack: 6, defense: 6, vitality: 5 },
     parameters: {
       health: 100,
@@ -46,6 +54,7 @@ let oponents = [
     id: 3,
     name: "Matt Dragon II",
     lvl: 1,
+    img: oponent3,
     skills: { attack: 5, defense: 6, vitality: 6 },
     parameters: {
       health: 100,
@@ -66,6 +75,7 @@ let oponents = [
     id: 4,
     name: "Fat Bob",
     lvl: 1,
+    img: brute,
     skills: { attack: 3, defense: 8, vitality: 7 },
     parameters: {
       health: 100,
@@ -86,6 +96,7 @@ let oponents = [
     id: 5,
     name: "Janusz",
     lvl: 2,
+    img: oponent4,
     skills: { attack: 8, defense: 7, vitality: 5 },
     parameters: {
       health: 100,
@@ -106,6 +117,7 @@ let oponents = [
     id: 6,
     name: "Jamie Lanister",
     lvl: 2,
+    img: oponent1,
     skills: { attack: 10, defense: 4, vitality: 5 },
     parameters: {
       health: 100,
@@ -126,6 +138,7 @@ let oponents = [
     id: 7,
     name: "Master of puppets",
     lvl: 2,
+    img: oponent5,
     skills: { attack: 6, defense: 6, vitality: 10 },
     parameters: {
       health: 100,

@@ -20,10 +20,11 @@ function UserDescription() {
 
   const character = profesion.find((x) => x.name == store.profesion).img;
 
+  // when superpower used
+
   const userSuperpower = profesion.find(
     (x) => x.name == store.profesion
   ).superpower;
-  // when superpower used
 
   const [ifSuperpowerUsed, setIfSuperpowerUser] = useState(false);
   const [superpowerOpacity, setSuperpowerOpacity] = useState(1);
@@ -65,7 +66,7 @@ function UserDescription() {
 
   useEffect(() => {
     setWait(false);
-  }, [store.parameters.energy]);
+  }, [store.skills[1].amount, store.parameters.energy]);
 
   return (
     <div className="userFightContainer">
@@ -105,7 +106,7 @@ function UserDescription() {
                   onClick={() => {
                     if (ifSuperpowerUsed == false) {
                       superpowerUsed();
-                      makeMove(userSuperpower);
+                      move(userSuperpower);
                     }
                   }}
                 />

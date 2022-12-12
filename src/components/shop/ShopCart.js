@@ -1,7 +1,7 @@
 import items from "../../database/items";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { toBackpack } from "../../redux/user/items";
+import { firstHand, secondHand, toBackpack } from "../../redux/user/items";
 import { changeMoney } from "../../redux/user/money";
 import { Link } from "react-router-dom";
 import left from "../../database/images/left.png";
@@ -36,9 +36,19 @@ function ShopCart() {
       items.weapon.find((x) => x.id == e.target.id) ||
       items.shields.find((x) => x.id == e.target.id) ||
       items.secondWeapon.find((x) => x.id == e.target.id);
-    if (store.money >= item.cost) {
+    console.log(item);
+    if (
+      store.money >= item.cost &&
+      store.level >= item.lvl &&
+      store.items.backpack.some((x) => x.id == item.id) == false
+    ) {
       dispatch(changeMoney(-item.cost));
       dispatch(toBackpack(item));
+      if (item.type == "First weapon") {
+        dispatch(firstHand(item));
+      } else {
+        dispatch(secondHand(item));
+      }
     }
   }
 
@@ -82,6 +92,8 @@ function ShopCart() {
       setSlidesWeapons(slidesWeapons + 1);
     }
   }
+  const owned = { transform: "translate(-100%)" };
+  const notOwnedInfo = { transform: "translate(0%)" };
 
   return (
     <div className="shopContainer">
@@ -128,7 +140,17 @@ function ShopCart() {
                           : `Attack: ${element.attack[0]} - ${element.attack[1]}`
                         : `Defense: ${element.defense}`}
                     </div>
-                    <div className="itemCost">cost: {element.cost}</div>
+                    <div
+                      className="itemCost"
+                      style={
+                        store.items.backpack.find((x) => x.id == element.id)
+                          ? owned
+                          : notOwnedInfo
+                      }
+                    >
+                      <div className="itemNotOwned">Cost: {element.cost}</div>
+                      <div className="itemOwned">Owned</div>
+                    </div>
                     <div className="itemLvl">level:{element.lvl}</div>
                     <button id={element.id} onClick={buyItem}>
                       BUY

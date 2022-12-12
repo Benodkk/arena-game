@@ -5,6 +5,7 @@ import levels from "../database/levels";
 import { levelUp } from "../redux/user/level";
 import { resetExp } from "../redux/user/exp";
 import { loss, win } from "../redux/user/stats";
+import { useState } from "react";
 
 function useLeaveFight() {
   const store = useSelector((state) => state);

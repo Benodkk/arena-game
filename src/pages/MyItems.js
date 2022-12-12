@@ -77,23 +77,16 @@ function MyItems() {
   }
 
   function slideRight() {
-    console.log(display.length % 5);
-    if (
-      slidesWeapons < display.lenth / 5 &&
-      display == store.items.backpack.filter((x) => x.type == "First weapon")
-    ) {
+    console.log(slidesWeapons < display.length / 5);
+    console.log(display.length);
+    if (slidesWeapons + 1 < display.length / 5) {
+      console.log("dziala");
       setMoveLeft(moveLeft - 50);
       setSlidesWeapons(slidesWeapons + 1);
-    } else if (
-      slidesWeapons < display.lenth / 5 &&
-      display == store.items.backpack.filter((x) => x.type == "shield")
-    ) {
+    } else if (slidesWeapons + 1 < display.length / 5) {
       setMoveLeft(moveLeft - 50);
       setSlidesWeapons(slidesWeapons + 1);
-    } else if (
-      slidesWeapons < display.lenth / 4 &&
-      display == store.items.backpack.filter((x) => x.type == "second weapon")
-    ) {
+    } else if (slidesWeapons + 1 < display.length / 4) {
       setMoveLeft(moveLeft - 50);
       setSlidesWeapons(slidesWeapons + 1);
     }

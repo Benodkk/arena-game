@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import shield from "../../database/images/shield.png";
 import rest from "../../database/images/rest.png";
-import attack from "../../database/images/attack.png";
+import dead from "../../database/images/dead.png";
 import straightSword from "../../database/images/straight-sword.png";
 
 function Animations() {
@@ -178,9 +178,36 @@ function Animations() {
         setODefStyle({});
       }, 2000);
     }
-
-    console.log(store.move);
   }, [store.move]);
+
+  // animation for a loser
+
+  const [oDeadStyle, setODeadStyle] = useState({});
+  const [deadStyle, setdeadStyle] = useState({});
+
+  useEffect(() => {
+    if (store.parameters.health <= 0) {
+      setTimeout(() => {
+        setdeadStyle({
+          animation: "dead 0.4s ease-in",
+          opacity: 1,
+          visibility: "visible",
+          transform: "scale(1)",
+        });
+      }, 1000);
+    }
+    if (store.oponentParameters.health <= 0) {
+      setTimeout(() => {
+        setODeadStyle({
+          animation: "oDead 0.4s ease-in",
+          opacity: 1,
+          visibility: "visible",
+          transform: "scale(1)",
+        });
+      }, 1000);
+    }
+  }, [store.parameters.health, store.oponentParameters.health]);
+
   return (
     <div className="animationsContainer">
       {/* user move animations */}
@@ -204,6 +231,7 @@ function Animations() {
       <div className="superpowerAnimation" style={superpowerStyle}>
         + {store.move[0]}!
       </div>
+      <img className="deadAnimation" src={dead} style={deadStyle} />
 
       {/* oponent move animations */}
       <img className="oDefenseAnimation" style={oDefStyle} src={shield} />
@@ -218,8 +246,9 @@ function Animations() {
       </div>
       <img className="oUserBlockAnimation" style={oBlockStyle} src={shield} />
       <div className="oSuperpowerAnimation" style={oSuperpowerStyle}>
-        {store.move[0]}!
+        + {store.oponentSuperpower}!
       </div>
+      <img className="oDeadAnimation" src={dead} style={oDeadStyle} />
     </div>
   );
 }

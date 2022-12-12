@@ -381,6 +381,8 @@ a {
   padding: 5px 10px;
   border-radius: 10px;
   gap: 5px;
+  width: 10vw;
+  justify-content: center;
 }
 .moneyContainer img {
   width: 40px;
@@ -388,6 +390,12 @@ a {
 
 .currentSkills .moneyContainer {
   background-color: rgba(255, 255, 255, 0);
+  display: flex;
+  align-items: center;
+  padding: 5px 10px;
+  border-radius: 10px;
+  gap: 5px;
+  width: auto;
 }
 
 /* XXXXXXXXXXXXXX
@@ -557,6 +565,7 @@ a {
 .sliderContainer {
   display: flex;
   align-items: center;
+  height: 63vh;
 }
 .overflowContainer {
   width: 50vw;
@@ -600,6 +609,20 @@ a {
   padding: 10px;
   border-radius: 10px;
   white-space: nowrap;
+  overflow: hidden;
+}
+.itemCost {
+  display: flex;
+  min-width: 100%;
+  text-align: center;
+  width: 5vw;
+  transition: 1s;
+}
+.itemNotOwned {
+  min-width: 100%;
+}
+.itemOwned {
+  min-width: 100%;
 }
 /* XXXXXXXXXXXXXX
       ARENA
@@ -655,6 +678,22 @@ a {
 }
 .linkContainer a:focus {
   transform: translateY(10px);
+}
+.tournamentLink a:hover {
+  transform: scale(1);
+}
+.tournamentLink a:focus {
+  transform: translateY(0);
+}
+.tournamentInfo {
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 5px 10px;
+  border-radius: 10px;
+  position: absolute;
+  width: 200px;
+  text-align: center;
+  top: 44vh;
+  left: 69vw;
 }
 /* XXXXXXXXXXXXXX
   fight place
@@ -784,13 +823,17 @@ a {
   visibility: hidden;
   opacity: 0;
   position: absolute;
+  width: 100vw;
+  height: 100vh;
   top: 0;
   left: 0;
   transition: opacity 2s;
+  z-index: 1;
+  overflow: hidden;
 }
 .blackOut {
   position: absolute;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.6);
   z-index: 1;
   width: 100vw;
   height: 100vh;
@@ -801,16 +844,56 @@ a {
   position: absolute;
   z-index: 2;
   text-align: center;
-  top: 20vh;
+  top: 16vh;
   left: 35vw;
-}
-.endFightImg {
-  width: 30vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
 }
 .fightFinished a button {
   background-color: #fff;
   margin-top: 2vh;
   font-size: 30px;
+}
+
+.rewardsContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 10px;
+  border-radius: 10px;
+  width: 13vw;
+  transform: translateY(40vh);
+  transition: 1s cubic-bezier(0.25, 0.25, 0.365, 1.315);
+}
+.rewards {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 10px 0;
+}
+.rewards div {
+  display: flex;
+  align-items: center;
+  width: 50%;
+  justify-content: center;
+}
+.rewards img {
+  height: 30px;
+  padding-left: 5px;
+}
+.nextStepBtn {
+  transform: translateY(40vh);
+  transition: 1s cubic-bezier(0.25, 0.25, 0.365, 1.315);
+}
+
+.endFightImg {
+  visibility: hidden;
+  opacity: 0;
+  width: 30vw;
+  transform: scale(3);
 }
 /* XXXXXXXXXXXXXX
   animations
@@ -994,6 +1077,34 @@ a {
   text-shadow: rgb(75, 0, 0) 2px 2px;
 }
 
+.deadAnimation {
+  position: absolute;
+  visibility: hidden;
+  opacity: 0;
+  width: 15vw;
+  top: 32vh;
+  left: 20vw;
+  transform: scale(3);
+}
+
+@keyframes dead {
+  from {
+    opacity: 0;
+    visibility: hidden;
+    transform: scale(3);
+  }
+  1% {
+    visibility: visible;
+  }
+  50% {
+    opacity: 1;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
 /* oponent move animations */
 
 .oDefenseAnimation {
@@ -1152,5 +1263,33 @@ a {
     opacity: 0;
     visibility: hidden;
     transform: translateY(7vh);
+  }
+}
+
+.oDeadAnimation {
+  position: absolute;
+  visibility: hidden;
+  opacity: 0;
+  width: 15vw;
+  top: 32vh;
+  left: 65vw;
+  transform: scale(3);
+}
+
+@keyframes oDead {
+  from {
+    opacity: 0;
+    visibility: hidden;
+    transform: scale(3);
+  }
+  1% {
+    visibility: visible;
+  }
+  50% {
+    opacity: 1;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
   }
 }

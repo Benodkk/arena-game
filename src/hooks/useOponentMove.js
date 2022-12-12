@@ -52,7 +52,6 @@ function useOponentMove() {
     }
     //   attack damage
     let oponentAttack;
-    console.log(superpower);
     if (
       // use Fatal strike
       superpower < 0.5 &&
@@ -60,7 +59,6 @@ function useOponentMove() {
       superpowerUsed == 0 &&
       store.oponentParameters.energy > 10
     ) {
-      console.log("fatal");
       oponentAttack = store.oponentSkils.attack * 2 + oponentsPower * 2.5;
       setSuperpowerUsed(2);
       superpowerNow = true;
@@ -110,7 +108,6 @@ function useOponentMove() {
     // super power is a available
 
     if (superpowerUsed == 1) {
-      console.log("counter 2 ");
       // counterattack use in previous tour
       oponentAttack += oponentAttack;
       setSuperpowerUsed(2);
@@ -121,7 +118,6 @@ function useOponentMove() {
       superpower < 0.5 &&
       store.oponentSuperpower == "Giant smash"
     ) {
-      console.log("GM");
       oponentAttack += 2 * store.oponentSkils.vitality;
       setSuperpowerUsed(2);
       dispatch(makeMove(["+ Giant smash"]));
@@ -135,14 +131,12 @@ function useOponentMove() {
         store.oponentParameters.energy < 85 &&
         store.oponentSuperpower == "Counterattack"
       ) {
-        console.log("counter 1 ");
         dispatch(oChangeEnergy(15));
         dispatch(oGiveDefense(0.5));
         setSuperpowerUsed(1);
         dispatch(makeMove(["+ Counterattack"]));
       } else {
         if (store.oponentParameters.energy < 10) {
-          console.log("def");
           // Oponent have no energy, have to rest or deff
           let deffOrRest = Math.random();
           if (deffOrRest < 0.5) {
@@ -173,7 +167,6 @@ function useOponentMove() {
             dispatch(changeHealth(-Math.round(oponentAttack * 5)));
             dispatch(makeMove(["oAttack", Math.round(oponentAttack * 5)]));
           } else {
-            console.log("miss");
             dispatch(makeMove(["oBlock"]));
           }
         }

@@ -88,14 +88,18 @@ function useUserMove() {
 
       let nr = Math.random();
 
+      // When superpower was used
+
+      if (superpower == "Giant smash") {
+        attack += 2 * store.skills[2].amount;
+      } else if (superpower == "Counterattack") {
+        console.log("dupaaa");
+        attack += attack;
+      }
+
       // what move user do?
-      if (type == "light" && store.parameters.energy >= 10) {
-        dispatch(changeEnergy(-10));
-      } else if (type == "normal" && store.parameters.energy >= 15) {
-        dispatch(changeEnergy(-15));
-      } else if (type == "strong" && store.parameters.energy >= 25) {
-        dispatch(changeEnergy(-25));
-      } else if (type == "rest") {
+
+      if (type == "rest") {
         dispatch(makeMove(["rest"]));
         if (store.parameters.energy >= 75) {
           if (store.parameters.energy == 100) {
@@ -133,20 +137,9 @@ function useUserMove() {
         dispatch(makeMove(["Fatal strike"]));
         setSuperpower("Fatal strike");
         setSuperpowerUsed(true);
-      } else {
-        dispatch(makeMove(["no energy"]));
-      }
-
-      // When superpower was used
-
-      if (superpower == "Giant smash") {
-        attack += 2 * store.skills[2].amount;
-      } else if (superpower == "Counterattack") {
-        console.log("dupaaa");
-        attack += attack;
-      }
-
-      if (type == "light" && store.parameters.energy > 10) {
+      } else if (type == "light" && store.parameters.energy >= 10) {
+        console.log("light move");
+        dispatch(changeEnergy(-10));
         if (nr < 0.9) {
           dispatch(oChangeHealth(-Math.round(attack)));
           dispatch(makeMove(["attack", Math.round(attack)]));
@@ -155,7 +148,8 @@ function useUserMove() {
           dispatch(makeMove(["block"]));
         }
         setSuperpower("");
-      } else if (type == "normal" && store.parameters.energy > 15) {
+      } else if (type == "normal" && store.parameters.energy >= 15) {
+        dispatch(changeEnergy(-15));
         if (nr < 0.7) {
           dispatch(oChangeHealth(-Math.round(attack * 2)));
           dispatch(makeMove(["attack", Math.round(attack * 2)]));
@@ -164,7 +158,8 @@ function useUserMove() {
           dispatch(makeMove(["block"]));
         }
         setSuperpower("");
-      } else if (type == "strong" && store.parameters.energy > 25) {
+      } else if (type == "strong" && store.parameters.energy >= 25) {
+        dispatch(changeEnergy(-25));
         if (nr < 0.37) {
           dispatch(oChangeHealth(-Math.round(attack * 5)));
           dispatch(makeMove(["attack", Math.round(attack * 5)]));
@@ -172,6 +167,8 @@ function useUserMove() {
           dispatch(makeMove(["block"]));
         }
         setSuperpower("");
+      } else {
+        dispatch(makeMove(["no energy"]));
       }
     }
   }

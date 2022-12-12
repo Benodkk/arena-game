@@ -16,13 +16,14 @@ function Training() {
   const store = useSelector((state) => state);
 
   function giveSkill(skill) {
+    console.log(skill);
     if (store.money >= 100) {
       dispatch(changeMoney(-100));
-      if (skill == "Attack") {
+      if (skill == "attack") {
         dispatch(giveAttack());
-      } else if (skill == "Defense") {
+      } else if (skill == "defense") {
         dispatch(giveDefense());
-      } else if (skill == "Vitality") {
+      } else if (skill == "vitality") {
         dispatch(giveVitality());
       }
     } else {

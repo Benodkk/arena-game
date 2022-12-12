@@ -4,18 +4,10 @@ import { firstHand } from "../redux/user/items";
 import { secondHand } from "../redux/user/items";
 import profesion from "../database/profesion";
 import left from "../database/images/left.png";
+import levels from "../database/levels";
 
 function User() {
   const store = useSelector((state) => state);
-  const dispatch = useDispatch();
-
-  // function arm(element) {
-  //   if (element.type == "First weapon") {
-  //     dispatch(firstHand(element));
-  //   } else {
-  //     dispatch(secondHand(element));
-  //   }
-  // }
 
   const character = profesion.find((x) => x.name == store.profesion).img;
 
@@ -34,7 +26,10 @@ function User() {
           </div>
           <div className="userDescription">
             <div>Level: {store.level}</div>
-            <div>Experience: {store.exp}</div>
+            <div>
+              Experience: {store.exp}/
+              {levels.find((x) => x.level == store.level).promotion}
+            </div>
             <div>Money: {store.money}</div>
             <div>Profesion: {store.profesion}</div>
             <div>Fights: {store.stats.fights}</div>

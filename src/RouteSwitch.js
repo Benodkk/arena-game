@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { HashRouter, Routes, Route } from "react-router-dom";
 import App from "./App";
 import ChooseCharacter from "./pages/ChooseCharacter";
 import GiveSkills from "./pages/GiveSkills";
@@ -14,7 +14,7 @@ import MyItems from "./pages/MyItems";
 
 function RouteSwitch() {
   return (
-    <BrowserRouter>
+    <HashRouter>
       <Routes>
         <Route path="/" element={<App />} />
         <Route path="/choose-character" element={<ChooseCharacter />} />
@@ -27,7 +27,7 @@ function RouteSwitch() {
         <Route path="/user" element={<User />} />
         <Route path="/user/my-items" element={<MyItems />} />
       </Routes>
-    </BrowserRouter>
+    </HashRouter>
   );
 }
 
