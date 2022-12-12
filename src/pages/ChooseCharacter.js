@@ -40,13 +40,13 @@ function ChooseCharacter() {
     } else if (e == front[1]) {
       return {
         transition: "1s",
-        transform: "perspective(10px) translateZ(-10px) translateX(-240px)",
+        transform: "perspective(10px) translateZ(-10px) translateX(-12.48vw)",
         opacity: "0.3",
       };
     } else if (e == front[2]) {
       return {
         transition: "1s",
-        transform: "perspective(10px) translateZ(-10px) translateX(560px)",
+        transform: "perspective(10px) translateZ(-10px) translateX(29.12vw)",
         opacity: "0.5",
       };
     }

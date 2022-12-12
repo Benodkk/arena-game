@@ -4,7 +4,7 @@ html,
 body {
   margin: 0;
   font-family: "Kanit", sans-serif;
-  font-size: 24px;
+  font-size: 2.4vh;
 }
 
 /* BTN STYLES */
@@ -18,9 +18,9 @@ button {
     rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #d6d6e7 0 -3px 0 inset;
   box-sizing: border-box;
   color: #000000;
-  padding: 4px 16px;
+  padding: 0.4vh 1.6vh;
   transition: box-shadow 0.15s, transform 0.15s;
-  font-size: 20px;
+  font-size: 2vh;
   cursor: pointer;
 }
 
@@ -62,13 +62,14 @@ button:active {
   background-position: center;
   height: 92vh;
   padding: 4vh;
-  font-size: 20px;
+  font-size: 2vh;
+  overflow: hidden;
 }
 .chooseCharacterContainer .selectionName {
-  font-size: 40px;
+  font-size: 4vh;
   background-color: rgba(255, 255, 255, 0.8);
-  padding: 5px 10px;
-  border-radius: 10px;
+  padding: 0.5vh 1vh;
+  border-radius: 1vh;
 }
 .profesions {
   display: flex;
@@ -81,14 +82,14 @@ button:active {
   align-items: center;
   justify-content: center;
   position: relative;
-  right: 160px;
+  right: 8.32vw;
 }
 .changeProfesionBtnRight,
 .changeProfesionBtnLeft {
-  border-radius: 10px;
-  width: 100px;
+  border-radius: 1vh;
+  width: 5.2vw;
   position: absolute;
-  top: 250px;
+  top: 25vh;
   cursor: pointer;
   transition: 0.3s;
 }
@@ -99,18 +100,18 @@ button:active {
 
 .changeProfesionBtnLeft:active,
 .changeProfesionBtnRight:active {
-  transform: translateY(10px) scale(0.85);
+  transform: translateY(1vh) scale(0.85);
 }
 
 .changeProfesionBtnRight img,
 .changeProfesionBtnLeft img {
-  width: 100px;
+  width: 5.2vw;
 }
 .changeProfesionBtnLeft {
-  right: 20px;
+  right: 1.04vw;
 }
 .changeProfesionBtnRight {
-  left: 340px;
+  left: 17.68vw;
 }
 .oneProfesion {
   position: absolute;
@@ -119,83 +120,83 @@ button:active {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 15px;
+  gap: 1vh;
   transition: 1s;
-  width: 320px;
 }
 .characterLook {
   height: 35vh;
 }
 .profesionName {
-  font-size: 30px;
+  font-size: 3vh;
   background-color: rgba(255, 255, 255, 0.8);
-  padding: 10px;
-  border-radius: 10px;
+  padding: 1vh;
+  border-radius: 1vh;
 }
 .profesionSkills {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 5px;
+  gap: 0.5vh;
   background-color: rgba(255, 255, 255, 0.8);
-  padding: 10px;
-  border-radius: 10px;
+  padding: 1vh;
+  border-radius: 1vh;
+  /* white-space: nowrap; */
 }
 .profesionSuperpower {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 300px;
+  width: 15.6vw;
   text-align: center;
 }
 .questionMark {
-  height: 20px;
+  height: 2vh;
   cursor: pointer;
-  margin-left: 5px;
+  margin-left: 0.26vw;
 }
 .superpowerInfo {
   position: absolute;
   visibility: hidden;
   opacity: 0;
-  transform: translateX(330px);
+  transform: translateX(17.16vw);
   text-align: center;
   background-color: rgba(255, 255, 255, 0.8);
-  padding: 5px;
-  border-radius: 10px;
+  padding: 0.5vh;
+  border-radius: 1vh;
 }
 .oneSkill {
   display: flex;
   align-items: center;
-  gap: 5px;
+  gap: 0.25vw;
 }
 .oneSkill img {
-  height: 40px;
+  height: 4vh;
 }
 .finishChooseCharacter {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 10px;
+  gap: 1vh;
 }
 .inputNameContainer {
   display: flex;
-  gap: 10px;
+  gap: 1vh;
   align-items: center;
   background-color: rgba(255, 255, 255, 0.8);
-  padding: 5px 10px;
-  border-radius: 10px;
+  padding: 0.5vh 1vh;
+  border-radius: 1vh;
 }
 
 input[type="text"] {
   /* width: 20%; */
-  padding: 4px 8px;
-  margin: 8px 0;
+  padding: 0.4vh 0.8vh;
+  margin: 0.8vh 0;
   box-sizing: border-box;
   font-family: "Kanit", sans-serif;
-  font-size: 20px;
+  font-size: 2vh;
 }
 .emptyDiv {
-  height: 38px;
+  height: 3.8vh;
 }
 
 /* XXXXXXXXXXXXXX
@@ -215,21 +216,21 @@ input[type="text"] {
 }
 
 .giveSkillsContainer .selectionName {
-  font-size: 40px;
+  font-size: 4vh;
   background-color: rgba(255, 255, 255, 0.8);
-  padding: 5px 10px;
-  border-radius: 10px;
+  padding: 0.5vh 1vh;
+  border-radius: 1vh;
 }
 .userNameContainer {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 20px;
+  gap: 2vh;
 }
 .userName {
   background-color: rgba(255, 255, 255, 0.8);
-  padding: 10px;
-  border-radius: 10px;
+  padding: 1vh;
+  border-radius: 1vh;
   display: flex;
   flex-direction: column;
   text-align: center;
@@ -239,17 +240,17 @@ input[type="text"] {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 5px;
+  gap: 0.5vh;
   background-color: rgba(255, 255, 255, 0.8);
-  padding: 10px;
-  border-radius: 10px;
+  padding: 1vh;
+  border-radius: 1vh;
 }
 .currentSkills .oneSkill {
   display: grid;
-  grid-template-columns: 40px 90px 40px 50px;
-  grid-template-rows: 60px;
+  grid-template-columns: 2.08vw 4.68vw 2.08vw 2.6vw;
+  grid-template-rows: 6vh;
   align-items: center;
-  gap: 10px;
+  gap: 1vh;
 }
 .oneSkill div,
 .oneSkill img {
@@ -257,10 +258,10 @@ input[type="text"] {
 }
 
 .giveSkillsContainer button {
-  font-size: 24px;
+  font-size: 2.4vh;
 }
 .giveSkillsContainer .emptyDiv {
-  height: 43px;
+  height: 4.3vh;
 }
 
 /* XXXXXXXXXXXXXX
@@ -333,9 +334,10 @@ input[type="text"] {
   border-radius: 10px;
 }
 .topContent {
-  display: flex;
-  align-items: center;
-  gap: 12vw;
+  display: grid;
+  grid-template-columns: 22vw 22vw 22vw;
+  grid-template-rows: 14vh;
+  place-items: center;
 }
 .trainingContainer a img {
   width: 8vw;
@@ -548,10 +550,10 @@ a {
 }
 
 .shopContainer .topContent {
-  display: flex;
-  align-items: center;
-  justify-content: left;
-  gap: 12vw;
+  display: grid;
+  grid-template-columns: 22vw 22vw 22vw;
+  grid-template-rows: 14vh;
+  place-items: center;
 }
 .btnContainer {
   display: flex;
@@ -742,9 +744,18 @@ a {
 .attackButtons {
   width: 5vw;
 }
+.attackButtons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .actionsContainer img {
   width: 20vw;
   align-self: flex-end;
+}
+.attackButtons img {
+  align-self: auto;
 }
 .defenseButtons img,
 .attackButtons img {

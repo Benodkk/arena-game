@@ -12,7 +12,6 @@ import {
 import { changeName } from "../redux/user/userName";
 
 function Menu() {
-  const dispatch = useDispatch();
   return (
     <div className="menuContainer">
       <div className="menuLinks">
@@ -35,13 +34,7 @@ function Menu() {
           <div className="linkLabel">TRAINING</div>
         </div>
         <div className="menuLinkContainer" id="menuLinkContainerUser">
-          <Link
-            to="/user"
-            // onClick={() => {
-            //   dispatch(chooseAssassin());
-            //   dispatch(changeName("asdasd"));
-            // }}
-          >
+          <Link to="/user">
             <img src={user} />
           </Link>
           <div className="linkLabel">USER</div>
