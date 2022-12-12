@@ -1,6 +1,6 @@
 # Arena Game
 
-Project available on [https://benodkk.github.io/arena-game/](Arena-App).
+Project available on [Arena Game](https://benodkk.github.io/arena-game/).
 
 ## Project description
 
