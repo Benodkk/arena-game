@@ -1,10 +1,8 @@
-import warrior from "../database/images/warrior.png";
 import oponent1 from "../database/images/oponent1.png";
 import oponent2 from "../database/images/oponent2.png";
 import oponent3 from "../database/images/oponent3.png";
 import oponent4 from "../database/images/oponent4.png";
 import oponent5 from "../database/images/oponent5.png";
-import assassin from "../database/images/assassin.png";
 import brute from "../database/images/brute.png";
 
 let oponents = [

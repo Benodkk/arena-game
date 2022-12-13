@@ -71,6 +71,9 @@ button:active {
   padding: 0.5vh 1vh;
   border-radius: 1vh;
 }
+.characterImage {
+  height: 32vh;
+}
 .profesions {
   display: flex;
   align-items: center;
@@ -247,7 +250,7 @@ input[type="text"] {
 }
 .currentSkills .oneSkill {
   display: grid;
-  grid-template-columns: 2.08vw 4.68vw 2.08vw 2.6vw;
+  grid-template-columns: 4vh 9vh 4vh 5vh;
   grid-template-rows: 6vh;
   align-items: center;
   gap: 1vh;
@@ -278,7 +281,7 @@ input[type="text"] {
   padding: 5vh;
 }
 .menuContainer img {
-  width: 16vw;
+  width: 30vh;
 }
 .menuContainer #menuLinkContainerUser {
   position: relative;
@@ -309,7 +312,7 @@ input[type="text"] {
 }
 
 .menuLinkContainer a:active {
-  transform: translateY(30px) scale(0.9);
+  transform: translateY(15px) scale(0.9);
 }
 
 /* XXXXXXXXXXXXXX
@@ -328,7 +331,7 @@ input[type="text"] {
   gap: 10px;
 }
 .trainingContainer .selectionName {
-  font-size: 40px;
+  font-size: 4vh;
   background-color: rgba(255, 255, 255, 0.8);
   padding: 5px 10px;
   border-radius: 10px;
@@ -387,7 +390,7 @@ a {
   justify-content: center;
 }
 .moneyContainer img {
-  width: 40px;
+  height: 4vh;
 }
 
 .currentSkills .moneyContainer {
@@ -444,17 +447,19 @@ a {
   align-items: center;
   justify-content: center;
   justify-self: center;
-  gap: 30px;
+  gap: 1.6vw;
   background-color: rgba(255, 255, 255, 0.8);
   padding: 20px;
   border-radius: 10px;
 }
 .userImage {
-  /* height: 300px; */
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 15px;
+  gap: 1.5vh;
+}
+.userImage img {
+  max-height: 30vh;
 }
 .userImage .userName {
   background-color: rgba(255, 255, 255, 0);
@@ -499,7 +504,7 @@ a {
   background-position: center;
   height: 92vh;
   padding: 4vh;
-  gap: 60px;
+  gap: 6vh;
 }
 .topContentMyItems {
   display: flex;
@@ -511,7 +516,7 @@ a {
   left: 22vw;
 }
 .topContentMyItems .selectionName {
-  font-size: 40px;
+  font-size: 4vh;
   background-color: rgba(255, 255, 255, 0.8);
   padding: 5px 10px;
   border-radius: 10px;
@@ -539,7 +544,7 @@ a {
   gap: 20px;
 }
 .shopContainer .selectionName {
-  font-size: 40px;
+  font-size: 4vh;
   background-color: rgba(255, 255, 255, 0.8);
   padding: 5px 10px;
   border-radius: 10px;
@@ -561,7 +566,7 @@ a {
 }
 
 .weaponImg {
-  max-height: 400px;
+  max-height: 40vh;
   max-width: 5vw;
 }
 .sliderContainer {
@@ -751,7 +756,8 @@ a {
 }
 
 .actionsContainer img {
-  width: 20vw;
+  max-width: 20vw;
+  max-height: 40vh;
   align-self: flex-end;
 }
 .attackButtons img {
@@ -800,6 +806,10 @@ a {
   background-color: rgba(255, 255, 255, 0.8);
   padding: 10px;
   border-radius: 10px;
+  width: 35vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 .healthContainer {
   display: flex;
@@ -811,7 +821,7 @@ a {
   gap: 5px;
 }
 .parametr img {
-  height: 30px;
+  height: 3vh;
 }
 .userDescription {
   display: flex;
@@ -824,7 +834,8 @@ a {
   align-items: center;
 }
 .oponentImg {
-  width: 20vw;
+  max-height: 45vh;
+  max-width: 20vw;
 }
 /* XXXXXXXXXXXXXX
   finish fight
@@ -903,7 +914,7 @@ a {
 .endFightImg {
   visibility: hidden;
   opacity: 0;
-  width: 30vw;
+  height: 50vh;
   transform: scale(3);
 }
 /* XXXXXXXXXXXXXX

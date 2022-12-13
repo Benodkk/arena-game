@@ -35,7 +35,7 @@ function GiveSkills() {
       <div className="selectionName">GIVE SKILLS</div>
       <div className="userNameContainer">
         <div className="userName">{store.name}</div>
-        <img src={character} />
+        <img className="characterImage" src={character} />
       </div>
       <div className="currentSkills">
         <div>Skills to give: {nr}</div>

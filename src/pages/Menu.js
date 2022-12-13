@@ -1,15 +1,8 @@
-import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import arena from "../database/images/arena.png";
 import shop from "../database/images/shop.png";
 import training from "../database/images/training.png";
 import user from "../database/images/user.png";
-import {
-  chooseAssassin,
-  chooseBrute,
-  chooseWarrior,
-} from "../redux/user/giveSkills";
-import { changeName } from "../redux/user/userName";
 
 function Menu() {
   return (
