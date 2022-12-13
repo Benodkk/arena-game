@@ -725,6 +725,9 @@ a {
   gap: 11vw;
   width: 100%;
 }
+.characterFightImg {
+  height: 40vh;
+}
 .userFightContainer,
 .oponentDescriptionContainer {
   width: 34vw;
@@ -732,9 +735,6 @@ a {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-}
-.oponentDescriptionContainer {
-  /* gap: 5vh; */
 }
 .actionsContainer {
   display: flex;
@@ -756,8 +756,6 @@ a {
 }
 
 .actionsContainer img {
-  max-width: 20vw;
-  max-height: 40vh;
   align-self: flex-end;
 }
 .attackButtons img {
@@ -834,8 +832,7 @@ a {
   align-items: center;
 }
 .oponentImg {
-  max-height: 45vh;
-  max-width: 20vw;
+  height: 43vh;
 }
 /* XXXXXXXXXXXXXX
   finish fight

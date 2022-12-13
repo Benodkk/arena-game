@@ -81,7 +81,7 @@ function UserDescription() {
             <div>Rest</div>
           </div>
         </div>
-        <img src={character} />
+        <img className="characterFightImg" src={character} />
         <div className="attackButtonsContainer">
           <div className="attackButtons">
             <div className="actionButton">
