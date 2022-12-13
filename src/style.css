@@ -648,7 +648,7 @@ a {
   gap: 20px;
 }
 .arenaContainer .selectionName {
-  font-size: 40px;
+  font-size: 4vh;
   background-color: rgba(255, 255, 255, 0.8);
   padding: 5px 10px;
   border-radius: 10px;
@@ -665,16 +665,19 @@ a {
 }
 .fightContainer {
   display: grid;
-  grid-template-columns: 20vw 20vw;
+  grid-template-columns: 25vw 25vw;
   grid-template-rows: 20vh;
   place-items: center;
+}
+.fightContainer img {
+  width: 16vw;
 }
 
 .linkContainer {
   display: flex;
   flex-direction: column;
   align-items: center;
-  min-height: 400px;
+  min-height: 40vh;
   justify-content: flex-end;
 }
 .linkContainer a {
@@ -697,10 +700,10 @@ a {
   padding: 5px 10px;
   border-radius: 10px;
   position: absolute;
-  width: 200px;
+  width: 11vw;
   text-align: center;
   top: 44vh;
-  left: 69vw;
+  left: 71vw;
 }
 /* XXXXXXXXXXXXXX
   fight place
@@ -873,7 +876,7 @@ a {
 .fightFinished a button {
   background-color: #fff;
   margin-top: 2vh;
-  font-size: 30px;
+  font-size: 3vh;
 }
 
 .rewardsContainer {
