@@ -1,6 +1,3 @@
-import user from "../database/user";
-import oponents from "../database/oponents";
-import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { oChangeName } from "../redux/oponent/oName";
 import { oSetLevel } from "../redux/oponent/oLvl";
@@ -10,6 +7,9 @@ import { oChangeHealth, oSetParameters } from "../redux/oponent/oParameters";
 import { changeHealth, setParameters } from "../redux/user/parameters";
 import { oSuperpower } from "../redux/oponent/oSuperpower";
 import { makeMove } from "../redux/user/move";
+
+import user from "../database/user";
+import oponents from "../database/oponents";
 
 function useStartFight() {
   const store = useSelector((state) => state);

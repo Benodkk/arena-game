@@ -1,20 +1,20 @@
-import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+
+import useLeaveFight from "../../hooks/useLeaveFight";
+
 import { useDispatch, useSelector } from "react-redux";
+import { resetDefense } from "../../redux/user/giveSkills";
 
 import victory from "../../database/images/victory.png";
 import defeat from "../../database/images/defeat.png";
 import coin from "../../database/images/coin.png";
-import { resetDefense } from "../../redux/user/giveSkills";
-import useLeaveFight from "../../hooks/useLeaveFight";
 
 function FinishFight() {
   const store = useSelector((state) => state);
   const dispatch = useDispatch();
 
-  const leave = useLeaveFight();
-
-  // reset deff after fight
+  // reset deffense after fight
 
   const [defChanged, setDefChanged] = useState(false);
   const [currentDef, setCurrentDef] = useState(0);
@@ -29,23 +29,24 @@ function FinishFight() {
     setDefChanged(false);
   }
 
-  const [nextStep, setNextStep] = useState("");
-  const [fightStyle, setFightStyle] = useState({});
-  const [endFight, setEndFight] = useState("");
-
-  const [imgAnimation, setImgAnimation] = useState({});
-  const [rewardsAnimation, setRewardsAnimation] = useState({});
+  const [endFightImage, setEndFightImage] = useState("");
   const [money, setMoney] = useState();
 
-  // when win and defeat
+  const [fightStyle, setFightStyle] = useState({});
+  const [imgAnimation, setImgAnimation] = useState({});
+  const [rewardsAnimation, setRewardsAnimation] = useState({});
+
+  const leave = useLeaveFight();
 
   useEffect(() => {
+    // when win or defeat
+
     if (store.parameters.health <= 0) {
-      setEndFight(defeat);
+      setEndFightImage(defeat);
       setMoney(0);
     }
     if (store.oponentParameters.health <= 0) {
-      setEndFight(victory);
+      setEndFightImage(victory);
       setMoney(100);
     }
 
@@ -54,7 +55,7 @@ function FinishFight() {
     if (store.parameters.health <= 0 || store.oponentParameters.health <= 0) {
       setTimeout(() => {
         setFightStyle({ visibility: "visible", opacity: 1 });
-      }, 1501);
+      }, 1500);
 
       setTimeout(() => {
         setImgAnimation({
@@ -68,13 +69,15 @@ function FinishFight() {
         setRewardsAnimation({
           transform: "translateY(0vh)",
         });
-      }, 2801);
+      }, 2800);
       leave();
     }
   }, [store.parameters.health, store.oponentParameters.health]);
 
+  const [nextStep, setNextStep] = useState("");
+
   useEffect(() => {
-    // if level up
+    // if level up you get skills points to give
     if (store.exp == 0) {
       setNextStep("/give-skills");
     } else {
@@ -86,19 +89,24 @@ function FinishFight() {
     <div className="finishFightContainer" style={fightStyle}>
       <div className="blackOut"></div>
       <div className="fightFinished">
-        <img className="endFightImg" src={endFight} style={imgAnimation} />
+        <img
+          alt="Fight finished"
+          className="endFightImg"
+          src={endFightImage}
+          style={imgAnimation}
+        />
         <div className="rewardsContainer" style={rewardsAnimation}>
           <div>Rewards</div>
           <div className="rewards">
             <div>100 exp</div>
             <div>
               {money}
-              <img src={coin} />
+              <img alt="coin" src={coin} />
             </div>
           </div>
         </div>
         <Link to={nextStep} className="nextStepBtn" style={rewardsAnimation}>
-          <button onClick={() => leaveFight()}>Next</button>
+          <button onClick={leaveFight}>Next</button>
         </Link>
       </div>
     </div>

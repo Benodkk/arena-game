@@ -1,12 +1,12 @@
-import items from "../database/items";
 import { useState } from "react";
+
 import { useDispatch, useSelector } from "react-redux";
-import { firstHand, secondHand, toBackpack } from "../redux/user/items";
-import { changeMoney } from "../redux/user/money";
+import { firstHand, secondHand } from "../redux/user/items";
 import { Link } from "react-router-dom";
+
+import items from "../database/items";
 import left from "../database/images/left.png";
 import right from "../database/images/right.png";
-import coin from "../database/images/coin.png";
 
 function MyItems() {
   const store = useSelector((state) => state);
@@ -61,6 +61,8 @@ function MyItems() {
     };
   }
 
+  // slider of items
+
   const [moveLeft, setMoveLeft] = useState(0);
   const [slidesWeapons, setSlidesWeapons] = useState(0);
 
@@ -96,7 +98,7 @@ function MyItems() {
     <div className="myItemsContainer">
       <div className="topContentMyItems">
         <Link to="/user" className="backToMenuBtn">
-          <img src={left} />
+          <img alt="back to user" src={left} />
         </Link>
         <div className="selectionName">MY ITEMS</div>
       </div>
@@ -106,7 +108,7 @@ function MyItems() {
         <button onClick={showSecondWeapons}>Second Weapons</button>
       </div>
       <div className="sliderContainer">
-        <img className="slide" src={left} onClick={slideLeft} />
+        <img alt="left" className="slide" src={left} onClick={slideLeft} />
         <div className="overflowContainer">
           <div className="offerContainer" style={onSlideClick}>
             {display.map((element) => {
@@ -117,6 +119,7 @@ function MyItems() {
                   style={elementStyle}
                 >
                   <img
+                    alt={element.name}
                     src={element.img}
                     id={element.id}
                     className="weaponImg"
@@ -142,7 +145,7 @@ function MyItems() {
             })}
           </div>
         </div>
-        <img className="slide" src={right} onClick={slideRight} />
+        <img alt="right" className="slide" src={right} onClick={slideRight} />
       </div>
     </div>
   );

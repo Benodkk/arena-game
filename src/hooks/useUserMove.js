@@ -1,8 +1,9 @@
+import { useState } from "react";
+
 import { useDispatch, useSelector } from "react-redux";
 import { changeEnergy, setEnergy } from "../redux/user/parameters";
 import { giveDefense } from "../redux/user/giveSkills";
 import { oChangeHealth } from "../redux/oponent/oParameters";
-import { useState } from "react";
 import { makeMove } from "../redux/user/move";
 
 function useUserMove() {
@@ -17,7 +18,6 @@ function useUserMove() {
   function userAttack(type) {
     if (store.parameters.health > 0) {
       //   power of first hand weapon
-
       let power = 0;
       if (store.items.armed.firstHand.attack.length > 1) {
         power =
@@ -33,8 +33,8 @@ function useUserMove() {
       }
 
       //   power of second hand weapon
-
       let secondPower = 0;
+
       if (store.items.armed.secondHand.type == "second weapon") {
         if (store.items.armed.secondHand.attack.length > 1) {
           secondPower =
@@ -51,12 +51,10 @@ function useUserMove() {
       }
 
       // attack damage
-
       let attack;
 
-      // ommit oponent defense when fatal strike used
-
       if (superpower == "Fatal strike") {
+        // if Fatal strike superpower was used
         attack = store.skills[0].amount * 2 + power * 2.5;
       } else {
         attack =
@@ -88,12 +86,11 @@ function useUserMove() {
 
       let nr = Math.random();
 
-      // When superpower was used
+      // When Giant smash or Counterattack superpower was used
 
       if (superpower == "Giant smash") {
         attack += 2 * store.skills[2].amount;
       } else if (superpower == "Counterattack") {
-        console.log("dupaaa");
         attack += attack;
       }
 
@@ -138,7 +135,6 @@ function useUserMove() {
         setSuperpower("Fatal strike");
         setSuperpowerUsed(true);
       } else if (type == "light" && store.parameters.energy >= 10) {
-        console.log("light move");
         dispatch(changeEnergy(-10));
         if (nr < 0.9) {
           dispatch(oChangeHealth(-Math.round(attack)));
@@ -154,7 +150,6 @@ function useUserMove() {
           dispatch(oChangeHealth(-Math.round(attack * 2)));
           dispatch(makeMove(["attack", Math.round(attack * 2)]));
         } else {
-          console.log("miss");
           dispatch(makeMove(["block"]));
         }
         setSuperpower("");

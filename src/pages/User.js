@@ -1,7 +1,7 @@
-import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { firstHand } from "../redux/user/items";
-import { secondHand } from "../redux/user/items";
+
+import { useSelector } from "react-redux";
+
 import profesion from "../database/profesion";
 import left from "../database/images/left.png";
 import levels from "../database/levels";
@@ -9,20 +9,20 @@ import levels from "../database/levels";
 function User() {
   const store = useSelector((state) => state);
 
-  const character = profesion.find((x) => x.name == store.profesion).img;
+  const characterImage = profesion.find((x) => x.name == store.profesion).img;
 
   return (
     <div className="userContainer">
       <div className="userDescriptionContainer">
         <Link to="/menu" className="backToMenuBtn">
-          <img src={left} />
+          <img alt="back to menu" src={left} />
         </Link>
         <div className="userInfo">
           <div className="userImage">
             <div className="userNameContainer">
               <div className="userName">{store.name}</div>
             </div>
-            <img src={character} />
+            <img alt="character look" src={characterImage} />
           </div>
           <div className="userDescription">
             <div>Level: {store.level}</div>
@@ -44,7 +44,7 @@ function User() {
           {store.skills.map((element) => {
             return (
               <div key={element.name} className="userSkills">
-                <img src={element.img} />
+                <img alt={element.name} src={element.img} />
                 <div>
                   {element.name}: {element.amount}
                 </div>

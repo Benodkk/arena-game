@@ -1,25 +1,29 @@
+import { useState } from "react";
+
 import { useDispatch, useSelector } from "react-redux";
 import { oChangeEnergy } from "../redux/oponent/oParameters";
 import { oGiveDefense } from "../redux/oponent/oSkills";
 import { changeHealth } from "../redux/user/parameters";
-import { useState } from "react";
 import { makeMove } from "../redux/user/move";
 
 function useOponentMove() {
   const store = useSelector((state) => state);
   const dispatch = useDispatch();
 
+  // values: 0 - superpower has not been use yet
+  // 1 - counterattack has been used in previous turn
+  // 2 - superpower has benn already used
+
   const [superpowerUsed, setSuperpowerUsed] = useState(0);
-  //   OPONENT's ATTACK
 
   function oponentsAttack() {
     //  superpower decides if computer use superpower
+    let superpower = Math.randon();
 
-    let superpower = Math.random();
+    // superpowerNow decides, if trigger superpower animation
+    let superpowerNow = false;
 
-    let superpowerNow;
     //   power of first hand weapon
-
     let oponentsPower = 0;
 
     if (store.oponentItems.armed.firstHand.length > 1) {
@@ -50,10 +54,12 @@ function useOponentMove() {
     } else {
       oponentsSecondPower = store.oponentItems.armed.secondHand.stat[0];
     }
+
     //   attack damage
     let oponentAttack;
+
     if (
-      // use Fatal strike
+      // if Fatal strike superpower was used
       superpower < 0.5 &&
       store.oponentSuperpower == "Fatal strike" &&
       superpowerUsed == 0 &&
@@ -89,8 +95,8 @@ function useOponentMove() {
       oponentAttack = 1;
     }
 
-    // nr decides if hit hits or miss,
-    //  whichAttack decides what move computer will make
+    // whichAttack decides what move computer will make
+    // nr decides if hit hits or misses,
 
     let whichAttack = Math.random();
     let nr = Math.random();
@@ -105,15 +111,13 @@ function useOponentMove() {
 
     // what move oponent do?
 
-    // super power is a available
-
     if (superpowerUsed == 1) {
-      // counterattack use in previous tour
+      // counterattack used in previous tour
       oponentAttack += oponentAttack;
       setSuperpowerUsed(2);
     }
     if (
-      // use Giant smash
+      // use Giant smash superpower
       superpowerUsed == 0 &&
       superpower < 0.5 &&
       store.oponentSuperpower == "Giant smash"
@@ -137,7 +141,7 @@ function useOponentMove() {
         dispatch(makeMove(["+ Counterattack"]));
       } else {
         if (store.oponentParameters.energy < 10) {
-          // Oponent have no energy, have to rest or deff
+          // Oponent have no energy, have to rest or deffense
           let deffOrRest = Math.random();
           if (deffOrRest < 0.5) {
             dispatch(oChangeEnergy(25));

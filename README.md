@@ -2,6 +2,10 @@
 
 Project available on [Arena Game](https://benodkk.github.io/arena-game/).
 
+## Run project locally
+
+To run project locally: $ npm start
+
 ## Project description
 
 Main concept of the game is that user choose a character and then fight in 1v1 fight. After every fight you can get money and experience. For money you can buy items in shop, experience is required to level up so you can get better items. After every level up user can assing three skills points. Available skills to develop are attack, defense and vitality.
@@ -24,13 +28,19 @@ Superpower: every character has his own superpower which makes diffrent thing, u
 
 After every fight user is directed to the menu. There he can decide what will be his next move. Options are:
 
-Shop - user can buy weapon, shield or second weapom.
+Shop - user can buy weapon, shield or second weapon.
 
 Training - user can train one of skills. Every training cost some money.
 
 User - user can check his statistics and change armed items.
 
-Arena - user can choose there if he will be fighting in another typical arena fight or maybe taking part in tournament (tournament is no available yet)
+Arena - user can choose there if he will be fighting in another typical arena fight or maybe taking part in tournament.
+
+### To do
+
+Currently user can fight only with 7 oponents. After seven fights, the bug will apear.
+
+Tournament in not available yet.
 
 ## Personal goal of this project
 

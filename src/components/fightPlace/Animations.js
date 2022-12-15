@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
+
 import { useSelector } from "react-redux";
+
 import shield from "../../database/images/shield.png";
 import rest from "../../database/images/rest.png";
 import dead from "../../database/images/dead.png";
@@ -211,9 +213,20 @@ function Animations() {
   return (
     <div className="animationsContainer">
       {/* user move animations */}
-      <img className="defenseAnimation" style={defStyle} src={shield} />
-      <img className="defenseAnimation" style={restStyle} src={rest} />
       <img
+        alt="defense animation"
+        className="defenseAnimation"
+        style={defStyle}
+        src={shield}
+      />
+      <img
+        alt="defense animation"
+        className="defenseAnimation"
+        style={restStyle}
+        src={rest}
+      />
+      <img
+        alt="attack animation"
         className="attackAnimation"
         style={attackStyle}
         src={straightSword}
@@ -227,16 +240,37 @@ function Animations() {
       <div className="denyAnimation" style={noEnergy}>
         No energy!
       </div>
-      <img className="oponentBlockAnimation" style={blockStyle} src={shield} />
+      <img
+        alt="defense animation"
+        className="oponentBlockAnimation"
+        style={blockStyle}
+        src={shield}
+      />
       <div className="superpowerAnimation" style={superpowerStyle}>
         + {store.move[0]}!
       </div>
-      <img className="deadAnimation" src={dead} style={deadStyle} />
+      <img
+        alt="dead animation "
+        className="deadAnimation"
+        src={dead}
+        style={deadStyle}
+      />
 
       {/* oponent move animations */}
-      <img className="oDefenseAnimation" style={oDefStyle} src={shield} />
-      <img className="oDefenseAnimation" style={oRestStyle} src={rest} />
       <img
+        alt="defense animation"
+        className="oDefenseAnimation"
+        style={oDefStyle}
+        src={shield}
+      />
+      <img
+        alt="defense animation"
+        className="oDefenseAnimation"
+        style={oRestStyle}
+        src={rest}
+      />
+      <img
+        alt="attack animation"
         className="oAttackAnimation"
         style={oAttackStyle}
         src={straightSword}
@@ -244,11 +278,21 @@ function Animations() {
       <div className="oDmgAnimation" style={oDmgStyle}>
         -{store.move[1]}
       </div>
-      <img className="oUserBlockAnimation" style={oBlockStyle} src={shield} />
+      <img
+        alt="block animation"
+        className="oUserBlockAnimation"
+        style={oBlockStyle}
+        src={shield}
+      />
       <div className="oSuperpowerAnimation" style={oSuperpowerStyle}>
         + {store.oponentSuperpower}!
       </div>
-      <img className="oDeadAnimation" src={dead} style={oDeadStyle} />
+      <img
+        alt="dead animation"
+        className="oDeadAnimation"
+        src={dead}
+        style={oDeadStyle}
+      />
     </div>
   );
 }

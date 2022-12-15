@@ -1,11 +1,11 @@
 import { useDispatch, useSelector } from "react-redux";
 import { changeMoney } from "../redux/user/money";
 import { giveExp } from "../redux/user/exp";
-import levels from "../database/levels";
 import { levelUp } from "../redux/user/level";
 import { resetExp } from "../redux/user/exp";
 import { loss, win } from "../redux/user/stats";
-import { useState } from "react";
+
+import levels from "../database/levels";
 
 function useLeaveFight() {
   const store = useSelector((state) => state);

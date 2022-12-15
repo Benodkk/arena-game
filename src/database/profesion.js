@@ -16,6 +16,8 @@ let profesion = [
     ],
     superpower: "Giant smash",
     img: brute,
+    superpowerDescription:
+      "Giant smash: Your next attack is increased by double value of your vitality.",
   },
   {
     name: "Warrior",
@@ -26,6 +28,8 @@ let profesion = [
     ],
     superpower: "Counterattack",
     img: warrior,
+    superpowerDescription:
+      "Counterattack: Your next move give you energy and increase your defense. In next tour your attack damage is doubled.",
   },
   {
     name: "Assassin",
@@ -36,6 +40,8 @@ let profesion = [
     ],
     superpower: "Fatal strike",
     img: assassin,
+    superpowerDescription:
+      "Fatal strike: Your next attack omits enemy defense.",
   },
 ];
 

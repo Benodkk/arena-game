@@ -1,5 +1,7 @@
 import { HashRouter, Routes, Route } from "react-router-dom";
+
 import App from "./App";
+
 import ChooseCharacter from "./pages/ChooseCharacter";
 import GiveSkills from "./pages/GiveSkills";
 import FightPlace from "./pages/FightPlace";
@@ -8,9 +10,9 @@ import Menu from "./pages/Menu";
 import Training from "./pages/Training";
 import Arena from "./pages/Arena";
 import User from "./pages/User";
+import MyItems from "./pages/MyItems";
 
 import "./style.css";
-import MyItems from "./pages/MyItems";
 
 function RouteSwitch() {
   return (
