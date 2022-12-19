@@ -42,7 +42,9 @@ Currently user can fight only with 7 oponents. After seven fights, the bug will 
 
 Tournament in not available yet.
 
+Opinions does not work yet. They have random numbers now.
+
 ## Personal goal of this project
 
 This is first "big" project where I used redux, thats why I wanted to use as many variables as possible.
-Maybe react is not designed for making games, but this is browser game and as long as I want to develop my react skills this project seemed to be very good practice and it really was. Fight section would not look that good without animations and there I could practice making animations.
+Maybe react is not designed for making games, but this is browser game and as long as I want to develop my react skills this project seemed to be very good practice and it really was. Fight section would not look that good without animations and there I could practice making them.

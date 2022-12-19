@@ -18,7 +18,7 @@ function useOponentMove() {
 
   function oponentsAttack() {
     //  superpower decides if computer use superpower
-    let superpower = Math.randon();
+    let superpower = Math.random();
 
     // superpowerNow decides, if trigger superpower animation
     let superpowerNow = false;

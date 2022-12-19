@@ -1,4 +1,5 @@
 import React from "react";
+
 import SelectProfesion from "../components/ChooseCharacter/SelectProfesion";
 import SelectNick from "../components/ChooseCharacter/SelectNick";
 

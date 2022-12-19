@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import { useSelector } from "react-redux";
 
@@ -35,6 +35,7 @@ function Animations() {
 
     if (store.move[0] == "defense") {
       setDefStyle({
+        display: "block",
         animation: "2s defense 1",
       });
       setTimeout(() => {

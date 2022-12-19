@@ -1,10 +1,11 @@
-import OponentDescription from "../components/fightPlace/OponentDescription";
-import UserDescription from "../components/fightPlace/UserDescription";
+import React from "react";
 
-import Animations from "../components/fightPlace/Animations";
-
-import FinishFight from "../components/fightPlace/FinishFight";
-import UserMakeMove from "../components/fightPlace/UserMakeMove";
+import OponentDescription from "../components/FightPlace/OponentDescription";
+import UserDescription from "../components/FightPlace/UserDescription";
+import Animations from "../components/FightPlace/Animations";
+import FinishFight from "../components/FightPlace/FinishFight";
+import UserMakeMove from "../components/FightPlace/UserMakeMove";
+import StartFight from "../components/FightPlace/StartFight";
 
 function FightPlace() {
   return (
@@ -16,6 +17,7 @@ function FightPlace() {
         </div>
         <OponentDescription />
       </div>
+      <StartFight />
       <FinishFight />
       <Animations />
     </div>

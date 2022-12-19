@@ -18,7 +18,13 @@ function SelectNick() {
     <div className="finishChooseCharacter">
       <div className="inputNameContainer">
         <div className="inputName">NICK:</div>
-        <input type="text" name="nick" onChange={onChange} value={name} />
+        <input
+          type="text"
+          name="nick"
+          onChange={onChange}
+          value={name}
+          maxLength="15"
+        />
       </div>
       {name.length !== 0 && store.profesion !== "" ? (
         <Link to="/give-skills">

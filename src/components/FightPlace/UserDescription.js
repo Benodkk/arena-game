@@ -1,4 +1,4 @@
-import { useSelector } from "react-redux";
+import React, { useSelector } from "react-redux";
 
 import health from "../../database/images/health.png";
 import energy from "../../database/images/energy.png";

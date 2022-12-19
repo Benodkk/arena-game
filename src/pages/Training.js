@@ -1,3 +1,4 @@
+import React from "react";
 import { Link } from "react-router-dom";
 
 import { useDispatch, useSelector } from "react-redux";
@@ -48,7 +49,11 @@ function Training() {
       </div>
       <div className="userNameContainer">
         <div className="userName">{store.name}</div>
-        <img alt="character look" className="ImageImage" src={characterImage} />
+        <img
+          alt="character look"
+          className="characterImage"
+          src={characterImage}
+        />
       </div>
       <div className="currentSkills">
         <div className="moneyContainer">
