@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+
+import { useNavigate } from "react-router-dom";
 
 import useLeaveFight from "../../hooks/useLeaveFight";
+import useBlackScreenOn from "../../hooks/useBlackScreenOn";
+import DelayLink from "../DelayLink";
 
 import { useDispatch, useSelector } from "react-redux";
 import { resetDefense } from "../../redux/user/giveSkills";
@@ -13,7 +16,10 @@ import coin from "../../database/images/coin.png";
 function FinishFight() {
   const store = useSelector((state) => state);
   const dispatch = useDispatch();
+  const [blackScreenStyle, goBlack] = useBlackScreenOn();
+  const leave = useLeaveFight();
 
+  let nav = useNavigate();
   // reset deffense after fight
 
   const [defChanged, setDefChanged] = useState(false);
@@ -27,6 +33,8 @@ function FinishFight() {
   function leaveFight() {
     dispatch(resetDefense(currentDef));
     setDefChanged(false);
+    goBlack();
+    // nav("/menu");
   }
 
   const [endFightImage, setEndFightImage] = useState("");
@@ -35,8 +43,6 @@ function FinishFight() {
   const [fightStyle, setFightStyle] = useState({});
   const [imgAnimation, setImgAnimation] = useState({});
   const [rewardsAnimation, setRewardsAnimation] = useState({});
-
-  const leave = useLeaveFight();
 
   useEffect(() => {
     // when win or defeat
@@ -87,6 +93,7 @@ function FinishFight() {
 
   return (
     <div className="finishFightContainer" style={fightStyle}>
+      <div style={blackScreenStyle}></div>
       <div className="blackOut"></div>
       <div className="fightFinished">
         <img
@@ -105,9 +112,14 @@ function FinishFight() {
             </div>
           </div>
         </div>
-        <Link to={nextStep} className="nextStepBtn" style={rewardsAnimation}>
+        <DelayLink
+          delay={1000}
+          to={nextStep}
+          className="nextStepBtn"
+          style={rewardsAnimation}
+        >
           <button onClick={leaveFight}>Next</button>
-        </Link>
+        </DelayLink>
       </div>
     </div>
   );

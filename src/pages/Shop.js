@@ -1,9 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, Suspense } from "react";
 
+// const SelectType = React.lazy(() => import("../components/Shop/SelectType"));
+// const SliderContainer = React.lazy(() =>
+//   import("../components/Shop/SliderContainer")
+// );
 import SelectType from "../components/Shop/SelectType";
+import SliderContainer from "../components/Shop/SliderContainer";
 
 import items from "../database/items";
-import SliderContainer from "../components/Shop/SliderContainer";
 
 function Shop() {
   const [display, setDisplay] = useState(items.weapon);
@@ -22,12 +26,14 @@ function Shop() {
 
   return (
     <div className="shopContainer">
-      <SelectType
-        showWeapons={showWeapons}
-        showShields={showShields}
-        showSecondWeapons={showSecondWeapons}
-      />
-      <SliderContainer display={display} />
+      <Suspense fallback={<div>asdasdasd</div>}>
+        <SelectType
+          showWeapons={showWeapons}
+          showShields={showShields}
+          showSecondWeapons={showSecondWeapons}
+        />
+        <SliderContainer display={display} />
+      </Suspense>
     </div>
   );
 }

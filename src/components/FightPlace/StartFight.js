@@ -1,19 +1,28 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 
+import useBlackScreenOff from "../../hooks/useBlackScreenOff";
+
 import vs from "../../database/images/vs.png";
 
 function StartFight() {
   const store = useSelector((state) => state);
+  const [blackElement, offBlack] = useBlackScreenOff();
 
   const [firstFightAnimation, setFirstFightAnimation] = useState({});
   const [startAnimation, setStartAnimation] = useState({});
   const [containerAnimation, setContainerAnimation] = useState({});
 
   useEffect(() => {
-    setFirstFightAnimation({
-      opacity: 1,
-    });
+    setTimeout(() => {
+      offBlack(1000, 0.6, 1);
+    }, 500);
+    setTimeout(() => {
+      setFirstFightAnimation({
+        opacity: 1,
+      });
+    }, 2500);
+
     setTimeout(() => {
       setStartAnimation({
         opacity: 1,
@@ -23,24 +32,24 @@ function StartFight() {
         opacity: 0,
         transition: "0.5s",
       });
-    }, 3000);
+    }, 5500);
     setTimeout(() => {
       setContainerAnimation({
         opacity: 0,
         transition: "0.7s",
       });
-    }, 5500);
+    }, 8000);
     setTimeout(() => {
       setContainerAnimation({
         opacity: 0,
         display: "none",
         transition: "0s",
       });
-    }, 6200);
+    }, 8700);
   }, []);
   return (
     <div className="startFightContainer" style={containerAnimation}>
-      <div className="blackOut"></div>
+      <div style={blackElement}></div>
       <div className="timeToStartFight" style={firstFightAnimation}>
         Time for your {store.stats.fights + 1} fight!
       </div>

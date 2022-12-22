@@ -51,6 +51,18 @@ button:active {
 .backToMenuBtn:active {
   transform: translateY(10px) scale(0.85);
 }
+
+/* black out  */
+.blackOut {
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 1;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+}
+
 /* XXXXXXXXXXXXXX
  CHOOSE CHARACTER 
  XXXXXXXXXXXXXX*/
@@ -724,7 +736,7 @@ a {
   transform: scale(0.9);
 }
 .linkContainer a:focus {
-  transform: translateY(10px);
+  transform: translateY(10px) scale(0.9);
 }
 .tournamentLink a:hover {
   transform: scale(1);
@@ -751,7 +763,7 @@ a {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-image: url(./database/images/fight-background.jpg);
+  /* background-image: url(./database/images/fight-background.jpg); */
   background-size: cover;
   background-position: center;
   height: 92vh;
@@ -836,6 +848,8 @@ a {
   border-radius: 10px;
   text-align: center;
   width: 300px;
+  opacity: 0;
+  visibility: hidden;
 }
 .menuLinkContainer a {
   transition: 0.3s;
@@ -888,15 +902,6 @@ a {
   top: 0;
   left: 0;
   z-index: 1;
-}
-.blackOut {
-  position: absolute;
-  background-color: rgba(0, 0, 0, 0.6);
-  z-index: 1;
-  width: 100vw;
-  height: 100vh;
-  top: 0;
-  left: 0;
 }
 .fightStart {
   display: flex;
@@ -957,7 +962,7 @@ a {
 
 .fightFinished {
   position: absolute;
-  z-index: 2;
+  z-index: 1;
   text-align: center;
   top: 16vh;
   left: 35vw;

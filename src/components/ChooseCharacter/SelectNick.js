@@ -27,7 +27,14 @@ function SelectNick() {
         />
       </div>
       {name.length !== 0 && store.profesion !== "" ? (
-        <Link to="/give-skills">
+        <Link
+          to={{
+            pathname: "/give-skills",
+            state: {
+              from: "/",
+            },
+          }}
+        >
           <button onClick={() => dispatch(changeName(name))}>Next step!</button>
         </Link>
       ) : (
