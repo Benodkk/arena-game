@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/arena-game/static/css/main.1936b281.css",
-    "main.js": "/arena-game/static/js/main.6f68ee46.js",
+    "main.js": "/arena-game/static/js/main.466a67f7.js",
     "static/js/331.7aeebca7.chunk.js": "/arena-game/static/js/331.7aeebca7.chunk.js",
     "static/js/660.9f15db02.chunk.js": "/arena-game/static/js/660.9f15db02.chunk.js",
     "static/js/485.c67cda8c.chunk.js": "/arena-game/static/js/485.c67cda8c.chunk.js",
@@ -85,7 +85,7 @@
     "static/media/sWeapon6.png": "/arena-game/static/media/sWeapon6.2472f2e421d66d7557ff.png",
     "index.html": "/arena-game/index.html",
     "main.1936b281.css.map": "/arena-game/static/css/main.1936b281.css.map",
-    "main.6f68ee46.js.map": "/arena-game/static/js/main.6f68ee46.js.map",
+    "main.466a67f7.js.map": "/arena-game/static/js/main.466a67f7.js.map",
     "331.7aeebca7.chunk.js.map": "/arena-game/static/js/331.7aeebca7.chunk.js.map",
     "660.9f15db02.chunk.js.map": "/arena-game/static/js/660.9f15db02.chunk.js.map",
     "485.c67cda8c.chunk.js.map": "/arena-game/static/js/485.c67cda8c.chunk.js.map",
@@ -95,6 +95,6 @@
   },
   "entrypoints": [
     "static/css/main.1936b281.css",
-    "static/js/main.6f68ee46.js"
+    "static/js/main.466a67f7.js"
   ]
 }
