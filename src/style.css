@@ -62,6 +62,17 @@ button:active {
   top: 0;
   left: 0;
 }
+/* loading */
+
+.loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: black;
+  width: 100vw;
+  height: 100vh;
+}
 
 /* XXXXXXXXXXXXXX
  CHOOSE CHARACTER 
@@ -213,8 +224,14 @@ input[type="text"] {
   font-family: "Kanit", sans-serif;
   font-size: 2vh;
 }
+.nextStep {
+  display: flex;
+  align-items: flex-end;
+  text-decoration: none;
+  height: 5.5vh;
+}
 .emptyDiv {
-  height: 3.8vh;
+  height: 5.5vh;
 }
 
 /* XXXXXXXXXXXXXX
@@ -277,9 +294,6 @@ input[type="text"] {
 
 .giveSkillsContainer button {
   font-size: 2.4vh;
-}
-.giveSkillsContainer .emptyDiv {
-  height: 4.3vh;
 }
 
 /* XXXXXXXXXXXXXX
@@ -715,8 +729,9 @@ a {
 .fightContainer {
   display: grid;
   grid-template-columns: 25vw 25vw;
-  grid-template-rows: 20vh;
+  grid-template-rows: 40vh;
   place-items: center;
+  align-items: flex-end;
 }
 .fightContainer img {
   width: 16vw;
@@ -726,22 +741,24 @@ a {
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: 1vh;
   min-height: 40vh;
   justify-content: flex-end;
 }
-.linkContainer a {
+.linkContainer img {
   transition: 0.3s;
+  cursor: pointer;
 }
-.linkContainer a:hover {
+.linkContainer img:hover {
   transform: scale(0.9);
 }
-.linkContainer a:focus {
+.linkContainer img:active {
   transform: translateY(10px) scale(0.9);
 }
-.tournamentLink a:hover {
+.tournamentLink img:hover {
   transform: scale(1);
 }
-.tournamentLink a:focus {
+.tournamentLink img:focus {
   transform: translateY(0);
 }
 .tournamentInfo {
@@ -763,7 +780,7 @@ a {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  /* background-image: url(./database/images/fight-background.jpg); */
+  background-image: url(./database/images/fight-background.jpg);
   background-size: cover;
   background-position: center;
   height: 92vh;
@@ -971,11 +988,6 @@ a {
   align-items: center;
   gap: 2vh;
 }
-.fightFinished a button {
-  background-color: #fff;
-  margin-top: 2vh;
-  font-size: 3vh;
-}
 
 .rewardsContainer {
   display: flex;
@@ -1007,6 +1019,20 @@ a {
 .nextStepBtn {
   transform: translateY(40vh);
   transition: 1s cubic-bezier(0.25, 0.25, 0.365, 1.315);
+}
+.nextStepBtn button {
+  font-size: 3vh;
+}
+.nextStepBtn button:hover {
+  transition: 0.15s;
+  box-shadow: rgba(45, 35, 66, 0.4) 0 4px 8px,
+    rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #d6d6e7 0 -3px 0 inset;
+  transform: translateY(-2px);
+}
+
+.nextStepBtn button:active {
+  box-shadow: #d6d6e7 0 3px 7px inset;
+  transform: translateY(2px);
 }
 
 .endFightImg {

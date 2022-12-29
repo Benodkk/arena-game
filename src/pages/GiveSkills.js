@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import DelayLink from "../components/DelayLink";
+import { useNavigate } from "react-router-dom";
 
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -8,15 +7,20 @@ import {
   giveDefense,
   giveVitality,
 } from "../redux/user/giveSkills";
+import { blackOff } from "../redux/blackOn";
 
 import useStartFight from "../hooks/useStartFight";
 import useBlackScreenOn from "../hooks/useBlackScreenOn";
+import useBlackScreenOff from "../hooks/useBlackScreenOff";
+
 import profesion from "../database/profesion";
 
 function GiveSkills() {
+  const navigate = useNavigate();
   const store = useSelector((state) => state);
   const dispatch = useDispatch();
-  const [blackOutStyle, goBlack] = useBlackScreenOn();
+  const [blackOnStyle, goBlack] = useBlackScreenOn();
+  const [blackOffStyle, offBlack] = useBlackScreenOff();
 
   const start = useStartFight();
 
@@ -42,17 +46,34 @@ function GiveSkills() {
     }
   }, [store.level]);
 
-  // if character have been just chosen, screen going black and taking use to first fight
+  useEffect(() => {
+    // when leaving FightPlace component, screen is full black and fade off in 1s
+    if (store.blackOn == "black") {
+      offBlack();
+      setTimeout(() => {
+        dispatch(blackOff());
+      }, 1000);
+    }
+  }, []);
 
-  function blackOut() {
+  function nextPage() {
+    // if character have been just chosen, screen going black and taking use to first fight
     if (store.level == 1) {
       goBlack(1000, 1);
     }
+    setTimeout(() => {
+      navigate(nextStep);
+    }, delay);
   }
 
   return (
     <div className="giveSkillsContainer">
-      <div style={blackOutStyle}></div>
+      <div style={blackOnStyle}></div>
+      <div
+        style={
+          store.blackOn == "black" ? blackOffStyle : { visibility: "hidden" }
+        }
+      ></div>
       <div className="selectionName">GIVE SKILLS</div>
       <div className="userNameContainer">
         <div className="userName">{store.name}</div>
@@ -91,9 +112,9 @@ function GiveSkills() {
         })}
       </div>
       {skillPoints == 0 ? (
-        <DelayLink delay={delay} to={nextStep}>
-          <button onClick={blackOut}>Next step!</button>
-        </DelayLink>
+        <div className="nextStep">
+          <button onClick={nextPage}>Next step!</button>
+        </div>
       ) : (
         <div className="emptyDiv"></div>
       )}

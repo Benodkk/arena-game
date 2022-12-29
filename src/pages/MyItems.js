@@ -29,10 +29,16 @@ function MyItems() {
   }
 
   function showSecondWeapons() {
-    if (store.items.backpack.some((x) => x.type == "second weapon")) {
-      setDisplay(store.items.backpack.filter((x) => x.type == "second weapon"));
-      setMoveLeft(0);
-      setSlidesWeapons(0);
+    if (store.items.backpack.find((x) => x.type == "second weapon")) {
+      if (store.items.backpack.some((x) => x.type == "second weapon")) {
+        setDisplay(
+          store.items.backpack.filter((x) => x.type == "second weapon")
+        );
+        setMoveLeft(0);
+        setSlidesWeapons(0);
+      }
+    } else {
+      setDisplay([]);
     }
   }
 
@@ -52,13 +58,15 @@ function MyItems() {
 
   let elementStyle;
   let weaponImgStyle;
-  if (display[0].type == "shield") {
-    elementStyle = {
-      width: "7.5vw",
-    };
-    weaponImgStyle = {
-      maxWidth: "7.5vw",
-    };
+  if (display.length > 0) {
+    if (display[0].type == "shield") {
+      elementStyle = {
+        width: "7.5vw",
+      };
+      weaponImgStyle = {
+        maxWidth: "7.5vw",
+      };
+    }
   }
 
   // slider of items

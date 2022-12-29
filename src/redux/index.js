@@ -16,6 +16,8 @@ import { oItemsReducer } from "./oponent/oItems";
 import { oSuperpowerReducer } from "./oponent/oSuperpower";
 import { moveReducer } from "./user/move";
 
+import { blackOnReducer } from "./blackOn";
+
 const redux = require("redux");
 const { combineReducers, createStore } = redux;
 
@@ -37,11 +39,9 @@ const rootReducer = combineReducers({
   oponentParameters: oParameterReducer,
   oponentItems: oItemsReducer,
   oponentSuperpower: oSuperpowerReducer,
+  blackOn: blackOnReducer,
 });
 
 const store = createStore(rootReducer);
-store.subscribe(() => {
-  console.log(store.getState());
-});
 
 export default store;

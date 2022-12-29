@@ -8,7 +8,7 @@ import coin from "../../database/images/coin.png";
 
 function SelectType({ showWeapons, showShields, showSecondWeapons }) {
   const store = useSelector((state) => state);
-  console.log(store);
+
   return (
     <div className="selectType">
       <div className="topContent">

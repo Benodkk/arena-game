@@ -36,6 +36,10 @@ User - user can check his statistics and change armed items.
 
 Arena - user can choose there if he will be fighting in another typical arena fight or maybe taking part in tournament.
 
+### Items
+
+User can have two items armed, one for each hand. In first hand, user can arm only weapon, in second hand, either shield or second weapon.
+
 ### To do
 
 Currently user can fight only with 7 oponents. After seven fights, the bug will apear.

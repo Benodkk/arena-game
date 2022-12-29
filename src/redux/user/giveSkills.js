@@ -88,7 +88,7 @@ export function giveSkillsReducer(state = initialState, action) {
       ];
     case "CHOOSE_ASSASSIN":
       return [
-        { name: "attack", amount: 8, img: attack },
+        { name: "attack", amount: 80, img: attack },
         { name: "defense", amount: 2, img: shield },
         { name: "vitality", amount: 2, img: health },
       ];

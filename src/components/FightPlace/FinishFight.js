@@ -4,22 +4,22 @@ import { useNavigate } from "react-router-dom";
 
 import useLeaveFight from "../../hooks/useLeaveFight";
 import useBlackScreenOn from "../../hooks/useBlackScreenOn";
-import DelayLink from "../DelayLink";
 
 import { useDispatch, useSelector } from "react-redux";
 import { resetDefense } from "../../redux/user/giveSkills";
+import { blackOn } from "../../redux/blackOn";
 
 import victory from "../../database/images/victory.png";
 import defeat from "../../database/images/defeat.png";
 import coin from "../../database/images/coin.png";
 
 function FinishFight() {
+  const navigate = useNavigate();
   const store = useSelector((state) => state);
   const dispatch = useDispatch();
   const [blackScreenStyle, goBlack] = useBlackScreenOn();
   const leave = useLeaveFight();
 
-  let nav = useNavigate();
   // reset deffense after fight
 
   const [defChanged, setDefChanged] = useState(false);
@@ -30,11 +30,25 @@ function FinishFight() {
     setCurrentDef(store.skills[1].amount);
   }
 
+  const [nextStep, setNextStep] = useState("");
+
+  useEffect(() => {
+    // if level up you get skills points to give
+    if (store.exp == 0) {
+      setNextStep("/give-skills");
+    } else {
+      setNextStep("/menu");
+    }
+  }, [store.exp]);
+
   function leaveFight() {
     dispatch(resetDefense(currentDef));
+    dispatch(blackOn());
     setDefChanged(false);
     goBlack();
-    // nav("/menu");
+    setTimeout(() => {
+      navigate(nextStep);
+    }, 1000);
   }
 
   const [endFightImage, setEndFightImage] = useState("");
@@ -80,17 +94,6 @@ function FinishFight() {
     }
   }, [store.parameters.health, store.oponentParameters.health]);
 
-  const [nextStep, setNextStep] = useState("");
-
-  useEffect(() => {
-    // if level up you get skills points to give
-    if (store.exp == 0) {
-      setNextStep("/give-skills");
-    } else {
-      setNextStep("/menu");
-    }
-  }, [store.exp]);
-
   return (
     <div className="finishFightContainer" style={fightStyle}>
       <div style={blackScreenStyle}></div>
@@ -112,14 +115,9 @@ function FinishFight() {
             </div>
           </div>
         </div>
-        <DelayLink
-          delay={1000}
-          to={nextStep}
-          className="nextStepBtn"
-          style={rewardsAnimation}
-        >
+        <div style={rewardsAnimation} className="nextStepBtn">
           <button onClick={leaveFight}>Next</button>
-        </DelayLink>
+        </div>
       </div>
     </div>
   );

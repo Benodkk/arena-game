@@ -1,8 +1,7 @@
 import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 
 import { useSelector } from "react-redux";
-
-import DelayLink from "../components/DelayLink";
 
 import useBlackScreenOn from "../hooks/useBlackScreenOn";
 import useStartFight from "../hooks/useStartFight";
@@ -12,6 +11,7 @@ import tournament from "../database/images/tournament.png";
 import left from "../database/images/left.png";
 
 function Arena() {
+  const navigate = useNavigate();
   const store = useSelector((state) => state);
   const [blackStyle, goBlack] = useBlackScreenOn();
   const start = useStartFight();
@@ -26,36 +26,34 @@ function Arena() {
     }
   }
 
+  function goFight() {
+    goBlack();
+    setTimeout(() => {
+      navigate("/fight");
+    }, 1000);
+    start();
+  }
+
   return (
     <div className="arenaContainer">
       <div style={blackStyle}></div>
-      <DelayLink className="backToMenuBtn" to="/menu">
+      <Link className="backToMenuBtn" to="/menu">
         <img alt="back to menu" src={left} />
-      </DelayLink>
+      </Link>
       <div className="selectionName">Arena</div>
       <div className="fightContainer">
         <div className="linkContainer ">
-          <DelayLink delay={1000} to="/fight">
-            <img
-              alt="start fight"
-              onClick={() => {
-                start();
-                goBlack();
-              }}
-              src={fight}
-            />
-          </DelayLink>
+          <img alt="start fight" onClick={goFight} src={fight} />
           <div className="linkLabel">ARENA FIGHT</div>
         </div>
         <div className="linkContainer tournamentLink">
-          <DelayLink
-            // to="/tournament"
+          <img // to="/tournament"
             style={tournamentStyle()}
             onMouseOver={() => setInfoStyle(1)}
             onMouseLeave={() => setInfoStyle(0)}
-          >
-            <img alt="tournament" src={tournament} />
-          </DelayLink>
+            alt="tournament"
+            src={tournament}
+          />
           <div className="linkLabel">TOURNAMENT</div>
           <div className="tournamentInfo" style={{ opacity: infoStyle }}>
             You need level 3 to participate in tournament.

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
+import { useDispatch, useSelector } from "react-redux";
 import { changeName } from "../../redux/user/userName";
 
 function SelectNick() {
@@ -27,14 +27,7 @@ function SelectNick() {
         />
       </div>
       {name.length !== 0 && store.profesion !== "" ? (
-        <Link
-          to={{
-            pathname: "/give-skills",
-            state: {
-              from: "/",
-            },
-          }}
-        >
+        <Link className="nextStep" to="/give-skills">
           <button onClick={() => dispatch(changeName(name))}>Next step!</button>
         </Link>
       ) : (
