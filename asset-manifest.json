@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/arena-game/static/css/main.5a4b9416.css",
-    "main.js": "/arena-game/static/js/main.b64038f6.js",
+    "main.css": "/arena-game/static/css/main.1936b281.css",
+    "main.js": "/arena-game/static/js/main.6f68ee46.js",
     "static/js/331.7aeebca7.chunk.js": "/arena-game/static/js/331.7aeebca7.chunk.js",
     "static/js/660.9f15db02.chunk.js": "/arena-game/static/js/660.9f15db02.chunk.js",
     "static/js/485.c67cda8c.chunk.js": "/arena-game/static/js/485.c67cda8c.chunk.js",
     "static/js/858.23fc9073.chunk.js": "/arena-game/static/js/858.23fc9073.chunk.js",
     "static/js/220.3b68327d.chunk.js": "/arena-game/static/js/220.3b68327d.chunk.js",
-    "static/js/802.f138f3bf.chunk.js": "/arena-game/static/js/802.f138f3bf.chunk.js",
+    "static/js/802.10aa1d13.chunk.js": "/arena-game/static/js/802.10aa1d13.chunk.js",
     "static/media/vs.png": "/arena-game/static/media/vs.4c6f1126dd8684f2eec4.png",
     "static/media/defeat.png": "/arena-game/static/media/defeat.61d68628f8ff65b6df44.png",
     "static/media/victory.png": "/arena-game/static/media/victory.08527816c8e98d3075cf.png",
@@ -84,17 +84,17 @@
     "static/media/weapon1.png": "/arena-game/static/media/weapon1.60a7f11a7d97394bdc76.png",
     "static/media/sWeapon6.png": "/arena-game/static/media/sWeapon6.2472f2e421d66d7557ff.png",
     "index.html": "/arena-game/index.html",
-    "main.5a4b9416.css.map": "/arena-game/static/css/main.5a4b9416.css.map",
-    "main.b64038f6.js.map": "/arena-game/static/js/main.b64038f6.js.map",
+    "main.1936b281.css.map": "/arena-game/static/css/main.1936b281.css.map",
+    "main.6f68ee46.js.map": "/arena-game/static/js/main.6f68ee46.js.map",
     "331.7aeebca7.chunk.js.map": "/arena-game/static/js/331.7aeebca7.chunk.js.map",
     "660.9f15db02.chunk.js.map": "/arena-game/static/js/660.9f15db02.chunk.js.map",
     "485.c67cda8c.chunk.js.map": "/arena-game/static/js/485.c67cda8c.chunk.js.map",
     "858.23fc9073.chunk.js.map": "/arena-game/static/js/858.23fc9073.chunk.js.map",
     "220.3b68327d.chunk.js.map": "/arena-game/static/js/220.3b68327d.chunk.js.map",
-    "802.f138f3bf.chunk.js.map": "/arena-game/static/js/802.f138f3bf.chunk.js.map"
+    "802.10aa1d13.chunk.js.map": "/arena-game/static/js/802.10aa1d13.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.5a4b9416.css",
-    "static/js/main.b64038f6.js"
+    "static/css/main.1936b281.css",
+    "static/js/main.6f68ee46.js"
   ]
 }
