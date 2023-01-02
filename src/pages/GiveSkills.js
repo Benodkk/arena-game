@@ -111,13 +111,16 @@ function GiveSkills() {
           );
         })}
       </div>
-      {skillPoints == 0 ? (
-        <div className="nextStep">
-          <button onClick={nextPage}>Next step!</button>
-        </div>
-      ) : (
-        <div className="emptyDiv"></div>
-      )}
+      <button
+        onClick={nextPage}
+        style={
+          skillPoints == 0
+            ? { visibility: "visible" }
+            : { visibility: "hidden" }
+        }
+      >
+        Next step!
+      </button>
     </div>
   );
 }

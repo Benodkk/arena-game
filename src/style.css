@@ -224,15 +224,6 @@ input[type="text"] {
   font-family: "Kanit", sans-serif;
   font-size: 2vh;
 }
-.nextStep {
-  display: flex;
-  align-items: flex-end;
-  text-decoration: none;
-  height: 5.5vh;
-}
-.emptyDiv {
-  height: 5.5vh;
-}
 
 /* XXXXXXXXXXXXXX
     GIVE SKILLS

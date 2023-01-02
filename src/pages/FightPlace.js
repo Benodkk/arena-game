@@ -14,12 +14,6 @@ const UserMakeMove = lazy(() =>
   import("../components/FightPlace/UserMakeMove")
 );
 const StartFight = lazy(() => import("../components/FightPlace/StartFight"));
-// import OponentDescription from "../components/FightPlace/OponentDescription";
-// import UserDescription from "../components/FightPlace/UserDescription";
-// import Animations from "../components/FightPlace/Animations";
-// import FinishFight from "../components/FightPlace/FinishFight";
-// import UserMakeMove from "../components/FightPlace/UserMakeMove";
-// import StartFight from "../components/FightPlace/StartFight";
 
 function FightPlace() {
   return (

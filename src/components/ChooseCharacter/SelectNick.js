@@ -26,13 +26,17 @@ function SelectNick() {
           maxLength="15"
         />
       </div>
-      {name.length !== 0 && store.profesion !== "" ? (
-        <Link className="nextStep" to="/give-skills">
-          <button onClick={() => dispatch(changeName(name))}>Next step!</button>
-        </Link>
-      ) : (
-        <div className="emptyDiv"></div>
-      )}
+      <Link
+        className="nextStep"
+        to="/give-skills"
+        style={
+          name.length !== 0 && store.profesion !== ""
+            ? { visibility: "visible" }
+            : { visibility: "hidden" }
+        }
+      >
+        <button onClick={() => dispatch(changeName(name))}>Next step!</button>
+      </Link>
     </div>
   );
 }
