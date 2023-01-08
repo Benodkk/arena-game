@@ -16,7 +16,7 @@ function OponentDescription() {
 
   const [firstMove, setFirstMove] = useState(false);
 
-  const oponentImg = oponents.find((x) => x.name == store.oponentName).img;
+  const oponentImg = oponents.find((x) => x.name === store.oponentName).img;
 
   // Opponent make a move 2 seconds after user move
   // 2 seconds because thats how long the longest animation of user move takes

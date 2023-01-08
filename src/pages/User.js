@@ -10,7 +10,7 @@ import levels from "../database/levels";
 function User() {
   const store = useSelector((state) => state);
 
-  const characterImage = profesion.find((x) => x.name == store.profesion).img;
+  const characterImage = profesion.find((x) => x.name === store.profesion).img;
 
   return (
     <div className="userContainer">
@@ -29,7 +29,7 @@ function User() {
             <div>Level: {store.level}</div>
             <div>
               Experience: {store.exp}/
-              {levels.find((x) => x.level == store.level).promotion}
+              {levels.find((x) => x.level === store.level).promotion}
             </div>
             <div>Money: {store.money}</div>
             <div>Profesion: {store.profesion}</div>

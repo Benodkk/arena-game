@@ -26,8 +26,8 @@ function useLeaveFight() {
 
     // if level up
 
-    let lvl = levels.find((x) => x.level == store.level);
-    if (store.level == lvl.level && store.exp == lvl.promotion - 100) {
+    let lvl = levels.find((x) => x.level === store.level);
+    if (store.level === lvl.level && store.exp === lvl.promotion - 100) {
       dispatch(levelUp());
       dispatch(resetExp());
     }

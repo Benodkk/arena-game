@@ -33,7 +33,7 @@ function Animations() {
   useEffect(() => {
     // Animations for user move
 
-    if (store.move[0] == "defense") {
+    if (store.move[0] === "defense") {
       setDefStyle({
         display: "block",
         animation: "2s defense 1",
@@ -42,7 +42,7 @@ function Animations() {
         setDefStyle({});
       }, 2000);
     }
-    if (store.move[0] == "rest") {
+    if (store.move[0] === "rest") {
       setRestStyle({
         animation: "2s defense",
       });
@@ -50,7 +50,7 @@ function Animations() {
         setRestStyle({});
       }, 2000);
     }
-    if (store.move[0] == "attack") {
+    if (store.move[0] === "attack") {
       setAttackStyle({
         animation: "1s attack",
       });
@@ -64,7 +64,7 @@ function Animations() {
         setDmgStyle({});
       }, 2000);
     }
-    if (store.move[0] == "block") {
+    if (store.move[0] === "block") {
       setAttackStyle({
         animation: "1s attack",
       });
@@ -78,7 +78,7 @@ function Animations() {
         setBlockStyle({});
       }, 2000);
     }
-    if (store.move[0] == "Giant smash" || store.move[0] == "Fatal strike") {
+    if (store.move[0] === "Giant smash" || store.move[0] === "Fatal strike") {
       setSuperpowerStyle({
         animation: "1.5s superpower",
       });
@@ -86,7 +86,7 @@ function Animations() {
         setSuperpowerStyle({});
       }, 1500);
     }
-    if (store.move[0] == "Counterattack") {
+    if (store.move[0] === "Counterattack") {
       setSuperpowerStyle({
         animation: "1.5s superpower",
       });
@@ -98,7 +98,7 @@ function Animations() {
         setDefStyle({});
       }, 2000);
     }
-    if (store.move[0] == "full energy") {
+    if (store.move[0] === "full energy") {
       setFullEnergy({
         animation: "1.5s superpower",
       });
@@ -106,7 +106,7 @@ function Animations() {
         setFullEnergy({});
       }, 1500);
     }
-    if (store.move[0] == "no energy") {
+    if (store.move[0] === "no energy") {
       setNoEnergy({
         animation: "1.5s superpower",
       });
@@ -117,7 +117,7 @@ function Animations() {
 
     // animations for oponent move
 
-    if (store.move[0] == "oDefense") {
+    if (store.move[0] === "oDefense") {
       setODefStyle({
         animation: "2s oDefense",
       });
@@ -125,7 +125,7 @@ function Animations() {
         setODefStyle({});
       }, 2000);
     }
-    if (store.move[0] == "oRest") {
+    if (store.move[0] === "oRest") {
       setORestStyle({
         animation: "2s oDefense",
       });
@@ -133,7 +133,7 @@ function Animations() {
         setORestStyle({});
       }, 2000);
     }
-    if (store.move[0] == "oAttack") {
+    if (store.move[0] === "oAttack") {
       setOAttackStyle({
         animation: "1s oAttack",
       });
@@ -147,7 +147,7 @@ function Animations() {
         setODmgStyle({});
       }, 2000);
     }
-    if (store.move[0] == "oBlock") {
+    if (store.move[0] === "oBlock") {
       setOAttackStyle({
         animation: "1s oAttack",
       });
@@ -161,7 +161,10 @@ function Animations() {
         setOBlockStyle({});
       }, 2000);
     }
-    if (store.move[0] == "+ Giant smash" || store.move[0] == "+ Fatal strike") {
+    if (
+      store.move[0] === "+ Giant smash" ||
+      store.move[0] === "+ Fatal strike"
+    ) {
       setOSuperpowerStyle({
         animation: "1.5s oSuperpower",
       });
@@ -169,7 +172,7 @@ function Animations() {
         setOSuperpowerStyle({});
       }, 1500);
     }
-    if (store.move[0] == "+ Counterattack") {
+    if (store.move[0] === "+ Counterattack") {
       setOSuperpowerStyle({
         animation: "1.5s oSuperpower",
       });

@@ -61,8 +61,8 @@ function useOponentMove() {
     if (
       // if Fatal strike superpower was used
       superpower < 0.5 &&
-      store.oponentSuperpower == "Fatal strike" &&
-      superpowerUsed == 0 &&
+      store.oponentSuperpower === "Fatal strike" &&
+      superpowerUsed === 0 &&
       store.oponentParameters.energy > 10
     ) {
       oponentAttack = store.oponentSkils.attack * 2 + oponentsPower * 2.5;
@@ -76,15 +76,15 @@ function useOponentMove() {
         store.skills[1].amount * 1.5;
     }
 
-    if (store.items.armed.secondHand.type == "shield") {
-      if (store.oponentItems.armed.secondHand.type == "shield") {
+    if (store.items.armed.secondHand.type === "shield") {
+      if (store.oponentItems.armed.secondHand.type === "shield") {
         oponentAttack -= store.items.armed.secondHand.defense * 2;
       } else {
         oponentAttack +=
           (oponentsSecondPower - store.items.armed.secondHand.defense) * 2;
       }
     } else {
-      if (store.oponentItems.armed.secondHand.type == "second weapon") {
+      if (store.oponentItems.armed.secondHand.type === "second weapon") {
         oponentAttack += oponentsSecondPower * 2;
       }
     }
@@ -111,16 +111,16 @@ function useOponentMove() {
 
     // what move oponent do?
 
-    if (superpowerUsed == 1) {
+    if (superpowerUsed === 1) {
       // counterattack used in previous tour
       oponentAttack += oponentAttack;
       setSuperpowerUsed(2);
     }
     if (
       // use Giant smash superpower
-      superpowerUsed == 0 &&
+      superpowerUsed === 0 &&
       superpower < 0.5 &&
-      store.oponentSuperpower == "Giant smash"
+      store.oponentSuperpower === "Giant smash"
     ) {
       oponentAttack += 2 * store.oponentSkils.vitality;
       setSuperpowerUsed(2);
@@ -130,10 +130,10 @@ function useOponentMove() {
     function move() {
       if (
         // use Counterattack
-        superpowerUsed == 0 &&
+        superpowerUsed === 0 &&
         superpower < 0.5 &&
         store.oponentParameters.energy < 85 &&
-        store.oponentSuperpower == "Counterattack"
+        store.oponentSuperpower === "Counterattack"
       ) {
         dispatch(oChangeEnergy(15));
         dispatch(oGiveDefense(0.5));
@@ -178,7 +178,7 @@ function useOponentMove() {
     }
 
     // this timeout gives time for superpower animation to run
-    if (superpowerNow == true) {
+    if (superpowerNow === true) {
       setTimeout(() => {
         move();
       }, 1000);

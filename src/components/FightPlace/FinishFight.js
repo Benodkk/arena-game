@@ -24,22 +24,21 @@ function FinishFight() {
 
   const [defChanged, setDefChanged] = useState(false);
   const [currentDef, setCurrentDef] = useState(0);
-
-  if (defChanged == false) {
-    setDefChanged(true);
-    setCurrentDef(store.skills[1].amount);
-  }
-
   const [nextStep, setNextStep] = useState("");
 
   useEffect(() => {
     // if level up you get skills points to give
-    if (store.exp == 0) {
+    if (store.exp === 0) {
       setNextStep("/give-skills");
     } else {
       setNextStep("/menu");
     }
   }, [store.exp]);
+
+  if (defChanged === false) {
+    setDefChanged(true);
+    setCurrentDef(store.skills[1].amount);
+  }
 
   function leaveFight() {
     dispatch(resetDefense(currentDef));

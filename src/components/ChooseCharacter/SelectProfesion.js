@@ -17,6 +17,7 @@ function SelectProfesion() {
   const dispatch = useDispatch();
 
   const [front, setFront] = useState(["Brute", "Warrior", "Assassin"]);
+  const [infoStyle, setInfoStyle] = useState("");
 
   function changeFrontRight() {
     setFront([front[1], front[2], front[0]]);
@@ -26,18 +27,18 @@ function SelectProfesion() {
   }
 
   function profesionStyle(e) {
-    if (e == front[0]) {
+    if (e === front[0]) {
       return {
         transition: "1s",
         zIndex: "1",
       };
-    } else if (e == front[1]) {
+    } else if (e === front[1]) {
       return {
         transition: "1s",
         transform: "perspective(10px) translateZ(-10px) translateX(-12.48vw)",
         opacity: "0.3",
       };
-    } else if (e == front[2]) {
+    } else if (e === front[2]) {
       return {
         transition: "1s",
         transform: "perspective(10px) translateZ(-10px) translateX(29.12vw)",
@@ -47,7 +48,7 @@ function SelectProfesion() {
   }
 
   function btnStyle(e) {
-    if (e == front[0]) {
+    if (e === front[0]) {
       return {
         opacity: "1",
       };
@@ -61,7 +62,7 @@ function SelectProfesion() {
   // make background of character type yellow when character selected
 
   function nameStyle(e) {
-    if (e == store.profesion) {
+    if (e === store.profesion) {
       return {
         backgroundColor: "rgba(255, 255, 100, 0.8)",
       };
@@ -69,8 +70,6 @@ function SelectProfesion() {
   }
 
   // show superpower info on question mark hover
-
-  const [infoStyle, setInfoStyle] = useState("");
 
   function showInfo(e) {
     setInfoStyle(e.target.id);
@@ -81,7 +80,7 @@ function SelectProfesion() {
   }
 
   function info(e) {
-    if (e == infoStyle) {
+    if (e === infoStyle) {
       return {
         opacity: 1,
         visibility: "visible",
@@ -145,11 +144,11 @@ function SelectProfesion() {
               </div>
               <button
                 onClick={() => {
-                  if (element.name == "Brute") {
+                  if (element.name === "Brute") {
                     return dispatch(chooseBrute());
-                  } else if (element.name == "Warrior") {
+                  } else if (element.name === "Warrior") {
                     return dispatch(chooseWarrior());
-                  } else if (element.name == "Assassin") {
+                  } else if (element.name === "Assassin") {
                     return dispatch(chooseAssassin());
                   }
                 }}

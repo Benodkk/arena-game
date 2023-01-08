@@ -14,19 +14,21 @@ import shield from "../../database/images/shield.png";
 
 function UserMakeMove() {
   const store = useSelector((state) => state);
+  const move = useUserMove();
 
-  const characterLook = profesion.find((x) => x.name == store.profesion).img;
+  const characterLook = profesion.find((x) => x.name === store.profesion).img;
   const userSuperpower = profesion.find(
-    (x) => x.name == store.profesion
+    (x) => x.name === store.profesion
   ).superpower;
-
-  // If superpower used change opacity of superpower button
-  // and make superpower info visible on superpower button hover
 
   const [ifSuperpowerUsed, setIfSuperpowerUser] = useState(false);
   const [showSuperpowerInfo, setShowSuperpowerInfo] = useState(false);
   const [superpowerOpacity, setSuperpowerOpacity] = useState(1);
   const [superpowerInfoStyle, setSuperpowerInfoStyle] = useState({});
+  const [wait, setWait] = useState(true);
+
+  // If superpower used change opacity of superpower button
+  // and make superpower info visible on superpower button hover
 
   function superpowerUsed() {
     setSuperpowerOpacity(0.2);
@@ -34,7 +36,7 @@ function UserMakeMove() {
   }
 
   useEffect(() => {
-    if (showSuperpowerInfo == true && ifSuperpowerUsed == true) {
+    if (showSuperpowerInfo === true && ifSuperpowerUsed === true) {
       setSuperpowerInfoStyle({
         opacity: 1,
         visibility: "visible",
@@ -46,19 +48,6 @@ function UserMakeMove() {
       });
     }
   }, [showSuperpowerInfo]);
-
-  const [wait, setWait] = useState(true);
-  const move = useUserMove();
-
-  function makeMove(type) {
-    if (wait && type !== userSuperpower) {
-      move(type);
-    }
-    if (wait && ifSuperpowerUsed == false && type == userSuperpower) {
-      superpowerUsed();
-      move(userSuperpower);
-    }
-  }
 
   // user have to wait for his turn after making move
 
@@ -80,6 +69,15 @@ function UserMakeMove() {
       setWait(true);
     }, 2000);
   }, [store.oponentParameters.energy]);
+  function makeMove(type) {
+    if (wait && type !== userSuperpower) {
+      move(type);
+    }
+    if (wait && ifSuperpowerUsed === false && type === userSuperpower) {
+      superpowerUsed();
+      move(userSuperpower);
+    }
+  }
 
   return (
     <div className="actionsContainer">
@@ -139,13 +137,13 @@ function UserMakeMove() {
                 onClick={() => makeMove(userSuperpower)}
               />
               <div>
-                {profesion.find((x) => x.name == store.profesion).superpower}
+                {profesion.find((x) => x.name === store.profesion).superpower}
               </div>
             </div>
             <div style={superpowerInfoStyle} className="superpowerUsed">
               You can use{" "}
-              {profesion.find((x) => x.name == store.profesion).superpower} only
-              once.
+              {profesion.find((x) => x.name === store.profesion).superpower}{" "}
+              only once.
             </div>
           </div>
         </div>

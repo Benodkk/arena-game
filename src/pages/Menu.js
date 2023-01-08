@@ -18,7 +18,7 @@ function Menu() {
 
   useEffect(() => {
     // when leaving FightPlace component, screen is full black and fade off in 1s
-    if (store.blackOn == "black") {
+    if (store.blackOn === "black") {
       offBlack();
       setTimeout(() => {
         dispatch(blackOff());
@@ -29,7 +29,9 @@ function Menu() {
   return (
     <div className="menuContainer">
       <div
-        style={store.blackOn == "black" ? blackStyle : { visibility: "hidden" }}
+        style={
+          store.blackOn === "black" ? blackStyle : { visibility: "hidden" }
+        }
       ></div>
       <div className="menuLinks">
         <div className="menuLinkContainer">

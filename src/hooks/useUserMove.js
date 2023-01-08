@@ -35,7 +35,7 @@ function useUserMove() {
       //   power of second hand weapon
       let secondPower = 0;
 
-      if (store.items.armed.secondHand.type == "second weapon") {
+      if (store.items.armed.secondHand.type === "second weapon") {
         if (store.items.armed.secondHand.attack.length > 1) {
           secondPower =
             store.items.armed.secondHand.attack[0] +
@@ -53,7 +53,7 @@ function useUserMove() {
       // attack damage
       let attack;
 
-      if (superpower == "Fatal strike") {
+      if (superpower === "Fatal strike") {
         // if Fatal strike superpower was used
         attack = store.skills[0].amount * 2 + power * 2.5;
       } else {
@@ -63,12 +63,12 @@ function useUserMove() {
           store.oponentSkils.defense * 1.5;
       }
 
-      if (store.items.armed.secondHand.type == "shield") {
-        if (store.oponentItems.armed.secondHand.type == "shield") {
+      if (store.items.armed.secondHand.type === "shield") {
+        if (store.oponentItems.armed.secondHand.type === "shield") {
           attack -= store.oponentItems.armed.secondHand.stat[0] * 2;
         }
       } else {
-        if (store.oponentItems.armed.secondHand.type == "shield") {
+        if (store.oponentItems.armed.secondHand.type === "shield") {
           attack +=
             (secondPower - store.oponentItems.armed.secondHand.stat[0]) * 2;
         } else {
@@ -88,18 +88,18 @@ function useUserMove() {
 
       // When Giant smash or Counterattack superpower was used
 
-      if (superpower == "Giant smash") {
+      if (superpower === "Giant smash") {
         attack += 2 * store.skills[2].amount;
-      } else if (superpower == "Counterattack") {
+      } else if (superpower === "Counterattack") {
         attack += attack;
       }
 
       // what move user do?
 
-      if (type == "rest") {
+      if (type === "rest") {
         dispatch(makeMove(["rest"]));
         if (store.parameters.energy >= 75) {
-          if (store.parameters.energy == 100) {
+          if (store.parameters.energy === 100) {
             dispatch(makeMove(["full energy"]));
           } else {
             dispatch(setEnergy());
@@ -108,7 +108,7 @@ function useUserMove() {
           dispatch(changeEnergy(25));
           dispatch(makeMove(["rest"]));
         }
-      } else if (type == "deff") {
+      } else if (type === "deff") {
         dispatch(makeMove(["defense"]));
         dispatch(giveDefense(0.5));
         if (store.parameters.energy >= 85) {
@@ -116,11 +116,11 @@ function useUserMove() {
         } else {
           dispatch(changeEnergy(15));
         }
-      } else if (type == "Giant smash" && superpowerUsed == false) {
+      } else if (type === "Giant smash" && superpowerUsed === false) {
         dispatch(makeMove(["Giant smash"]));
         setSuperpower("Giant smash");
         setSuperpowerUsed(true);
-      } else if (type == "Counterattack" && superpowerUsed == false) {
+      } else if (type === "Counterattack" && superpowerUsed === false) {
         dispatch(makeMove(["Counterattack"]));
         setSuperpower("Counterattack");
         dispatch(giveDefense(0.5));
@@ -130,11 +130,11 @@ function useUserMove() {
         } else {
           dispatch(changeEnergy(15));
         }
-      } else if (type == "Fatal strike" && superpowerUsed == false) {
+      } else if (type === "Fatal strike" && superpowerUsed === false) {
         dispatch(makeMove(["Fatal strike"]));
         setSuperpower("Fatal strike");
         setSuperpowerUsed(true);
-      } else if (type == "light" && store.parameters.energy >= 10) {
+      } else if (type === "light" && store.parameters.energy >= 10) {
         dispatch(changeEnergy(-10));
         if (nr < 0.9) {
           dispatch(oChangeHealth(-Math.round(attack)));
@@ -144,7 +144,7 @@ function useUserMove() {
           dispatch(makeMove(["block"]));
         }
         setSuperpower("");
-      } else if (type == "normal" && store.parameters.energy >= 15) {
+      } else if (type === "normal" && store.parameters.energy >= 15) {
         dispatch(changeEnergy(-15));
         if (nr < 0.7) {
           dispatch(oChangeHealth(-Math.round(attack * 2)));
@@ -153,7 +153,7 @@ function useUserMove() {
           dispatch(makeMove(["block"]));
         }
         setSuperpower("");
-      } else if (type == "strong" && store.parameters.energy >= 25) {
+      } else if (type === "strong" && store.parameters.energy >= 25) {
         dispatch(changeEnergy(-25));
         if (nr < 0.37) {
           dispatch(oChangeHealth(-Math.round(attack * 5)));

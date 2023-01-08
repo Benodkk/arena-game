@@ -12,11 +12,18 @@ function SliderContainer({ display }) {
   const store = useSelector((state) => state);
   const dispatch = useDispatch();
 
+  const owned = { transform: "translate(-100%)" };
+  const notOwnedInfo = { transform: "translate(0%)" };
+
+  const [moveLeft, setMoveLeft] = useState(0);
+  const [slidesWeapons, setSlidesWeapons] = useState(0);
+  const [notification, setNotification] = useState("");
+
   // diffrent element width for shields
 
   let elementStyle;
   let weaponImgStyle;
-  if (display == items.shields) {
+  if (display === items.shields) {
     elementStyle = {
       width: "7.5vw",
     };
@@ -26,9 +33,6 @@ function SliderContainer({ display }) {
   }
 
   // slider of items
-
-  const [moveLeft, setMoveLeft] = useState(0);
-  const [slidesWeapons, setSlidesWeapons] = useState(0);
 
   const onSlideClick = {
     position: "relative",
@@ -45,19 +49,19 @@ function SliderContainer({ display }) {
   function slideRight() {
     if (
       slidesWeapons < items.weapon.length / 5 - 1 &&
-      display == items.weapon
+      display === items.weapon
     ) {
       setMoveLeft(moveLeft - 50);
       setSlidesWeapons(slidesWeapons + 1);
     } else if (
       slidesWeapons < items.shields.length / 4 - 1 &&
-      display == items.shields
+      display === items.shields
     ) {
       setMoveLeft(moveLeft - 50);
       setSlidesWeapons(slidesWeapons + 1);
     } else if (
       slidesWeapons < items.secondWeapon.length / 5 - 1 &&
-      display == items.secondWeapon
+      display === items.secondWeapon
     ) {
       setMoveLeft(moveLeft - 50);
       setSlidesWeapons(slidesWeapons + 1);
@@ -69,14 +73,9 @@ function SliderContainer({ display }) {
     setSlidesWeapons(0);
   }, [display]);
 
-  const owned = { transform: "translate(-100%)" };
-  const notOwnedInfo = { transform: "translate(0%)" };
-
-  const [notification, setNotification] = useState("");
-
   function showNotification(element, type) {
-    if (notification[0] == element.id) {
-      if (type == notification[1]) {
+    if (notification[0] === element.id) {
+      if (type === notification[1]) {
         return {
           transform: "translateY(0vh)",
         };
@@ -100,24 +99,24 @@ function SliderContainer({ display }) {
     runTimer();
 
     let item =
-      items.weapon.find((x) => x.id == elementId) ||
-      items.shields.find((x) => x.id == elementId) ||
-      items.secondWeapon.find((x) => x.id == elementId);
+      items.weapon.find((x) => x.id === elementId) ||
+      items.shields.find((x) => x.id === elementId) ||
+      items.secondWeapon.find((x) => x.id === elementId);
 
     if (
       store.money >= item.cost &&
       store.level >= item.lvl &&
-      store.items.backpack.some((x) => x.id == item.id) == false
+      store.items.backpack.some((x) => x.id === item.id) === false
     ) {
       dispatch(changeMoney(-item.cost));
       dispatch(toBackpack(item));
       setNotification([item.id, "bought"]);
-      if (item.type == "First weapon") {
+      if (item.type === "First weapon") {
         dispatch(firstHand(item));
       } else {
         dispatch(secondHand(item));
       }
-    } else if (store.items.backpack.some((x) => x.id == item.id)) {
+    } else if (store.items.backpack.some((x) => x.id === item.id)) {
       setNotification([item.id, "owned"]);
     } else if (store.level < item.lvl) {
       setNotification([item.id, "level"]);
@@ -173,9 +172,9 @@ function SliderContainer({ display }) {
                 <div id={element.id} className="itemInfo">
                   <div className="itemName">{element.name}</div>
                   <div className="itemStats">
-                    {element.type == "First weapon" ||
-                    element.type == "second weapon"
-                      ? element.attack.length == 1
+                    {element.type === "First weapon" ||
+                    element.type === "second weapon"
+                      ? element.attack.length === 1
                         ? `Attack: ${element.attack[0]}`
                         : `Attack: ${element.attack[0]} - ${element.attack[1]}`
                       : `Defense: ${element.defense}`}
@@ -183,7 +182,7 @@ function SliderContainer({ display }) {
                   <div
                     className="itemCost"
                     style={
-                      store.items.backpack.find((x) => x.id == element.id)
+                      store.items.backpack.find((x) => x.id === element.id)
                         ? owned
                         : notOwnedInfo
                     }

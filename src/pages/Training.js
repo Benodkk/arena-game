@@ -17,22 +17,22 @@ function Training() {
   const dispatch = useDispatch();
   const store = useSelector((state) => state);
 
+  const characterImage = profesion.find((x) => x.name === store.profesion).img;
+
   function giveSkill(skill) {
     if (store.money >= 100) {
       dispatch(changeMoney(-100));
-      if (skill == "attack") {
+      if (skill === "attack") {
         dispatch(giveAttack());
-      } else if (skill == "defense") {
+      } else if (skill === "defense") {
         dispatch(giveDefense());
-      } else if (skill == "vitality") {
+      } else if (skill === "vitality") {
         dispatch(giveVitality());
       }
     } else {
       console.log("no money");
     }
   }
-
-  const characterImage = profesion.find((x) => x.name == store.profesion).img;
 
   return (
     <div className="trainingContainer">

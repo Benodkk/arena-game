@@ -13,26 +13,26 @@ function MyItems() {
   const dispatch = useDispatch();
 
   const [display, setDisplay] = useState(
-    store.items.backpack.filter((x) => x.type == "First weapon")
+    store.items.backpack.filter((x) => x.type === "First weapon")
   );
 
   function showWeapons() {
-    setDisplay(store.items.backpack.filter((x) => x.type == "First weapon"));
+    setDisplay(store.items.backpack.filter((x) => x.type === "First weapon"));
     setMoveLeft(0);
     setSlidesWeapons(0);
   }
 
   function showShields() {
-    setDisplay(store.items.backpack.filter((x) => x.type == "shield"));
+    setDisplay(store.items.backpack.filter((x) => x.type === "shield"));
     setMoveLeft(0);
     setSlidesWeapons(0);
   }
 
   function showSecondWeapons() {
-    if (store.items.backpack.find((x) => x.type == "second weapon")) {
-      if (store.items.backpack.some((x) => x.type == "second weapon")) {
+    if (store.items.backpack.find((x) => x.type === "second weapon")) {
+      if (store.items.backpack.some((x) => x.type === "second weapon")) {
         setDisplay(
-          store.items.backpack.filter((x) => x.type == "second weapon")
+          store.items.backpack.filter((x) => x.type === "second weapon")
         );
         setMoveLeft(0);
         setSlidesWeapons(0);
@@ -44,10 +44,10 @@ function MyItems() {
 
   function armItem(e) {
     let item =
-      items.weapon.find((x) => x.id == e.target.id) ||
-      items.shields.find((x) => x.id == e.target.id) ||
-      items.secondWeapon.find((x) => x.id == e.target.id);
-    if (item.type == "First weapon") {
+      items.weapon.find((x) => x.id === e.target.id) ||
+      items.shields.find((x) => x.id === e.target.id) ||
+      items.secondWeapon.find((x) => x.id === e.target.id);
+    if (item.type === "First weapon") {
       dispatch(firstHand(item));
     } else {
       dispatch(secondHand(item));
@@ -59,7 +59,7 @@ function MyItems() {
   let elementStyle;
   let weaponImgStyle;
   if (display.length > 0) {
-    if (display[0].type == "shield") {
+    if (display[0].type === "shield") {
       elementStyle = {
         width: "7.5vw",
       };
@@ -136,9 +136,9 @@ function MyItems() {
                   <div id={element.id} className="itemInfo">
                     <div className="itemName">{element.name}</div>
                     <div className="itemStats">
-                      {element.type == "First weapon" ||
-                      element.type == "second weapon"
-                        ? element.attack.length == 1
+                      {element.type === "First weapon" ||
+                      element.type === "second weapon"
+                        ? element.attack.length === 1
                           ? `Attack: ${element.attack[0]}`
                           : `Attack: ${element.attack[0]} - ${element.attack[1]}`
                         : `Defense: ${element.defense}`}
